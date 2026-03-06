@@ -988,10 +988,43 @@
       .ch-header { page-break-before: always; }
     }
     @page { size: A4; margin: 12mm 15mm; }
+
+    /* ===== LANG TOGGLE ===== */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 3px;
+    }
+    .lang-btn {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, color 0.2s;
+      background: transparent;
+      color: rgba(255,255,255,0.45);
+    }
+    .lang-btn.active {
+      background: white;
+      color: var(--navy);
+    }
+    .lang-btn:hover:not(.active) {
+      color: rgba(255,255,255,0.8);
+    }
+    .doc { transition: opacity 0.15s; }
+    .doc.switching { opacity: 0; }
+
   </style>
 </head>
 <body>
-<button class="dl-btn" onclick="window.print()">
+<button class="dl-btn" id="t-dl-btn" onclick="window.print()">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 15V3m0 12-4-4m4 4 4-4"/><rect x="2" y="17" width="20" height="4" rx="1"/>
   </svg>
@@ -1005,8 +1038,12 @@
     <div>
       <img src="ideatech_logodata.png" alt="IDEATECH" class="logo-img">
     </div>
-    <div class="header-right">
-      <div class="header-label">BtoBコンテンツマーケティングガイド</div>
+    <div class="header-right" style="display:flex;align-items:center;gap:20px;">
+      <div class="header-label" id="t-header-label">BtoBコンテンツマーケティングガイド</div>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">JA</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
     </div>
   </header>
 
@@ -1017,13 +1054,13 @@
     <div class="cover-deco3"></div>
 
     <div class="cover-top">
-      <div class="cover-badge">BtoBコンテンツマーケティングガイド</div>
-      <div class="cover-kicker">IDEATECH RESEARCH GUIDE</div>
-      <h1 class="cover-title">
+      <div class="cover-badge" id="t-cover-badge">BtoBコンテンツマーケティングガイド</div>
+      <div class="cover-kicker" id="t-cover-kicker">IDEATECH RESEARCH GUIDE</div>
+      <h1 class="cover-title" id="t-cover-title">
         <span class="hl">Go to Market</span> 視点で設計する、<br>
         業界特化型BtoBコンテンツ
       </h1>
-      <p class="cover-desc">
+      <p class="cover-desc" id="t-cover-desc">
         リード獲得難易度が高まる現代のBtoBマーケティングにおいて、
         なぜ業界特化型コンテンツが必要なのか。
         3つの独自調査データをもとに、GTM視点での
@@ -1032,15 +1069,15 @@
       <div class="cover-stats">
         <div class="cover-stat-item">
           <div class="cover-stat-num">86<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label">業界別コンテンツを<br>作成すべきと回答</div>
+          <div class="cover-stat-label" id="t-cover-stat1">業界別コンテンツを<br>作成すべきと回答</div>
         </div>
         <div class="cover-stat-item">
           <div class="cover-stat-num">80<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label">業界特化型を<br>読みたいと回答</div>
+          <div class="cover-stat-label" id="t-cover-stat2">業界特化型を<br>読みたいと回答</div>
         </div>
         <div class="cover-stat-item">
           <div class="cover-stat-num">84<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label">独自調査で<br>信頼度が高まる</div>
+          <div class="cover-stat-label" id="t-cover-stat3">独自調査で<br>信頼度が高まる</div>
         </div>
       </div>
     </div>
@@ -1061,10 +1098,10 @@
     <div class="supervisor-box">
       <img src="image10.png" alt="監修者" class="supervisor-photo">
       <div class="supervisor-info">
-        <div class="supervisor-tag">監 修</div>
+        <div class="supervisor-tag" id="t-sup-tag">監 修</div>
         <div class="supervisor-name">北川 裕康</div>
-        <div class="supervisor-title">GTM戦略・BtoBマーケティングアドバイザー</div>
-        <div class="supervisor-bio">
+        <div class="supervisor-title" id="t-sup-title">GTM戦略・BtoBマーケティングアドバイザー</div>
+        <div class="supervisor-bio" id="t-sup-bio">
           大学卒業後、富士通株式会社にソフトウェア技術者として入社。2社目で外資系企業に転職後、Microsoftへの転職を契機にキャリアチェンジ。複数の企業で、プロダクトマーケティング、フィールドマーケティング、セールスオペレーション、インサイドセールスなどの組織をリード。2023年7月、今までの経験・知識を活かすために独立。現在、複数の企業でアドバイザーとして、GTM戦略やBtoBマーケティング、販売プロセスの合理化など様々な支援を提供中。<br><br>
           <strong>主な経歴：</strong>Microsoft 業務執行役員 / Cisco Systems マーケティング本部長 / AI inside 執行役員 CPO / RevComm マーケティング本部長 / SAS Institute 業務執行役員 など<br>
           マイナビニュース Tech+ にて連載中
@@ -1075,13 +1112,13 @@
 
   <!-- ===== TABLE OF CONTENTS ===== -->
   <section class="toc">
-    <div class="toc-eyebrow">INDEX — 目次</div>
+    <div class="toc-eyebrow" id="t-toc-eyebrow">INDEX — 目次</div>
     <ul class="toc-list">
       <li class="toc-item">
         <div class="toc-ch-num">1</div>
         <div class="toc-content">
           <div class="toc-ch-label">CHAPTER 01</div>
-          <div class="toc-ch-name">なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか</div>
+          <div class="toc-ch-name" id="t-toc-ch1">なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか</div>
           <div class="toc-sub">リード獲得難易度の上昇 ／ 情報過多時代の変化 ／ GTM視点の必要性</div>
         </div>
         <div class="toc-arrow">›</div>
@@ -1090,8 +1127,8 @@
         <div class="toc-ch-num">2</div>
         <div class="toc-content">
           <div class="toc-ch-label">CHAPTER 02</div>
-          <div class="toc-ch-name">BtoBにおける Go to Market 戦略と市場単位</div>
-          <div class="toc-sub">送り手と受け手のギャップ ／ 業界別課題構造と深度</div>
+          <div class="toc-ch-name" id="t-toc-ch2">BtoBにおける Go to Market 戦略と市場単位</div>
+          <div class="toc-sub" id="t-toc-sub2">送り手と受け手のギャップ ／ 業界別課題構造と深度</div>
         </div>
         <div class="toc-arrow">›</div>
       </li>
@@ -1099,8 +1136,8 @@
         <div class="toc-ch-num">3</div>
         <div class="toc-content">
           <div class="toc-ch-label">CHAPTER 03</div>
-          <div class="toc-ch-name">業界特化型コンテンツマーケティングにおける調査データの有効性</div>
-          <div class="toc-sub">自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値</div>
+          <div class="toc-ch-name" id="t-toc-ch3">業界特化型コンテンツマーケティングにおける調査データの有効性</div>
+          <div class="toc-sub" id="t-toc-sub3">自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値</div>
         </div>
         <div class="toc-arrow">›</div>
       </li>
@@ -1108,8 +1145,8 @@
         <div class="toc-ch-num">4</div>
         <div class="toc-content">
           <div class="toc-ch-label">CHAPTER 04</div>
-          <div class="toc-ch-name">業界特化型コンテンツの横展開の可能性</div>
-          <div class="toc-sub">コスト課題の解決策 ／ 共通構造＋課題差し替え方式</div>
+          <div class="toc-ch-name" id="t-toc-ch4">業界特化型コンテンツの横展開の可能性</div>
+          <div class="toc-sub" id="t-toc-sub4">コスト課題の解決策 ／ 共通構造＋課題差し替え方式</div>
         </div>
         <div class="toc-arrow">›</div>
       </li>
@@ -1118,16 +1155,16 @@
 
   <!-- ===== INTRO ===== -->
   <section class="intro-section">
-    <div class="intro-eyebrow">INTRODUCTION — はじめに</div>
-    <h2 class="intro-title">なぜ、コンテンツは読まれなくなっているのか</h2>
-    <p class="intro-body">
+    <div class="intro-eyebrow" id="t-intro-eyebrow">INTRODUCTION — はじめに</div>
+    <h2 class="intro-title" id="t-intro-title">なぜ、コンテンツは読まれなくなっているのか</h2>
+    <p class="intro-body" id="t-intro-body1">
       近年、BtoBマーケティングにおいて見込み顧客（リード）獲得の難易度が一段と高まっています。
       情報過多の環境では、顧客は自社に無関係な情報を早期に排除し、企業が発信するコンテンツは
       最後まで読まれる前に淘汰されがちです。また、<strong>生成AIの普及により、製品だけでなく、
       課題解決方法の情報まで誰もが簡単に入手できる</strong>ようになったため、
       インサイト（洞察・独自の視点）がないコンテンツは無視されてしまいます。
     </p>
-    <p class="intro-body">
+    <p class="intro-body" id="t-intro-body2">
       こうした状況を受け、近年注目されているのが、事前に「誰に・何を・どう届けるか」を定めて
       市場参入や市場シェア拡大の戦略を設計する<strong>「Go to Market（GTM）戦略」</strong>です。
       本ガイドでは、3つの独自調査データをもとに、BtoBコンテンツマーケティングにおける
@@ -1144,7 +1181,7 @@
     <div>
       <div class="ch-eyebrow">CHAPTER 01</div>
       <div class="ch-num-badge">第1章</div>
-      <h2 class="ch-title">なぜ今、BtoBマーケティングに<br>Go to Market の視点が必要なのか</h2>
+      <h2 class="ch-title" id="t-ch1-title">なぜ今、BtoBマーケティングに<br>Go to Market の視点が必要なのか</h2>
       <div class="ch-line"></div>
     </div>
   </div>
@@ -1154,7 +1191,7 @@
     <div class="section-inner">
       <div class="sec-label">
         <span class="sec-badge">1-1</span>
-        <span class="sec-title">BtoBマーケティングにおけるリード獲得難易度の上昇</span>
+        <span class="sec-title" id="t-sec1-1">BtoBマーケティングにおけるリード獲得難易度の上昇</span>
       </div>
       <p class="body-text">
         BtoBの購買行動は大きく変化しています。今や購買担当者は、営業担当者と接触する前から
@@ -1206,7 +1243,7 @@
     <div class="section-inner" style="padding-top:48px;">
       <div class="sec-label">
         <span class="sec-badge">1-2</span>
-        <span class="sec-title">マーケティングのオートメーション化による情報到達構造の変化</span>
+        <span class="sec-title" id="t-sec1-2">マーケティングのオートメーション化による情報到達構造の変化</span>
       </div>
       <p class="body-text">
         MAツール・広告・CRMの進化により大量情報配信が低コストで可能になった結果、
@@ -1248,7 +1285,7 @@
     <div class="section-inner" style="padding-top:48px;">
       <div class="sec-label">
         <span class="sec-badge">1-3</span>
-        <span class="sec-title">市場の入り方を定義する Go to Market 視点の必要性</span>
+        <span class="sec-title" id="t-sec1-3">市場の入り方を定義する Go to Market 視点の必要性</span>
       </div>
       <p class="body-text">
         <strong>GTM（Go to Market）戦略</strong>とは、自社の製品・サービスを
@@ -1290,7 +1327,7 @@
     <div>
       <div class="ch-eyebrow">CHAPTER 02</div>
       <div class="ch-num-badge">第2章</div>
-      <h2 class="ch-title">BtoBにおける Go to Market 戦略と市場単位</h2>
+      <h2 class="ch-title" id="t-ch2-title">BtoBにおける Go to Market 戦略と市場単位</h2>
       <div class="ch-line"></div>
     </div>
   </div>
@@ -1300,7 +1337,7 @@
     <div class="section-inner">
       <div class="sec-label">
         <span class="sec-badge">2-1</span>
-        <span class="sec-title">Go to Market における市場単位 — 送り手と受け手のギャップ</span>
+        <span class="sec-title" id="t-sec2-1">Go to Market における市場単位 — 送り手と受け手のギャップ</span>
       </div>
       <p class="body-text">
         コンテンツの送り手（マーケティング担当者）と受け手（購買担当者）の間には、
@@ -1442,7 +1479,7 @@
     <div>
       <div class="ch-eyebrow">CHAPTER 03</div>
       <div class="ch-num-badge">第3章</div>
-      <h2 class="ch-title">業界特化型コンテンツマーケティングにおける<br>調査データの有効性</h2>
+      <h2 class="ch-title" id="t-ch3-title">業界特化型コンテンツマーケティングにおける<br>調査データの有効性</h2>
       <div class="ch-line"></div>
     </div>
   </div>
@@ -1452,7 +1489,7 @@
     <div class="section-inner">
       <div class="sec-label">
         <span class="sec-badge">3-1</span>
-        <span class="sec-title">数字によって受け手は「自分たち向け」だと感じやすくなる</span>
+        <span class="sec-title" id="t-sec3-1">数字によって受け手は「自分たち向け」だと感じやすくなる</span>
       </div>
       <p class="body-text">
         受け手に「自分たち向けだ」と認識させるためには、何が有効なのでしょうか。
@@ -1511,7 +1548,7 @@
     <div class="section-inner" style="padding-top:48px;">
       <div class="sec-label">
         <span class="sec-badge">3-2</span>
-        <span class="sec-title">社内の合意形成に必要な説得材料として機能する</span>
+        <span class="sec-title" id="t-sec3-2">社内の合意形成に必要な説得材料として機能する</span>
       </div>
       <p class="body-text">
         BtoBの購買プロセスは複数人が関与する合議型の意思決定です。
@@ -1584,7 +1621,7 @@
     <div class="section-inner" style="padding-top:48px;">
       <div class="sec-label">
         <span class="sec-badge">3-3</span>
-        <span class="sec-title">公的データでは拾いきれない実情を可視化できる</span>
+        <span class="sec-title" id="t-sec3-3">公的データでは拾いきれない実情を可視化できる</span>
       </div>
       <p class="body-text">
         政府統計や業界団体のデータは一定の信頼性がある一方、
@@ -1642,7 +1679,7 @@
     <div>
       <div class="ch-eyebrow">CHAPTER 04</div>
       <div class="ch-num-badge">第4章</div>
-      <h2 class="ch-title">業界特化型コンテンツの横展開の可能性</h2>
+      <h2 class="ch-title" id="t-ch4-title">業界特化型コンテンツの横展開の可能性</h2>
       <div class="ch-line"></div>
     </div>
   </div>
@@ -1736,8 +1773,8 @@
 
   <!-- ===== おわりに ===== -->
   <section style="padding: 56px 64px; background: var(--gray-bg); border-top: 1px solid var(--gray-border);">
-    <div class="intro-eyebrow">CLOSING — おわりに</div>
-    <h2 class="intro-title" style="margin-bottom:24px;">伝わるための構造を設計する</h2>
+    <div class="intro-eyebrow" id="t-closing-eyebrow">CLOSING — おわりに</div>
+    <h2 class="intro-title" id="t-closing-title" style="margin-bottom:24px;">伝わるための構造を設計する</h2>
     <p class="body-text">
       本ガイドで紹介したデータが示すように、BtoBコンテンツの課題の本質は
       「量」ではなく「構造」にあります。誰に向けた、どのような前提でのメッセージかを
@@ -1772,9 +1809,9 @@
 
   <!-- ===== SERVICE SECTION ===== -->
   <section class="service-section">
-    <div class="service-eyebrow">IDEATECH SERVICE</div>
-    <h2 class="service-title">IDEATECHの業界特化型<br>コンテンツパッケージ</h2>
-    <p class="service-subtitle">
+    <div class="service-eyebrow" id="t-svc-eyebrow">IDEATECH SERVICE</div>
+    <h2 class="service-title" id="t-svc-title">IDEATECHの業界特化型<br>コンテンツパッケージ</h2>
+    <p class="service-subtitle" id="t-svc-subtitle">
       調査設計からコンテンツ制作・配信までを一式提供。<br>
       業界特化型コンテンツの立ち上げを最短・最低コストで実現します。
     </p>
@@ -1934,7 +1971,7 @@
         といったご相談も承っております。GTM戦略に基づく業界特化型コンテンツの設計について、<br>
         お気軽にお問い合わせください。
       </p>
-      <a href="https://ideatech.jp/" class="service-cta-link" target="_blank">
+      <a href="https://ideatech.jp/" class="service-cta-link" target="_blank" id="t-cta-link">
         お問い合わせ・資料請求はこちら
       </a>
       <div class="service-cta-note">ideatech.jp ｜ 無料相談受付中</div>
@@ -2003,5 +2040,123 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+<script>
+const TRANSLATIONS = {
+  ja: {
+    "t-header-label": "BtoBコンテンツマーケティングガイド",
+    "t-dl-btn": `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg> PDFダウンロード`,
+    "t-cover-badge": "BtoBコンテンツマーケティングガイド",
+    "t-cover-kicker": "IDEATECH RESEARCH GUIDE",
+    "t-cover-title": `<span class="hl">Go to Market</span> 視点で設計する、<br>業界特化型BtoBコンテンツ`,
+    "t-cover-desc": "リード獲得難易度が高まる現代のBtoBマーケティングにおいて、なぜ業界特化型コンテンツが必要なのか。3つの独自調査データをもとに、GTM視点でのコンテンツ設計の勝ちパターンを解説します。",
+    "t-cover-stat1": "業界別コンテンツを<br>作成すべきと回答",
+    "t-cover-stat2": "業界特化型を<br>読みたいと回答",
+    "t-cover-stat3": "独自調査で<br>信頼度が高まる",
+    "t-sup-tag": "監 修",
+    "t-sup-title": "GTM戦略・BtoBマーケティングアドバイザー",
+    "t-sup-bio": `大学卒業後、富士通株式会社にソフトウェア技術者として入社。2社目で外資系企業に転職後、Microsoftへの転職を契機にキャリアチェンジ。複数の企業で、プロダクトマーケティング、フィールドマーケティング、セールスオペレーション、インサイドセールスなどの組織をリード。2023年7月、今までの経験・知識を活かすために独立。現在、複数の企業でアドバイザーとして、GTM戦略やBtoBマーケティング、販売プロセスの合理化など様々な支援を提供中。<br><br><strong>主な経歴：</strong>Microsoft 業務執行役員 / Cisco Systems マーケティング本部長 / AI inside 執行役員 CPO / RevComm マーケティング本部長 / SAS Institute 業務執行役員 など<br>マイナビニュース Tech+ にて連載中`,
+    "t-toc-eyebrow": "INDEX — 目次",
+    "t-toc-ch1": "なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか",
+    "t-toc-ch2": "BtoBにおける Go to Market 戦略と市場単位",
+    "t-toc-ch3": "業界特化型コンテンツマーケティングにおける調査データの有効性",
+    "t-toc-ch4": "業界特化型コンテンツの横展開の可能性",
+    "t-toc-sub1": "リード獲得難易度の上昇 ／ 情報到達構造の変化 ／ GTM視点の必要性",
+    "t-toc-sub2": "送り手と受け手のギャップ ／ 業界別課題構造と深度",
+    "t-toc-sub3": "自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値",
+    "t-toc-sub4": "コスト課題の解決策 ／ 共通構造＋課題差し替え方式",
+    "t-intro-eyebrow": "INTRODUCTION — はじめに",
+    "t-intro-title": "なぜ、コンテンツは読まれなくなっているのか",
+    "t-intro-body1": `近年、BtoBマーケティングにおいて見込み顧客（リード）獲得の難易度が一段と高まっています。情報過多の環境では、顧客は自社に無関係な情報を早期に排除し、企業が発信するコンテンツは最後まで読まれる前に淘汰されがちです。また、<strong>生成AIの普及により、製品だけでなく、課題解決方法の情報まで誰もが簡単に入手できる</strong>ようになったため、インサイト（洞察・独自の視点）がないコンテンツは無視されてしまいます。`,
+    "t-intro-body2": `こうした状況を受け、近年注目されているのが、事前に「誰に・何を・どう届けるか」を定めて市場参入や市場シェア拡大の戦略を設計する<strong>「Go to Market（GTM）戦略」</strong>です。本ガイドでは、3つの独自調査データをもとに、BtoBコンテンツマーケティングにおけるGTM視点の重要性と、業界特化型コンテンツ設計の具体的な考え方を解説します。`,
+    "t-ch1-title": "なぜ今、BtoBマーケティングに<br>Go to Market の視点が必要なのか",
+    "t-ch2-title": "BtoBにおける Go to Market 戦略と市場単位",
+    "t-ch3-title": "業界特化型コンテンツマーケティングにおける<br>調査データの有効性",
+    "t-ch4-title": "業界特化型コンテンツの横展開の可能性",
+    "t-sec1-1": "BtoBマーケティングにおけるリード獲得難易度の上昇",
+    "t-sec1-2": "マーケティングのオートメーション化による情報到達構造の変化",
+    "t-sec1-3": "市場の入り方を定義する Go to Market 視点の必要性",
+    "t-sec2-1": "Go to Market における市場単位 — 送り手と受け手のギャップ",
+    "t-sec2-2": "業界別課題構造と深度",
+    "t-sec3-1": "数字によって受け手は「自分たち向け」だと感じやすくなる",
+    "t-sec3-2": "社内の合意形成に必要な説得材料として機能する",
+    "t-sec3-3": "公的データでは拾いきれない実情を可視化できる",
+    "t-closing-eyebrow": "CLOSING — おわりに",
+    "t-closing-title": "伝わるための構造を設計する",
+    "t-svc-eyebrow": "IDEATECH SERVICE",
+    "t-svc-title": "IDEATECHの業界特化型<br>コンテンツパッケージ",
+    "t-svc-subtitle": "調査設計からコンテンツ制作・配信までを一式提供。<br>業界特化型コンテンツの立ち上げを最短・最低コストで実現します。",
+    "t-cta-link": "お問い合わせ・資料請求はこちら",
+  },
+  en: {
+    "t-header-label": "BtoB Content Marketing Guide",
+    "t-dl-btn": `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><rect x="2" y="17" width="20" height="4" rx="1"/></svg> Download PDF`,
+    "t-cover-badge": "BtoB Content Marketing Guide",
+    "t-cover-kicker": "IDEATECH RESEARCH GUIDE",
+    "t-cover-title": `Designing <span class="hl">Industry-Specific</span> BtoB Content<br>with a <span class="hl">Go to Market</span> Perspective`,
+    "t-cover-desc": "In today's BtoB marketing environment where lead generation has become increasingly challenging, why is industry-specific content essential? Based on three proprietary surveys, this guide explains the winning patterns for GTM-based content design.",
+    "t-cover-stat1": "believe industry-specific<br>content should be created",
+    "t-cover-stat2": "want to read<br>industry-specific content",
+    "t-cover-stat3": "trust increases with<br>proprietary research data",
+    "t-sup-tag": "SUPERVISED BY",
+    "t-sup-title": "GTM Strategy & BtoB Marketing Advisor",
+    "t-sup-bio": `After graduating, joined Fujitsu Ltd. as a software engineer. Transitioned into marketing following a move to Microsoft. Led teams across product marketing, field marketing, sales operations, and inside sales at multiple companies. Became an independent advisor in July 2023. Currently advises multiple companies on GTM strategy, BtoB marketing, and sales process optimization.<br><br><strong>Career highlights:</strong> Microsoft Managing Executive Officer / Cisco Systems Head of Marketing / AI inside Executive VP & CPO / RevComm Head of Marketing / SAS Institute Managing Executive Officer<br>Contributing writer at Mynavi News Tech+`,
+    "t-toc-eyebrow": "INDEX — Table of Contents",
+    "t-toc-ch1": "Why BtoB Marketing Needs a Go to Market Perspective Now",
+    "t-toc-ch2": "Go to Market Strategy and Market Units in BtoB",
+    "t-toc-ch3": "The Effectiveness of Research Data in Industry-Specific Content Marketing",
+    "t-toc-ch4": "The Potential for Horizontal Expansion of Industry-Specific Content",
+    "t-toc-sub1": "Rising lead generation difficulty / Changes in information reach / Need for GTM perspective",
+    "t-toc-sub2": "Gap between senders and receivers / Industry-specific issue structure",
+    "t-toc-sub3": "Driving self-relevance / Internal consensus building / Value of proprietary data",
+    "t-toc-sub4": "Solutions to cost challenges / Common structure + issue replacement",
+    "t-intro-eyebrow": "INTRODUCTION",
+    "t-intro-title": "Why Is Content No Longer Being Read?",
+    "t-intro-body1": `In recent years, lead generation in BtoB marketing has become significantly more challenging. In an information-saturated environment, customers quickly filter out irrelevant content, and much of what companies publish gets discarded before it's fully read. Furthermore, <strong>with the spread of generative AI, anyone can easily access not just product information but also problem-solving insights</strong> — meaning content that lacks unique perspective is simply ignored.`,
+    "t-intro-body2": `In response to this reality, the <strong>"Go to Market (GTM) strategy"</strong> has attracted growing attention — a framework for planning in advance "who to reach, what to offer, and how to deliver it" when entering a market or expanding market share. This guide uses data from three proprietary surveys to explain the importance of a GTM perspective in BtoB content marketing and provides a concrete approach to designing industry-specific content.`,
+    "t-ch1-title": "Why BtoB Marketing Needs a<br>Go to Market Perspective Now",
+    "t-ch2-title": "Go to Market Strategy and Market Units in BtoB",
+    "t-ch3-title": "The Effectiveness of Research Data in<br>Industry-Specific Content Marketing",
+    "t-ch4-title": "The Potential for Horizontal Expansion<br>of Industry-Specific Content",
+    "t-sec1-1": "Rising Difficulty of Lead Generation in BtoB Marketing",
+    "t-sec1-2": "Changes in Information Reach Structure Due to Marketing Automation",
+    "t-sec1-3": "The Need for a Go to Market Perspective to Define Market Entry",
+    "t-sec2-1": "Market Units in Go to Market — Gap Between Senders and Receivers",
+    "t-sec2-2": "Industry-Specific Issue Structure and Depth in BtoB Markets",
+    "t-sec3-1": "Numbers Make Recipients More Likely to Feel Content Is 'For Them'",
+    "t-sec3-2": "Functions as Persuasive Material for Internal Consensus Building",
+    "t-sec3-3": "Can Visualize Realities That Public Data Cannot Capture",
+    "t-closing-eyebrow": "CLOSING — Conclusion",
+    "t-closing-title": "Designing a Structure That Communicates",
+    "t-svc-eyebrow": "IDEATECH SERVICE",
+    "t-svc-title": "IDEATECH's Industry-Specific<br>Content Package",
+    "t-svc-subtitle": "We provide everything from research design to content creation and distribution.<br>Launch industry-specific content at minimum time and cost.",
+    "t-cta-link": "Contact Us / Request Materials",
+  }
+};
+
+let currentLang = 'ja';
+
+function setLang(lang) {
+  if (lang === currentLang) return;
+  const doc = document.querySelector('.doc');
+  doc.classList.add('switching');
+  setTimeout(() => {
+    currentLang = lang;
+    Object.entries(TRANSLATIONS[lang]).forEach(([id, html]) => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = html;
+    });
+    document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang === 'en' ? 'en' : 'ja';
+    doc.classList.remove('switching');
+  }, 150);
+}
+
+// Check URL hash on load
+if (location.hash === '#en') setLang('en');
+</script>
+
 </body>
 </html>
