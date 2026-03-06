@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1040">
+  <title>Go to Market 視点で設計する、業界特化型BtoBコンテンツ ｜ IDEATECH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1B3F7E;
+      --navy-deep:   #0F2459;
+      --blue:        #2563EB;
+      --blue-mid:    #3B82F6;
+      --blue-light:  #DBEAFE;
+      --blue-pale:   #EFF6FF;
+      --red:         #DC2626;
+      --orange:      #EA580C;
+      --gray-bg:     #F1F5F9;
+      --gray-light:  #F8FAFC;
+      --gray-border: #CBD5E0;
+      --text:        #1E293B;
+      --text-mid:    #475569;
+      --text-light:  #94A3B8;
+      --white:       #FFFFFF;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+      color: var(--text);
+      background: #BCC8DC;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* ===== DOCUMENT WRAPPER ===== */
+    .doc {
+      width: 960px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 60px rgba(0,0,0,0.2);
+    }
+
+    /* ===== STICKY HEADER ===== */
+    .doc-header {
+      background: var(--navy-deep);
+      padding: 14px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid rgba(37,99,235,0.5);
+    }
+    .doc-header .logo-img {
+      height: 28px;
+      background: white;
+      border-radius: 4px;
+      padding: 3px 8px;
+      display: block;
+    }
+    .doc-header .header-title {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    .doc-header .header-right {
+      text-align: right;
+    }
+    .doc-header .header-label {
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    /* ===== COVER PAGE ===== */
+    .cover {
+      background: linear-gradient(155deg, #071a3e 0%, #0f2459 35%, #1b3f7e 70%, #1e4d9b 100%);
+      min-height: 620px;
+      padding: 72px 64px 64px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .cover-deco1 {
+      position: absolute; top: -120px; right: -80px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .cover-deco2 {
+      position: absolute; bottom: -100px; left: 260px;
+      width: 360px; height: 360px; border-radius: 50%;
+      background: rgba(59,130,246,0.07);
+    }
+    .cover-deco3 {
+      position: absolute; top: 40%; left: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+    }
+    .cover-top { position: relative; z-index: 2; }
+    .cover-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.2);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: #93C5FD;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+    }
+    .cover-kicker {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+    }
+    .cover-title {
+      color: white;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.45;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .cover-title .hl { color: #93C5FD; }
+    .cover-desc {
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+      max-width: 580px;
+      margin-bottom: 48px;
+    }
+    .cover-stats {
+      display: flex;
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+    .cover-stat-item {
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 20px 28px;
+    }
+    .cover-stat-num {
+      font-size: 36px;
+      font-weight: 900;
+      color: #93C5FD;
+      line-height: 1;
+    }
+    .cover-stat-unit { font-size: 18px; font-weight: 700; color: #93C5FD; }
+    .cover-stat-label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+    .cover-bottom {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .cover-logo-badge {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.25);
+      color: white;
+      font-weight: 900;
+      font-size: 18px;
+      padding: 10px 28px;
+      border-radius: 8px;
+      letter-spacing: 0.15em;
+    }
+    .cover-date {
+      color: rgba(255,255,255,0.35);
+      font-size: 11px;
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ===== SUPERVISOR ===== */
+    .supervisor-wrap {
+      background: var(--gray-bg);
+      padding: 40px 64px;
+    }
+    .supervisor-box {
+      background: white;
+      border-radius: 14px;
+      padding: 32px 36px;
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .supervisor-photo {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 3px solid var(--blue-light);
+    }
+    .supervisor-info { flex: 1; }
+    .supervisor-tag {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .supervisor-name {
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .supervisor-title {
+      font-size: 12px;
+      color: var(--blue);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .supervisor-bio {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      line-height: 1.85;
+    }
+
+    /* ===== TOC ===== */
+    .toc {
+      background: linear-gradient(135deg, #0f2459, #1b3f7e);
+      padding: 56px 64px;
+    }
+    .toc-eyebrow {
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+    }
+    .toc-list { list-style: none; }
+    .toc-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .toc-item:last-child { border-bottom: none; }
+    .toc-ch-num {
+      color: rgba(255,255,255,0.18);
+      font-size: 44px;
+      font-weight: 900;
+      width: 56px;
+      flex-shrink: 0;
+      line-height: 1;
+      text-align: center;
+    }
+    .toc-content { flex: 1; }
+    .toc-ch-label {
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+    }
+    .toc-ch-name {
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .toc-sub {
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      margin-top: 5px;
+      line-height: 1.7;
+    }
+    .toc-arrow {
+      color: rgba(255,255,255,0.2);
+      font-size: 18px;
+    }
+
+    /* ===== INTRO SECTION ===== */
+    .intro-section {
+      padding: 64px 64px 48px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .intro-eyebrow {
+      color: var(--blue);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+    .intro-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .intro-body {
+      font-size: 13.5px;
+      line-height: 1.95;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .intro-body strong { color: var(--navy); font-weight: 700; }
+
+    /* ===== CHAPTER HEADER ===== */
+    .ch-header {
+      background: linear-gradient(135deg, #071a3e 0%, #0f2459 50%, #1b3f7e 100%);
+      padding: 56px 64px 48px;
+      position: relative;
+      overflow: hidden;
+      page-break-before: always;
+    }
+    .ch-header-bg-num {
+      position: absolute;
+      right: 40px;
+      bottom: -16px;
+      font-size: 140px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      letter-spacing: -8px;
+      pointer-events: none;
+    }
+    .ch-header-deco {
+      position: absolute;
+      top: -60px;
+      right: 200px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.05);
+    }
+    .ch-eyebrow {
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      margin-bottom: 16px;
+    }
+    .ch-num-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.25);
+      border: 1px solid rgba(59,130,246,0.4);
+      color: #93C5FD;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .ch-title {
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+    .ch-line {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(to right, #93C5FD, rgba(147,197,253,0));
+      border-radius: 2px;
+      margin-top: 20px;
+    }
+
+    /* ===== SECTION CONTENT ===== */
+    .section {
+      padding: 56px 64px;
+    }
+    .section + .section {
+      padding-top: 0;
+    }
+    .section-inner {
+      padding: 0 0 48px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .section-inner:last-child { border-bottom: none; }
+
+    /* Section number label */
+    .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .sec-badge {
+      background: var(--navy);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 4px;
+    }
+    .sec-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    /* Section Heading (H3) */
+    .sec-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      padding-left: 16px;
+      border-left: 4px solid var(--blue);
+      margin: 32px 0 16px;
+      line-height: 1.5;
+    }
+
+    /* Body text */
+    .body-text {
+      font-size: 13.5px;
+      line-height: 1.95;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .body-text strong { color: var(--navy); font-weight: 700; }
+    .body-text em { color: var(--blue); font-style: normal; font-weight: 700; }
+
+    /* ===== SURVEY Q BOX ===== */
+    .q-box {
+      background: var(--blue-pale);
+      border: 1px solid #BFDBFE;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 10px 10px 0;
+      padding: 18px 24px;
+      margin: 28px 0 20px;
+    }
+    .q-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+      letter-spacing: 0.08em;
+    }
+    .q-text {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.75;
+    }
+    .q-meta {
+      margin-top: 8px;
+      font-size: 10.5px;
+      color: var(--text-light);
+    }
+
+    /* ===== CHART GRID ===== */
+    .chart-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .chart-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    /* ===== DONUT CHART BOX ===== */
+    .donut-box {
+      background: var(--gray-light);
+      border-radius: 12px;
+      padding: 28px 20px 22px;
+      border: 1px solid var(--gray-border);
+      text-align: center;
+    }
+    .donut-box-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      line-height: 1.6;
+      min-height: 36px;
+    }
+    .donut-wrap {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 16px;
+    }
+    .donut-wrap canvas { width: 160px !important; height: 160px !important; }
+    .donut-center-text {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+    .donut-pct {
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .donut-unit { font-size: 16px; font-weight: 700; color: var(--navy); }
+    .donut-sub {
+      font-size: 10px;
+      color: var(--text-mid);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+    .donut-desc {
+      font-size: 11.5px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-top: 4px;
+    }
+    .donut-source {
+      font-size: 9.5px;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    /* ===== BIG STAT ===== */
+    .stat-box {
+      background: var(--blue-pale);
+      border: 1px solid #BFDBFE;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 64px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .stat-unit { font-size: 28px; font-weight: 700; color: var(--navy); }
+    .stat-label {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      margin-top: 12px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+    .stat-source {
+      font-size: 9.5px;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    /* ===== HORIZONTAL BAR ===== */
+    .hbar-box {
+      background: var(--gray-light);
+      border: 1px solid var(--gray-border);
+      border-radius: 12px;
+      padding: 28px 28px 20px;
+      margin: 24px 0;
+    }
+    .hbar-box-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+    .hbar-item { margin-bottom: 14px; }
+    .hbar-item:last-child { margin-bottom: 0; }
+    .hbar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 5px;
+    }
+    .hbar-name { font-size: 12.5px; color: var(--text); font-weight: 500; }
+    .hbar-val { font-size: 14px; font-weight: 700; color: var(--navy); white-space: nowrap; padding-left: 8px; }
+    .hbar-track {
+      background: var(--gray-border);
+      border-radius: 6px;
+      height: 9px;
+      overflow: hidden;
+    }
+    .hbar-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--navy), var(--blue-mid));
+      border-radius: 6px;
+    }
+    .hbar-fill.warm {
+      background: linear-gradient(to right, #EA580C, #F97316);
+    }
+    .hbar-fill.green {
+      background: linear-gradient(to right, #059669, #10B981);
+    }
+    .hbar-source {
+      font-size: 9.5px;
+      color: var(--text-light);
+      margin-top: 14px;
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: linear-gradient(135deg, #0f2459, #1b3f7e);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin: 28px 0;
+      color: white;
+    }
+    .highlight-box h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #93C5FD;
+      margin-bottom: 14px;
+    }
+    .highlight-box p {
+      font-size: 13px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+    }
+    .highlight-list {
+      list-style: none;
+      margin-top: 14px;
+    }
+    .highlight-list li {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.78);
+      padding: 8px 0 8px 22px;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.7;
+    }
+    .highlight-list li:last-child { border-bottom: none; }
+    .highlight-list li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: #93C5FD;
+      font-size: 10px;
+      top: 10px;
+    }
+
+    /* ===== POINT LIST ===== */
+    .point-list { list-style: none; margin: 20px 0; }
+    .point-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+    .point-badge {
+      background: var(--navy);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .point-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.85;
+      flex: 1;
+    }
+    .point-text strong { color: var(--navy); font-weight: 700; }
+
+    /* ===== COLUMN BOX ===== */
+    .column-box {
+      background: var(--gray-bg);
+      border-radius: 14px;
+      padding: 32px 36px;
+      margin: 40px 0;
+      border-top: 4px solid var(--navy);
+      border: 1px solid var(--gray-border);
+      border-top: 4px solid var(--navy);
+    }
+    .column-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--navy);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+    }
+    .column-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .column-body {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
+    .column-body strong { color: var(--navy); font-weight: 700; }
+
+    /* ===== INFO GRID ===== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .info-card {
+      background: white;
+      border: 1px solid var(--gray-border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      border-top: 3px solid var(--navy);
+    }
+    .info-card-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .info-card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .info-card-body {
+      font-size: 12px;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* ===== STEP FLOW ===== */
+    .step-flow {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin: 28px 0;
+    }
+    .step-item {
+      flex: 1;
+      background: var(--blue-pale);
+      border: 1px solid #BFDBFE;
+      border-radius: 10px;
+      padding: 20px 16px;
+      text-align: center;
+      position: relative;
+    }
+    .step-item + .step-item::before {
+      content: '→';
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue);
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .step-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .step-desc {
+      font-size: 11px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ===== SERVICE SECTION ===== */
+    .service-section {
+      background: linear-gradient(135deg, #071a3e 0%, #0f2459 40%, #1b3f7e 100%);
+      padding: 64px;
+    }
+    .service-eyebrow {
+      color: rgba(255,255,255,0.35);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      margin-bottom: 14px;
+    }
+    .service-title {
+      color: white;
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .service-subtitle {
+      color: rgba(255,255,255,0.55);
+      font-size: 13px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 26px 24px;
+    }
+    .service-card-icon {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    .service-card-title {
+      color: #93C5FD;
+      font-size: 13.5px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .service-card-desc {
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+      line-height: 1.85;
+    }
+    .service-card-desc strong { color: rgba(255,255,255,0.85); }
+    .service-package {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+    }
+    .service-package-title {
+      color: #93C5FD;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+    .service-package ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .service-package ul li {
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .service-package ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #93C5FD;
+      font-size: 11px;
+    }
+    .service-cta {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+    .service-cta p {
+      color: var(--text-mid);
+      font-size: 13px;
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .service-cta-link {
+      display: inline-block;
+      background: var(--navy);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 48px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .service-cta-note {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 10px;
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: var(--gray-border);
+      margin: 48px 0;
+    }
+
+    /* ===== FOOTER ===== */
+    .doc-footer {
+      background: #070f24;
+      padding: 28px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo { color: rgba(255,255,255,0.4); font-size: 14px; font-weight: 700; letter-spacing: 0.1em; }
+    .footer-copy { color: rgba(255,255,255,0.25); font-size: 11px; }
+
+    /* ===== DOWNLOAD BUTTON ===== */
+    .dl-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      background: var(--navy);
+      color: white;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(27,63,126,0.45);
+      transition: transform 0.15s, box-shadow 0.15s;
+      letter-spacing: 0.03em;
+    }
+    .dl-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(27,63,126,0.55);
+    }
+    .dl-btn:active { transform: translateY(0); }
+    .dl-btn svg { flex-shrink: 0; }
+
+    /* ===== PRINT ===== */
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @media print {
+      body { background: white; }
+      .doc { box-shadow: none; width: 100%; }
+      .doc-header { display: none; }
+      .dl-btn { display: none; }
+      canvas { max-width: 100% !important; }
+      .ch-header { page-break-before: always; }
+    }
+    @page { size: A4; margin: 12mm 15mm; }
+  </style>
+</head>
+<body>
+<button class="dl-btn" onclick="window.print()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 15V3m0 12-4-4m4 4 4-4"/><rect x="2" y="17" width="20" height="4" rx="1"/>
+  </svg>
+  PDFダウンロード
+</button>
+
+<div class="doc">
+
+  <!-- ===== STICKY HEADER ===== -->
+  <header class="doc-header">
+    <div>
+      <img src="ideatech_logodata.png" alt="IDEATECH" class="logo-img">
+    </div>
+    <div class="header-right">
+      <div class="header-label">BtoBコンテンツマーケティングガイド</div>
+    </div>
+  </header>
+
+  <!-- ===== COVER PAGE ===== -->
+  <section class="cover">
+    <div class="cover-deco1"></div>
+    <div class="cover-deco2"></div>
+    <div class="cover-deco3"></div>
+
+    <div class="cover-top">
+      <div class="cover-badge">BtoBコンテンツマーケティングガイド</div>
+      <div class="cover-kicker">IDEATECH RESEARCH GUIDE</div>
+      <h1 class="cover-title">
+        <span class="hl">Go to Market</span> 視点で設計する、<br>
+        業界特化型BtoBコンテンツ
+      </h1>
+      <p class="cover-desc">
+        リード獲得難易度が高まる現代のBtoBマーケティングにおいて、
+        なぜ業界特化型コンテンツが必要なのか。
+        3つの独自調査データをもとに、GTM視点での
+        コンテンツ設計の勝ちパターンを解説します。
+      </p>
+      <div class="cover-stats">
+        <div class="cover-stat-item">
+          <div class="cover-stat-num">86<span class="cover-stat-unit">%</span></div>
+          <div class="cover-stat-label">業界別コンテンツを<br>作成すべきと回答</div>
+        </div>
+        <div class="cover-stat-item">
+          <div class="cover-stat-num">80<span class="cover-stat-unit">%</span></div>
+          <div class="cover-stat-label">業界特化型を<br>読みたいと回答</div>
+        </div>
+        <div class="cover-stat-item">
+          <div class="cover-stat-num">84<span class="cover-stat-unit">%</span></div>
+          <div class="cover-stat-label">独自調査で<br>信頼度が高まる</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="cover-logo-badge" style="background:white; border:none; padding:8px 20px;">
+        <img src="ideatech_logodata.png" alt="IDEATECH" style="height:26px; display:block;">
+      </div>
+      <div class="cover-date">
+        調査期間：2026年1月<br>
+        有効サンプル：各111名
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUPERVISOR ===== -->
+  <section class="supervisor-wrap">
+    <div class="supervisor-box">
+      <img src="image10.png" alt="監修者" class="supervisor-photo">
+      <div class="supervisor-info">
+        <div class="supervisor-tag">監 修</div>
+        <div class="supervisor-name">北川 裕康</div>
+        <div class="supervisor-title">GTM戦略・BtoBマーケティングアドバイザー</div>
+        <div class="supervisor-bio">
+          大学卒業後、富士通株式会社にソフトウェア技術者として入社。2社目で外資系企業に転職後、Microsoftへの転職を契機にキャリアチェンジ。複数の企業で、プロダクトマーケティング、フィールドマーケティング、セールスオペレーション、インサイドセールスなどの組織をリード。2023年7月、今までの経験・知識を活かすために独立。現在、複数の企業でアドバイザーとして、GTM戦略やBtoBマーケティング、販売プロセスの合理化など様々な支援を提供中。<br><br>
+          <strong>主な経歴：</strong>Microsoft 業務執行役員 / Cisco Systems マーケティング本部長 / AI inside 執行役員 CPO / RevComm マーケティング本部長 / SAS Institute 業務執行役員 など<br>
+          マイナビニュース Tech+ にて連載中
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TABLE OF CONTENTS ===== -->
+  <section class="toc">
+    <div class="toc-eyebrow">INDEX — 目次</div>
+    <ul class="toc-list">
+      <li class="toc-item">
+        <div class="toc-ch-num">1</div>
+        <div class="toc-content">
+          <div class="toc-ch-label">CHAPTER 01</div>
+          <div class="toc-ch-name">なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか</div>
+          <div class="toc-sub">リード獲得難易度の上昇 ／ 情報過多時代の変化 ／ GTM視点の必要性</div>
+        </div>
+        <div class="toc-arrow">›</div>
+      </li>
+      <li class="toc-item">
+        <div class="toc-ch-num">2</div>
+        <div class="toc-content">
+          <div class="toc-ch-label">CHAPTER 02</div>
+          <div class="toc-ch-name">BtoBにおける Go to Market 戦略と市場単位</div>
+          <div class="toc-sub">送り手と受け手のギャップ ／ 業界別課題構造と深度</div>
+        </div>
+        <div class="toc-arrow">›</div>
+      </li>
+      <li class="toc-item">
+        <div class="toc-ch-num">3</div>
+        <div class="toc-content">
+          <div class="toc-ch-label">CHAPTER 03</div>
+          <div class="toc-ch-name">業界特化型コンテンツマーケティングにおける調査データの有効性</div>
+          <div class="toc-sub">自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値</div>
+        </div>
+        <div class="toc-arrow">›</div>
+      </li>
+      <li class="toc-item">
+        <div class="toc-ch-num">4</div>
+        <div class="toc-content">
+          <div class="toc-ch-label">CHAPTER 04</div>
+          <div class="toc-ch-name">業界特化型コンテンツの横展開の可能性</div>
+          <div class="toc-sub">コスト課題の解決策 ／ 共通構造＋課題差し替え方式</div>
+        </div>
+        <div class="toc-arrow">›</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="intro-section">
+    <div class="intro-eyebrow">INTRODUCTION — はじめに</div>
+    <h2 class="intro-title">なぜ、コンテンツは読まれなくなっているのか</h2>
+    <p class="intro-body">
+      近年、BtoBマーケティングにおいて見込み顧客（リード）獲得の難易度が一段と高まっています。
+      情報過多の環境では、顧客は自社に無関係な情報を早期に排除し、企業が発信するコンテンツは
+      最後まで読まれる前に淘汰されがちです。また、<strong>生成AIの普及により、製品だけでなく、
+      課題解決方法の情報まで誰もが簡単に入手できる</strong>ようになったため、
+      インサイト（洞察・独自の視点）がないコンテンツは無視されてしまいます。
+    </p>
+    <p class="intro-body">
+      こうした状況を受け、近年注目されているのが、事前に「誰に・何を・どう届けるか」を定めて
+      市場参入や市場シェア拡大の戦略を設計する<strong>「Go to Market（GTM）戦略」</strong>です。
+      本ガイドでは、3つの独自調査データをもとに、BtoBコンテンツマーケティングにおける
+      GTM視点の重要性と、業界特化型コンテンツ設計の具体的な考え方を解説します。
+    </p>
+  </section>
+
+  <!-- ============================
+       CHAPTER 1
+       ============================ -->
+  <div class="ch-header">
+    <div class="ch-header-deco"></div>
+    <div class="ch-header-bg-num">01</div>
+    <div>
+      <div class="ch-eyebrow">CHAPTER 01</div>
+      <div class="ch-num-badge">第1章</div>
+      <h2 class="ch-title">なぜ今、BtoBマーケティングに<br>Go to Market の視点が必要なのか</h2>
+      <div class="ch-line"></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <!-- 1-1 -->
+    <div class="section-inner">
+      <div class="sec-label">
+        <span class="sec-badge">1-1</span>
+        <span class="sec-title">BtoBマーケティングにおけるリード獲得難易度の上昇</span>
+      </div>
+      <p class="body-text">
+        BtoBの購買行動は大きく変化しています。今や購買担当者は、営業担当者と接触する前から
+        自社で情報収集を行い、購入候補を絞り込んでいます。
+        <strong>初回ミーティングの時点で購買条件がほぼ決まっている</strong>ことは、
+        以下のデータが示す通りです。
+      </p>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q</div>
+        <div class="q-text">ベンダーに初めて問い合わせた時点での社内検討の状況と、初回ミーティング時点での購買条件の決定度合いについて教えてください。</div>
+        <div class="q-meta">調査対象：BtoB購買担当者111名 ／ 調査期間：2025年6月</div>
+      </div>
+
+      <div class="chart-row-2" style="align-items:start;">
+        <div class="donut-box">
+          <div class="donut-box-title">初回ミーティング時点で<br>購買条件が「決まっている」</div>
+          <div class="donut-wrap">
+            <canvas id="donut1"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">72</span><span class="donut-unit">%</span>
+              <div class="donut-sub">「ほとんど」＋「やや」</div>
+            </div>
+          </div>
+          <div class="donut-desc">初回ミーティング時点で購買条件が<br>「ほとんど決まっている」(18%)＋「やや決まっている」(55%)の合計</div>
+          <div class="donut-source">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
+        </div>
+
+        <div>
+          <p class="body-text">
+            購買担当者の約7割が、初回ミーティングの時点で購買条件を
+            ある程度決めた状態で問い合わせてきます。
+            つまり、<strong>マーケティング起点で購買候補に入らなければ、
+            商談の土俵にすら上がれない</strong>時代が到来しています。
+          </p>
+          <div class="highlight-box">
+            <h4>営業担当者を介さない購買体験が増加</h4>
+            <ul class="highlight-list">
+              <li>購買担当者の多くがWeb上のコンテンツで候補を絞り込む</li>
+              <li>初回問い合わせ前に平均7〜10点のコンテンツを閲覧</li>
+              <li>マーケティング起点での商談創出の重要性が急速に高まっている</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1-2 -->
+    <div class="section-inner" style="padding-top:48px;">
+      <div class="sec-label">
+        <span class="sec-badge">1-2</span>
+        <span class="sec-title">マーケティングのオートメーション化による情報到達構造の変化</span>
+      </div>
+      <p class="body-text">
+        MAツール・広告・CRMの進化により大量情報配信が低コストで可能になった結果、
+        BtoB購買担当者が受け取る情報量は爆発的に増加しています。
+        コンテンツの量が増えるほど、受け手は「自分に関係ない情報」を
+        <strong>初期段階で素早く排除する</strong>ようになっています。
+      </p>
+
+      <div class="chart-row-3">
+        <div class="stat-box">
+          <div class="stat-num">77<span class="stat-unit">%</span></div>
+          <div class="stat-label">BtoB購買担当者が<br>「コンテンツの量に<br>圧倒された経験がある」</div>
+          <div class="stat-source">※業界調査参照値</div>
+        </div>
+        <div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
+          <div class="stat-num" style="color:var(--orange);">84<span class="stat-unit" style="color:var(--orange);">%</span></div>
+          <div class="stat-label">受け手が「自分たち向けでない」<br>コンテンツに出会った<br>経験がある</div>
+          <div class="stat-source">出典：IDEATECH受け手調査(n=111)</div>
+        </div>
+        <div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
+          <div class="stat-num" style="color:var(--navy);">7〜<span class="stat-unit">10</span></div>
+          <div class="stat-label" style="margin-top:8px;">初回問い合わせ前に<br>閲覧するコンテンツ数<br>（平均）</div>
+          <div class="stat-source">出典：IDEATECH購買プロセス調査(n=92)</div>
+        </div>
+      </div>
+
+      <div class="column-box">
+        <div class="column-badge">監修者コラム 1</div>
+        <div class="column-title">GTM戦略は「勝てる市場」に集中するための設計図</div>
+        <div class="column-body">
+          エンタープライズ企業でも、使える人や時間、お金は無限ではありません。だからこそ、利益が出る市場にリソースを「戦力」として集中させる必要があります。これを決めるのが、GTM戦略です。<br><br>
+          GTM戦略の土台は、<strong>セグメンテーションとフラグメンテーション</strong>です。まずセグメンテーションで「利益が出る市場（＝狙うセグメント）」を決めます。次に、そのセグメントの中をフラグメンテーションして、企業ごとの単位に分けていきます。同時に、「絶対にやらないセグメント」も明確にします。やることとやらないことをはっきりさせて、利益が出る市場にだけ集中するためです。<br><br>
+          そのうえで、マーケティング、インサイドセールス、営業、カスタマーサクセスが連携した計画を作ります。<strong>GTM戦略は、全ロールに共通する北極星になります。</strong>各チームが何をすべきかを、同じ方向に向けて導いてくれます。
+        </div>
+      </div>
+    </div>
+
+    <!-- 1-3 -->
+    <div class="section-inner" style="padding-top:48px;">
+      <div class="sec-label">
+        <span class="sec-badge">1-3</span>
+        <span class="sec-title">市場の入り方を定義する Go to Market 視点の必要性</span>
+      </div>
+      <p class="body-text">
+        <strong>GTM（Go to Market）戦略</strong>とは、自社の製品・サービスを
+        「誰に」「何を」「どう届けるか」の観点から事前に計画を策定する枠組みです。
+        マス向けの汎用コンテンツから脱却し、市場セグメントごとに前提条件を定義した
+        メッセージ設計が求められています。
+      </p>
+      <div class="step-flow">
+        <div class="step-item">
+          <div class="step-num">STEP 01</div>
+          <div class="step-title">ターゲット定義</div>
+          <div class="step-desc">「誰の」課題か<br>業界・規模・役職</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">STEP 02</div>
+          <div class="step-title">インサイト設定</div>
+          <div class="step-desc">「何が」本質課題か<br>業界固有の文脈</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">STEP 03</div>
+          <div class="step-title">メッセージ設計</div>
+          <div class="step-desc">「どう届けるか」<br>チャネル×フォーマット</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">STEP 04</div>
+          <div class="step-title">エビデンス強化</div>
+          <div class="step-desc">独自調査データで<br>説得力を付加</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       CHAPTER 2
+       ============================ -->
+  <div class="ch-header">
+    <div class="ch-header-deco"></div>
+    <div class="ch-header-bg-num">02</div>
+    <div>
+      <div class="ch-eyebrow">CHAPTER 02</div>
+      <div class="ch-num-badge">第2章</div>
+      <h2 class="ch-title">BtoBにおける Go to Market 戦略と市場単位</h2>
+      <div class="ch-line"></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <!-- 2-1 -->
+    <div class="section-inner">
+      <div class="sec-label">
+        <span class="sec-badge">2-1</span>
+        <span class="sec-title">Go to Market における市場単位 — 送り手と受け手のギャップ</span>
+      </div>
+      <p class="body-text">
+        コンテンツの送り手（マーケティング担当者）と受け手（購買担当者）の間には、
+        大きな認識ギャップが存在します。自社コンテンツが届いていると感じている
+        マーケターは多い一方、受け手の大多数は「自分たち向けではない」と感じています。
+      </p>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q（制作担当者）</div>
+        <div class="q-text">自社のBtoBマーケティングコンテンツは、ターゲットに「自分たち向けだ」と受け取られていると思いますか？</div>
+        <div class="q-meta">調査対象：BtoBマーケティングコンテンツ制作担当者111名 ／ 2026年1月</div>
+      </div>
+
+      <div class="chart-row-2">
+        <div class="donut-box">
+          <div class="donut-box-title">制作担当者の<br>「コンテンツが届いている」認識</div>
+          <div class="donut-wrap">
+            <canvas id="donut2"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">87</span><span class="donut-unit">%</span>
+              <div class="donut-sub">「そう思う」合計</div>
+            </div>
+          </div>
+          <div class="donut-desc">「非常にそう思う」(19%)＋「ある程度そう思う」(59%)＋「どちらとも言えない」(9%)</div>
+          <div class="donut-source">出典：IDEATECH制作担当者調査(n=111)</div>
+        </div>
+
+        <div class="donut-box">
+          <div class="donut-box-title">受け手が「自分たち向けでない」<br>コンテンツに出会った経験</div>
+          <div class="donut-wrap">
+            <canvas id="donut2b"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct" style="color:var(--orange);">87</span><span class="donut-unit" style="color:var(--orange);">%</span>
+              <div class="donut-sub">「ある」と回答</div>
+            </div>
+          </div>
+          <div class="donut-desc">「頻繁にあった」(37%)＋「数回あった」(41%)＋「1〜2回あった」(9%)の合計</div>
+          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h4>なぜ「自分たち向けではない」と感じるのか — 受け手の本音</h4>
+        <p>受け手が「自分たち向けではない」と感じる理由の上位は、業界・規模・役割のミスマッチ。<br>
+        汎用的なコンテンツが初期段階で検討対象外になっていることが明らかです。</p>
+      </div>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q（受け手）</div>
+        <div class="q-text">「自分たち向けではない」と判断した理由を教えてください。（複数回答）</div>
+        <div class="q-meta">調査対象：BtoBコンテンツ受け手97名（経験者のみ）</div>
+      </div>
+
+      <div class="hbar-box">
+        <div class="hbar-box-title">「自分たちむけではない」と感じた理由（複数回答、n=97）</div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">会社規模に合わない（大企業向け・中小向けなど）</span><span class="hbar-val">51.5%</span></div>
+          <div class="hbar-track"><div class="hbar-fill warm" style="width:51.5%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">自分の役割・職種向けではない</span><span class="hbar-val">48.5%</span></div>
+          <div class="hbar-track"><div class="hbar-fill warm" style="width:48.5%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">自社の業界に合わない</span><span class="hbar-val">38.1%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:38.1%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">一般論すぎる・抽象的すぎる</span><span class="hbar-val">33.0%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:33%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">事例が自社の状況と無関係</span><span class="hbar-val">27.8%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:27.8%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界特有の用語・前提が違う</span><span class="hbar-val">15.5%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:15.5%"></div></div>
+        </div>
+        <div class="hbar-source">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
+      </div>
+    </div>
+
+    <!-- 2-2 -->
+    <div class="section-inner" style="padding-top:48px;">
+      <div class="sec-label">
+        <span class="sec-badge">2-2</span>
+        <span class="sec-title">BtoB市場における業界別課題構造と深度</span>
+      </div>
+      <p class="body-text">
+        業界ごとに制度・業務プロセス・技術が大きく異なります。
+        製造業と金融業では、同じ「DX推進」という課題であっても、前提となる制約・
+        ステークホルダー・意思決定フローがまったく異なります。
+        こうした認識は、制作担当者・受け手の双方に広がっています。
+      </p>
+
+      <div class="chart-row-2">
+        <div class="donut-box">
+          <div class="donut-box-title">「BtoBコンテンツは<br>業界別に作成すべき」と回答</div>
+          <div class="donut-wrap">
+            <canvas id="donut3"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">86</span><span class="donut-unit">%</span>
+              <div class="donut-sub">制作担当者</div>
+            </div>
+          </div>
+          <div class="donut-desc">「非常にそう思う」(27%)＋「ややそう思う」(60%)の合計 = 86.5%</div>
+          <div class="donut-source">出典：IDEATECH制作担当者調査(n=111)</div>
+        </div>
+
+        <div class="donut-box">
+          <div class="donut-box-title">「業界特化型コンテンツを<br>読みたい」と回答</div>
+          <div class="donut-wrap">
+            <canvas id="donut4"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">80</span><span class="donut-unit">%</span>
+              <div class="donut-sub">受け手</div>
+            </div>
+          </div>
+          <div class="donut-desc">「非常にそう思う」(23%)＋「ややそう思う」(57%)の合計 = 80.2%</div>
+          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
+        </div>
+      </div>
+
+      <p class="body-text">
+        制作担当者の約9割が業界別作成の必要性を認識しながら、実際には多くの企業が
+        汎用コンテンツで対応しているのが現状です。この実行ギャップを埋めることが、
+        競合との差別化において大きな機会になっています。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================
+       CHAPTER 3
+       ============================ -->
+  <div class="ch-header">
+    <div class="ch-header-deco"></div>
+    <div class="ch-header-bg-num">03</div>
+    <div>
+      <div class="ch-eyebrow">CHAPTER 03</div>
+      <div class="ch-num-badge">第3章</div>
+      <h2 class="ch-title">業界特化型コンテンツマーケティングにおける<br>調査データの有効性</h2>
+      <div class="ch-line"></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <!-- 3-1 -->
+    <div class="section-inner">
+      <div class="sec-label">
+        <span class="sec-badge">3-1</span>
+        <span class="sec-title">数字によって受け手は「自分たち向け」だと感じやすくなる</span>
+      </div>
+      <p class="body-text">
+        受け手に「自分たち向けだ」と認識させるためには、何が有効なのでしょうか。
+        最も効果的なのは<strong>「業界内の実際の企業・事例」</strong>ですが、
+        それがない場合でも<strong>「業界の現状や課題を示す調査データ」</strong>が
+        次いで有効であることが分かっています。
+      </p>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q（受け手）</div>
+        <div class="q-text">BtoBコンテンツを読んで「自分たちの業界向けだ」と感じる要素は何ですか？（複数回答）</div>
+        <div class="q-meta">調査対象：BtoBコンテンツ受け手111名 ／ 2026年1月</div>
+      </div>
+
+      <div class="hbar-box">
+        <div class="hbar-box-title">「自分たちの業界向けだ」と感じる要素（複数回答、n=111）</div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界内の実際の企業・事例が紹介されている</span><span class="hbar-val">58.6%</span></div>
+          <div class="hbar-track"><div class="hbar-fill warm" style="width:58.6%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界の現状や課題を示す調査データが含まれている</span><span class="hbar-val">43.2%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:43.2%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">競合他社との比較情報がある</span><span class="hbar-val">39.6%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:39.6%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界名が明記されている</span><span class="hbar-val">23.4%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:23.4%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界関係者の声・インタビューがある</span><span class="hbar-val">21.6%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:21.6%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">業界特有の実務用語が使われている</span><span class="hbar-val">15.3%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:15.3%"></div></div>
+        </div>
+        <div class="hbar-item">
+          <div class="hbar-row"><span class="hbar-name">規制・制度・法令への言及がある</span><span class="hbar-val">13.5%</span></div>
+          <div class="hbar-track"><div class="hbar-fill" style="width:13.5%"></div></div>
+        </div>
+        <div class="hbar-source">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
+      </div>
+
+      <p class="body-text">
+        事例は最も効果的ですが、特定業界の事例を持っていない場合も多いでしょう。
+        そのような場合でも、<em>業界全体の課題数値を提示する独自調査データ</em>は
+        「自分ごと化」を強力に促進します。データは「代替事例」として機能するのです。
+      </p>
+    </div>
+
+    <!-- 3-2 -->
+    <div class="section-inner" style="padding-top:48px;">
+      <div class="sec-label">
+        <span class="sec-badge">3-2</span>
+        <span class="sec-title">社内の合意形成に必要な説得材料として機能する</span>
+      </div>
+      <p class="body-text">
+        BtoBの購買プロセスは複数人が関与する合議型の意思決定です。
+        コンテンツは、担当者個人を動かすだけでなく、
+        その担当者が<strong>社内で上位者や関係部門を説得するための材料</strong>としても
+        機能しなければなりません。
+      </p>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q（購買担当者）</div>
+        <div class="q-text">直近の案件で、購入の意思決定に関与した人数を教えてください。また、業界特化コンテンツを読みたい理由は何ですか？</div>
+        <div class="q-meta">調査対象：BtoB購買担当者 ／ 2025年6月・2026年1月</div>
+      </div>
+
+      <div class="chart-row-2">
+        <div class="donut-box">
+          <div class="donut-box-title">購入意思決定に<br>「4人以上が関与している」</div>
+          <div class="donut-wrap">
+            <canvas id="donut5"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">83</span><span class="donut-unit">%</span>
+              <div class="donut-sub">4名以上が関与</div>
+            </div>
+          </div>
+          <div class="donut-desc">4〜5名(24%)＋6〜8名(23%)＋9〜11名(18%)＋12名以上(19%)の合計 = 83.6%</div>
+          <div class="donut-source">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
+        </div>
+
+        <div>
+          <p class="body-text">
+            8割以上の案件で4名以上が意思決定に関与しています。
+            コンテンツは担当者1人を動かすだけでなく、
+            組織全体を動かす説得資料としての機能が求められます。
+          </p>
+          <div class="hbar-box" style="margin:0;">
+            <div class="hbar-box-title">業界特化型コンテンツを読みたい理由（n=89）</div>
+            <div class="hbar-item">
+              <div class="hbar-row"><span class="hbar-name">同業他社の取り組みや状況を把握できる</span><span class="hbar-val">69.7%</span></div>
+              <div class="hbar-track"><div class="hbar-fill warm" style="width:69.7%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-row"><span class="hbar-name">課題解決に直接役立てられる</span><span class="hbar-val">43.8%</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-row"><span class="hbar-name">社内での説明・提案資料として活用できる</span><span class="hbar-val">43.8%</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-row"><span class="hbar-name">具体的なアクションプランに繋げられる</span><span class="hbar-val">40.4%</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:40.4%"></div></div>
+            </div>
+            <div class="hbar-item">
+              <div class="hbar-row"><span class="hbar-name">業界特有のリスクや規制を把握できる</span><span class="hbar-val">27.0%</span></div>
+              <div class="hbar-track"><div class="hbar-fill" style="width:27%"></div></div>
+            </div>
+            <div class="hbar-source">出典：IDEATECH受け手調査</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="body-text">
+        「社内での説明・提案資料として活用できる」(43.8%)という回答は、
+        コンテンツが担当者の<strong>社内稟議を通すためのツール</strong>として機能していることを示しています。
+        客観的な業界数値データは、担当者が上位者を説得するための強力な武器になります。
+      </p>
+    </div>
+
+    <!-- 3-3 -->
+    <div class="section-inner" style="padding-top:48px;">
+      <div class="sec-label">
+        <span class="sec-badge">3-3</span>
+        <span class="sec-title">公的データでは拾いきれない実情を可視化できる</span>
+      </div>
+      <p class="body-text">
+        政府統計や業界団体のデータは一定の信頼性がある一方、
+        ニッチな業界課題や最新の現場感を反映しきれないことが多いです。
+        <strong>ベンダー独自の業界調査データ</strong>は、公的データでは見えない
+        「現場のリアル」を数値で示すことができます。
+      </p>
+
+      <div class="chart-row-2">
+        <div class="donut-box">
+          <div class="donut-box-title">ベンダー独自の業界調査データがあると<br>「信頼度が高まる」</div>
+          <div class="donut-wrap">
+            <canvas id="donut6"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">84</span><span class="donut-unit">%</span>
+              <div class="donut-sub">「高まる」と回答</div>
+            </div>
+          </div>
+          <div class="donut-desc">「非常に高まる」(19%)＋「やや高まる」(65%)の合計 = 83.8%</div>
+          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
+        </div>
+
+        <div class="donut-box">
+          <div class="donut-box-title">独自業界調査データを必要とする理由<br>「ターゲットの自分ごと化を促進できる」</div>
+          <div class="donut-wrap">
+            <canvas id="donut7"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">70</span><span class="donut-unit">%</span>
+              <div class="donut-sub">制作担当者</div>
+            </div>
+          </div>
+          <div class="donut-desc">「自分ごと化を促進できるから」と回答した制作担当者 70.4%</div>
+          <div class="donut-source">出典：IDEATECH制作担当者調査(n=98、調査必要と回答者)</div>
+        </div>
+      </div>
+
+      <div class="column-box">
+        <div class="column-badge">監修者コラム 2</div>
+        <div class="column-title">業界調査データで、マーケ・PR・営業を一本につなぐ</div>
+        <div class="column-body">
+          業界調査データの活用は、その業界特有の<strong>顕在課題と、顧客自身も気づいていない潜在課題の両面</strong>を浮き彫りにします。これは、GTM戦略におけるマーケティングの精度向上や、見込み客開拓におけるアプローチの質を劇的に高める有効な武器となります。<br><br>
+          さらに、このデータを軸にすることで、<strong>PRとマーケティングの共通言語化と共同メディアターゲット化</strong>が可能になります。メディア露出による認知向上と、メディアでの調査レポートのダウンロードやウェビナーによるリード獲得を、同時に実現できるのです。<br><br>
+          加えてこのデータは、<strong>営業資料としてもとても重宝されます。</strong>営業組織は業種別で動いていることが多く、業界ごとの根拠があると説明が通りやすいからです。1つの調査データが、マーケ・PR・営業の三部門を共通言語でつなぐ役割を果たします。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================
+       CHAPTER 4
+       ============================ -->
+  <div class="ch-header">
+    <div class="ch-header-deco"></div>
+    <div class="ch-header-bg-num">04</div>
+    <div>
+      <div class="ch-eyebrow">CHAPTER 04</div>
+      <div class="ch-num-badge">第4章</div>
+      <h2 class="ch-title">業界特化型コンテンツの横展開の可能性</h2>
+      <div class="ch-line"></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <p class="body-text">
+        業界特化型コンテンツの必要性は理解していても、
+        「複数業界向けにコンテンツを作るのはコストと手間がかかりすぎる」という声は多いです。
+        しかし、正しい設計方針を持てば、<strong>横展開コストは大幅に削減できます。</strong>
+      </p>
+
+      <div class="q-box">
+        <div class="q-tag">SURVEY Q（制作担当者）</div>
+        <div class="q-text">業界別コンテンツを十分に作成できていない最大の理由は何ですか？</div>
+        <div class="q-meta">調査対象：業界別作成できていない担当者16名</div>
+      </div>
+
+      <div class="chart-row-2">
+        <div class="donut-box">
+          <div class="donut-box-title">業界別コンテンツ作成の<br>最大のハードル</div>
+          <div class="donut-wrap">
+            <canvas id="donut8"></canvas>
+            <div class="donut-center-text">
+              <span class="donut-pct">69</span><span class="donut-unit">%</span>
+              <div class="donut-sub">手間・コストが最大の壁</div>
+            </div>
+          </div>
+          <div class="donut-desc">「コスト・手間がかかりすぎる」が作成できない理由の第1位 (11/16=68.8%)</div>
+          <div class="donut-source">出典：IDEATECH制作担当者調査(n=16、未作成者のみ)</div>
+        </div>
+
+        <div>
+          <p class="body-text">
+            コストと手間の問題は、<strong>「共通構造＋課題差し替え」方式</strong>で
+            解決できます。ゼロから作り直すのではなく、骨格を共通化し、
+            業界固有の要素のみを入れ替える設計思想が鍵です。
+          </p>
+          <div class="info-card" style="margin-top:16px;">
+            <div class="info-card-num">横展開の鍵</div>
+            <div class="info-card-title">共通構造＋課題差し替え方式</div>
+            <div class="info-card-body">
+              基本的な価値提案・ソリューション構造は共通化し、
+              各業界固有の課題設定・事例・データだけを差し替えます。
+              業界特化型の調査データは、この「課題差し替え要素」として最も有効です。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sec-heading">横展開を実現する4ステップ</div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-num">STEP 01</div>
+          <div class="info-card-title">共通構造の設計</div>
+          <div class="info-card-body">
+            価値提案・製品説明・導入効果など、業界を問わず共通する骨格を先に設計する。
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-num">STEP 02</div>
+          <div class="info-card-title">業界別調査の実施</div>
+          <div class="info-card-body">
+            ターゲット業界ごとに現状・課題・ニーズを問う独自調査を実施。
+            これが横展開の中心的な「差し替え素材」になる。
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-num">STEP 03</div>
+          <div class="info-card-title">コンテンツ差し替え</div>
+          <div class="info-card-body">
+            共通骨格の「課題設定・データ・事例」部分を業界調査結果で差し替えてコンテンツを量産する。
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h4>1回の調査投資で3つのマーケティング目的をカバー</h4>
+        <p>業界特化型の調査データは、単一コンテンツの素材にとどまりません。<br>
+        「調査レポート→ガイドブック→メルマガ→プレスリリース」へと展開することで、
+        1回の調査投資で複数のマーケティング目的を同時にカバーできます。</p>
+        <ul class="highlight-list">
+          <li><strong>リード獲得：</strong>調査レポートのダウンロードで新規リードを獲得</li>
+          <li><strong>ナーチャリング：</strong>ガイドブック・メルマガで継続的な接点を維持</li>
+          <li><strong>認知拡大：</strong>プレスリリース・SNS拡散でブランド認知を向上</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== おわりに ===== -->
+  <section style="padding: 56px 64px; background: var(--gray-bg); border-top: 1px solid var(--gray-border);">
+    <div class="intro-eyebrow">CLOSING — おわりに</div>
+    <h2 class="intro-title" style="margin-bottom:24px;">伝わるための構造を設計する</h2>
+    <p class="body-text">
+      本ガイドで紹介したデータが示すように、BtoBコンテンツの課題の本質は
+      「量」ではなく「構造」にあります。誰に向けた、どのような前提でのメッセージかを
+      GTM視点で定義することが、コンテンツが届く・読まれる・活用される
+      ための大前提です。
+    </p>
+    <p class="body-text">
+      業界固有の課題・文脈に寄り添ったコンテンツが「自分たち向けの情報」と認識される鍵であり、
+      そのためのエビデンスとして独自業界調査は最も効果的な手段です。
+      独自業界調査は「自分ごと化」の促進と社内合意形成の支援を同時に実現し、
+      <strong>1回の調査投資でコンテンツマーケティング全体を底上げする</strong>可能性を持っています。
+    </p>
+
+    <div class="chart-row-3" style="margin-top:32px;">
+      <div class="stat-box">
+        <div class="stat-num">86<span class="stat-unit">%</span></div>
+        <div class="stat-label">業界別コンテンツを<br>作成すべきと認識</div>
+        <div class="stat-source">制作担当者調査</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">84<span class="stat-unit">%</span></div>
+        <div class="stat-label">独自調査で<br>コンテンツ信頼度向上</div>
+        <div class="stat-source">受け手調査</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">70<span class="stat-unit">%</span></div>
+        <div class="stat-label">自分ごと化促進に<br>独自データが必要</div>
+        <div class="stat-source">制作担当者調査</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE SECTION ===== -->
+  <section class="service-section">
+    <div class="service-eyebrow">IDEATECH SERVICE</div>
+    <h2 class="service-title">IDEATECHの業界特化型<br>コンテンツパッケージ</h2>
+    <p class="service-subtitle">
+      調査設計からコンテンツ制作・配信までを一式提供。<br>
+      業界特化型コンテンツの立ち上げを最短・最低コストで実現します。
+    </p>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-card-icon">📊</div>
+        <div class="service-card-title">スタンダードパッケージ<br>（1業界あたり）</div>
+        <div class="service-card-desc">
+          <strong>含まれるもの：</strong><br>
+          調査設計・実施・分析、調査レポート、
+          ガイドブック、メルマガ、プレスリリース<br><br>
+          3つのマーケティング目的（リード獲得・ナーチャリング・認知拡大）を
+          1回の調査投資でカバー。
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🔄</div>
+        <div class="service-card-title">複数業界プラン<br>（2業界目以降）</div>
+        <div class="service-card-desc">
+          <strong>共通構造化によるコスト削減：</strong><br>
+          1業界目で設計した共通骨格を活用し、
+          2業界目以降は課題差し替えのみで対応。
+          複数業界展開のコストを大幅に抑制します。
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">⚙️</div>
+        <div class="service-card-title">オプションメニュー</div>
+        <div class="service-card-desc">
+          展開チャネルや活用シーンに応じた追加メニューを用意。
+          ウェビナー資料、LP、広告クリエイティブ、
+          営業資料への転用など柔軟に対応します。
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-icon">🎯</div>
+        <div class="service-card-title">コンテンツ設計サポート</div>
+        <div class="service-card-desc">
+          GTM視点でのターゲット定義から始まり、
+          調査設計・コンテンツ構成・配信戦略まで
+          一貫してサポート。社内リソース不足を解消します。
+        </div>
+      </div>
+    </div>
+
+    <!-- 成果物一覧 -->
+    <div class="service-package">
+      <div class="service-package-title">標準パッケージに含まれる成果物</div>
+      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:32%;">成果物</th>
+            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化型調査の設計・実査</td>
+            <td style="padding:10px 12px; line-height:1.7;">ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px; font-weight:700; color:white;">調査レポート（ホワイトペーパー）</td>
+            <td style="padding:10px 12px; line-height:1.7;">調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px; font-weight:700; color:white;">調査リリース</td>
+            <td style="padding:10px 12px; line-height:1.7;">PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化型ガイドブック</td>
+            <td style="padding:10px 12px; line-height:1.7;">調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化メルマガ配信文章</td>
+            <td style="padding:10px 12px; line-height:1.7;">調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 価格表 -->
+    <div class="service-package" style="margin-bottom:20px;">
+      <div class="service-package-title">価格（税別）</div>
+      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:13px; text-align:center;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+            <th style="padding:10px; text-align:left; color:#93C5FD;"></th>
+            <th style="padding:10px; color:#93C5FD; font-weight:700;">1業界</th>
+            <th style="padding:10px; color:#93C5FD; font-weight:700;">3業界</th>
+            <th style="padding:10px; color:#93C5FD; font-weight:700;">5業界</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:12px 10px; text-align:left; font-weight:700; color:white;">標準パッケージ一式</td>
+            <td style="padding:12px 10px; font-weight:700; color:white; font-size:16px;">100万円</td>
+            <td style="padding:12px 10px;">250万円<br><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@約83万円）</span></td>
+            <td style="padding:12px 10px;">380万円<br><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@76万円）</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px; font-size:11.5px; color:rgba(255,255,255,0.5); line-height:1.7;">
+        複数業界プランでは、調査設計の共通構造化により2業界目以降のコストを抑え、業界ごとの深さと展開の効率性を両立します。
+      </p>
+    </div>
+
+    <!-- オプション -->
+    <div class="service-package" style="margin-bottom:28px;">
+      <div class="service-package-title">オプション</div>
+      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:30%;">オプション</th>
+            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
+            <th style="padding:8px 12px; text-align:right; color:#93C5FD; font-weight:700; white-space:nowrap;">価格（税別）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:9px 12px; font-weight:700; color:white;">コラム記事化</td>
+            <td style="padding:9px 12px; line-height:1.6;">調査データを活用したSEO／LLMO対応のコラム記事制作（1本）</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">10万円〜</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:9px 12px; font-weight:700; color:white;">セミナー企画・スライド作成</td>
+            <td style="padding:9px 12px; line-height:1.6;">調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">30万円〜</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:9px 12px; font-weight:700; color:white;">業界メディアタイアップ</td>
+            <td style="padding:9px 12px; line-height:1.6;">業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">60万円〜</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:9px 12px; font-weight:700; color:white;">LP設計</td>
+            <td style="padding:9px 12px; line-height:1.6;">調査レポートを起点としたランディングページ作成</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">35万円〜</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:9px 12px; font-weight:700; color:white;">営業資料組み込み＋トーク設計</td>
+            <td style="padding:9px 12px; line-height:1.6;">調査データの営業資料への反映と、活用トーク・展開パターンの整備</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+          </tr>
+          <tr>
+            <td style="padding:9px 12px; font-weight:700; color:white;">展示会配布用印刷資料</td>
+            <td style="padding:9px 12px; line-height:1.6;">A4リーフレット等、展示会・対面配布用に最適化した資料制作</td>
+            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="service-cta">
+      <p>
+        「どの業界から始めるべきか」「自社のサービスにはどのような調査テーマが適しているか」<br>
+        といったご相談も承っております。GTM戦略に基づく業界特化型コンテンツの設計について、<br>
+        お気軽にお問い合わせください。
+      </p>
+      <a href="https://ideatech.jp/" class="service-cta-link" target="_blank">
+        お問い合わせ・資料請求はこちら
+      </a>
+      <div class="service-cta-note">ideatech.jp ｜ 無料相談受付中</div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="doc-footer">
+    <img src="ideatech_logodata.png" alt="IDEATECH" style="height:22px; background:white; border-radius:3px; padding:2px 7px;">
+    <div class="footer-copy">© 2026 IDEATECH Inc. All rights reserved.</div>
+  </footer>
+
+</div><!-- /doc -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const NAVY  = '#1B3F7E';
+  const BLUE  = '#2563EB';
+  const BLUE2 = '#93C5FD';
+  const GRAY  = '#E2E8F0';
+  const ORAN  = '#EA580C';
+  const ORN2  = '#FED7AA';
+
+  function makeDonut(id, pct, color1, color2) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [pct, 100 - pct],
+          backgroundColor: [color1, color2 || GRAY],
+          borderWidth: 0,
+          hoverBorderWidth: 0,
+        }]
+      },
+      options: {
+        cutout: '72%',
+        animation: { animateRotate: true, duration: 1200, easing: 'easeInOutQuart' },
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        },
+        events: []
+      }
+    });
+  }
+
+  // Chapter 1
+  makeDonut('donut1', 72.7, NAVY, GRAY);
+
+  // Chapter 2
+  makeDonut('donut2',  87.3, NAVY, GRAY);
+  makeDonut('donut2b', 87.4, ORAN, GRAY);
+  makeDonut('donut3',  86.5, NAVY, GRAY);
+  makeDonut('donut4',  80.2, BLUE, GRAY);
+
+  // Chapter 3
+  makeDonut('donut5', 83.6, NAVY, GRAY);
+  makeDonut('donut6', 83.8, NAVY, GRAY);
+  makeDonut('donut7', 70.4, BLUE, GRAY);
+
+  // Chapter 4
+  makeDonut('donut8', 68.8, ORAN, GRAY);
+
+});
+</script>
+</body>
+</html>
