@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=1040">
-  <title>Go to Market 視点で設計する、業界特化型BtoBコンテンツ ｜ IDEATECH</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=1040" name="viewport"/>
+<title>Go to Market 視点で設計する、業界特化型BtoBコンテンツ ｜ IDEATECH</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1025,967 +1026,905 @@
 </head>
 <body>
 <button class="dl-btn" id="t-dl-btn" onclick="window.print()">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 15V3m0 12-4-4m4 4 4-4"/><rect x="2" y="17" width="20" height="4" rx="1"/>
-  </svg>
+<svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24" width="16">
+<path d="M12 15V3m0 12-4-4m4 4 4-4"></path><rect height="4" rx="1" width="20" x="2" y="17"></rect>
+</svg>
   PDFダウンロード
 </button>
-
 <div class="doc">
-
-  <!-- ===== STICKY HEADER ===== -->
-  <header class="doc-header">
-    <div>
-      <img src="ideatech_logodata.png" alt="IDEATECH" class="logo-img">
-    </div>
-    <div class="header-right" style="display:flex;align-items:center;gap:20px;">
-      <div class="header-label" id="t-header-label">BtoBコンテンツマーケティングガイド</div>
-      <div class="lang-toggle">
-        <button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">JA</button>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== COVER PAGE ===== -->
-  <section class="cover">
-    <div class="cover-deco1"></div>
-    <div class="cover-deco2"></div>
-    <div class="cover-deco3"></div>
-
-    <div class="cover-top">
-      <div class="cover-badge" id="t-cover-badge">BtoBコンテンツマーケティングガイド</div>
-      <div class="cover-kicker" id="t-cover-kicker">IDEATECH RESEARCH GUIDE</div>
-      <h1 class="cover-title" id="t-cover-title">
-        <span class="hl">Go to Market</span> 視点で設計する、<br>
+<!-- ===== STICKY HEADER ===== -->
+<header class="doc-header">
+<div>
+<img alt="IDEATECH" class="logo-img" src="ideatech_logodata.png"/>
+</div>
+<div class="header-right" style="display:flex;align-items:center;gap:20px;">
+<div class="header-label" id="t-header-label">BtoBコンテンツマーケティングガイド</div>
+<div class="lang-toggle">
+<button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">JA</button>
+<button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+</div>
+</header>
+<!-- ===== COVER PAGE ===== -->
+<section class="cover">
+<div class="cover-deco1"></div>
+<div class="cover-deco2"></div>
+<div class="cover-deco3"></div>
+<div class="cover-top">
+<div class="cover-badge" id="t-cover-badge">BtoBコンテンツマーケティングガイド</div>
+<div class="cover-kicker" id="t-cover-kicker">IDEATECH RESEARCH GUIDE</div>
+<h1 class="cover-title" id="t-cover-title">
+<span class="hl">Go to Market</span> 視点で設計する、<br/>
         業界特化型BtoBコンテンツ
       </h1>
-      <p class="cover-desc" id="t-cover-desc">
+<p class="cover-desc" id="t-cover-desc">
         リード獲得難易度が高まる現代のBtoBマーケティングにおいて、
         なぜ業界特化型コンテンツが必要なのか。
         3つの独自調査データをもとに、GTM視点での
         コンテンツ設計の勝ちパターンを解説します。
       </p>
-      <div class="cover-stats">
-        <div class="cover-stat-item">
-          <div class="cover-stat-num">86<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label" id="t-cover-stat1">業界別コンテンツを<br>作成すべきと回答</div>
-        </div>
-        <div class="cover-stat-item">
-          <div class="cover-stat-num">80<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label" id="t-cover-stat2">業界特化型を<br>読みたいと回答</div>
-        </div>
-        <div class="cover-stat-item">
-          <div class="cover-stat-num">84<span class="cover-stat-unit">%</span></div>
-          <div class="cover-stat-label" id="t-cover-stat3">独自調査で<br>信頼度が高まる</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cover-bottom">
-      <div class="cover-logo-badge" style="background:white; border:none; padding:8px 20px;">
-        <img src="ideatech_logodata.png" alt="IDEATECH" style="height:26px; display:block;">
-      </div>
-      <div class="cover-date">
-        調査期間：2026年1月<br>
+<div class="cover-stats">
+<div class="cover-stat-item">
+<div class="cover-stat-num">86<span class="cover-stat-unit">%</span></div>
+<div class="cover-stat-label" id="t-cover-stat1">業界別コンテンツを<br/>作成すべきと回答</div>
+</div>
+<div class="cover-stat-item">
+<div class="cover-stat-num">80<span class="cover-stat-unit">%</span></div>
+<div class="cover-stat-label" id="t-cover-stat2">業界特化型を<br/>読みたいと回答</div>
+</div>
+<div class="cover-stat-item">
+<div class="cover-stat-num">84<span class="cover-stat-unit">%</span></div>
+<div class="cover-stat-label" id="t-cover-stat3">独自調査で<br/>信頼度が高まる</div>
+</div>
+</div>
+</div>
+<div class="cover-bottom">
+<div class="cover-logo-badge" style="background:white; border:none; padding:8px 20px;">
+<img alt="IDEATECH" src="ideatech_logodata.png" style="height:26px; display:block;"/>
+</div>
+<div class="cover-date" id="t-cover-date">
+        調査期間：2026年1月<br/>
         有効サンプル：各111名
       </div>
-    </div>
-  </section>
-
-  <!-- ===== SUPERVISOR ===== -->
-  <section class="supervisor-wrap">
-    <div class="supervisor-box">
-      <img src="image10.png" alt="監修者" class="supervisor-photo">
-      <div class="supervisor-info">
-        <div class="supervisor-tag" id="t-sup-tag">監 修</div>
-        <div class="supervisor-name">北川 裕康</div>
-        <div class="supervisor-title" id="t-sup-title">GTM戦略・BtoBマーケティングアドバイザー</div>
-        <div class="supervisor-bio" id="t-sup-bio">
-          大学卒業後、富士通株式会社にソフトウェア技術者として入社。2社目で外資系企業に転職後、Microsoftへの転職を契機にキャリアチェンジ。複数の企業で、プロダクトマーケティング、フィールドマーケティング、セールスオペレーション、インサイドセールスなどの組織をリード。2023年7月、今までの経験・知識を活かすために独立。現在、複数の企業でアドバイザーとして、GTM戦略やBtoBマーケティング、販売プロセスの合理化など様々な支援を提供中。<br><br>
-          <strong>主な経歴：</strong>Microsoft 業務執行役員 / Cisco Systems マーケティング本部長 / AI inside 執行役員 CPO / RevComm マーケティング本部長 / SAS Institute 業務執行役員 など<br>
+</div>
+</section>
+<!-- ===== SUPERVISOR ===== -->
+<section class="supervisor-wrap">
+<div class="supervisor-box">
+<img alt="監修者" class="supervisor-photo" src="image10.png"/>
+<div class="supervisor-info">
+<div class="supervisor-tag" id="t-sup-tag">監 修</div>
+<div class="supervisor-name" id="t-sup-name">北川 裕康</div>
+<div class="supervisor-title" id="t-sup-title">GTM戦略・BtoBマーケティングアドバイザー</div>
+<div class="supervisor-bio" id="t-sup-bio">
+          大学卒業後、富士通株式会社にソフトウェア技術者として入社。2社目で外資系企業に転職後、Microsoftへの転職を契機にキャリアチェンジ。複数の企業で、プロダクトマーケティング、フィールドマーケティング、セールスオペレーション、インサイドセールスなどの組織をリード。2023年7月、今までの経験・知識を活かすために独立。現在、複数の企業でアドバイザーとして、GTM戦略やBtoBマーケティング、販売プロセスの合理化など様々な支援を提供中。<br/><br/>
+<strong>主な経歴：</strong>Microsoft 業務執行役員 / Cisco Systems マーケティング本部長 / AI inside 執行役員 CPO / RevComm マーケティング本部長 / SAS Institute 業務執行役員 など<br/>
           マイナビニュース Tech+ にて連載中
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TABLE OF CONTENTS ===== -->
-  <section class="toc">
-    <div class="toc-eyebrow" id="t-toc-eyebrow">INDEX — 目次</div>
-    <ul class="toc-list">
-      <li class="toc-item">
-        <div class="toc-ch-num">1</div>
-        <div class="toc-content">
-          <div class="toc-ch-label">CHAPTER 01</div>
-          <div class="toc-ch-name" id="t-toc-ch1">なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか</div>
-          <div class="toc-sub">リード獲得難易度の上昇 ／ 情報過多時代の変化 ／ GTM視点の必要性</div>
-        </div>
-        <div class="toc-arrow">›</div>
-      </li>
-      <li class="toc-item">
-        <div class="toc-ch-num">2</div>
-        <div class="toc-content">
-          <div class="toc-ch-label">CHAPTER 02</div>
-          <div class="toc-ch-name" id="t-toc-ch2">BtoBにおける Go to Market 戦略と市場単位</div>
-          <div class="toc-sub" id="t-toc-sub2">送り手と受け手のギャップ ／ 業界別課題構造と深度</div>
-        </div>
-        <div class="toc-arrow">›</div>
-      </li>
-      <li class="toc-item">
-        <div class="toc-ch-num">3</div>
-        <div class="toc-content">
-          <div class="toc-ch-label">CHAPTER 03</div>
-          <div class="toc-ch-name" id="t-toc-ch3">業界特化型コンテンツマーケティングにおける調査データの有効性</div>
-          <div class="toc-sub" id="t-toc-sub3">自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値</div>
-        </div>
-        <div class="toc-arrow">›</div>
-      </li>
-      <li class="toc-item">
-        <div class="toc-ch-num">4</div>
-        <div class="toc-content">
-          <div class="toc-ch-label">CHAPTER 04</div>
-          <div class="toc-ch-name" id="t-toc-ch4">業界特化型コンテンツの横展開の可能性</div>
-          <div class="toc-sub" id="t-toc-sub4">コスト課題の解決策 ／ 共通構造＋課題差し替え方式</div>
-        </div>
-        <div class="toc-arrow">›</div>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ===== INTRO ===== -->
-  <section class="intro-section">
-    <div class="intro-eyebrow" id="t-intro-eyebrow">INTRODUCTION — はじめに</div>
-    <h2 class="intro-title" id="t-intro-title">なぜ、コンテンツは読まれなくなっているのか</h2>
-    <p class="intro-body" id="t-intro-body1">
+</div>
+</div>
+</section>
+<!-- ===== TABLE OF CONTENTS ===== -->
+<section class="toc">
+<div class="toc-eyebrow" id="t-toc-eyebrow">INDEX — 目次</div>
+<ul class="toc-list">
+<li class="toc-item">
+<div class="toc-ch-num">1</div>
+<div class="toc-content">
+<div class="toc-ch-label">CHAPTER 01</div>
+<div class="toc-ch-name" id="t-toc-ch1">なぜ今、BtoBマーケティングに Go to Market の視点が必要なのか</div>
+<div class="toc-sub">リード獲得難易度の上昇 ／ 情報過多時代の変化 ／ GTM視点の必要性</div>
+</div>
+<div class="toc-arrow">›</div>
+</li>
+<li class="toc-item">
+<div class="toc-ch-num">2</div>
+<div class="toc-content">
+<div class="toc-ch-label">CHAPTER 02</div>
+<div class="toc-ch-name" id="t-toc-ch2">BtoBにおける Go to Market 戦略と市場単位</div>
+<div class="toc-sub" id="t-toc-sub2">送り手と受け手のギャップ ／ 業界別課題構造と深度</div>
+</div>
+<div class="toc-arrow">›</div>
+</li>
+<li class="toc-item">
+<div class="toc-ch-num">3</div>
+<div class="toc-content">
+<div class="toc-ch-label">CHAPTER 03</div>
+<div class="toc-ch-name" id="t-toc-ch3">業界特化型コンテンツマーケティングにおける調査データの有効性</div>
+<div class="toc-sub" id="t-toc-sub3">自分ごと化の促進 ／ 社内合意形成 ／ 独自データの価値</div>
+</div>
+<div class="toc-arrow">›</div>
+</li>
+<li class="toc-item">
+<div class="toc-ch-num">4</div>
+<div class="toc-content">
+<div class="toc-ch-label">CHAPTER 04</div>
+<div class="toc-ch-name" id="t-toc-ch4">業界特化型コンテンツの横展開の可能性</div>
+<div class="toc-sub" id="t-toc-sub4">コスト課題の解決策 ／ 共通構造＋課題差し替え方式</div>
+</div>
+<div class="toc-arrow">›</div>
+</li>
+</ul>
+</section>
+<!-- ===== INTRO ===== -->
+<section class="intro-section">
+<div class="intro-eyebrow" id="t-intro-eyebrow">INTRODUCTION — はじめに</div>
+<h2 class="intro-title" id="t-intro-title">なぜ、コンテンツは読まれなくなっているのか</h2>
+<p class="intro-body" id="t-intro-body1">
       近年、BtoBマーケティングにおいて見込み顧客（リード）獲得の難易度が一段と高まっています。
       情報過多の環境では、顧客は自社に無関係な情報を早期に排除し、企業が発信するコンテンツは
       最後まで読まれる前に淘汰されがちです。また、<strong>生成AIの普及により、製品だけでなく、
       課題解決方法の情報まで誰もが簡単に入手できる</strong>ようになったため、
       インサイト（洞察・独自の視点）がないコンテンツは無視されてしまいます。
     </p>
-    <p class="intro-body" id="t-intro-body2">
+<p class="intro-body" id="t-intro-body2">
       こうした状況を受け、近年注目されているのが、事前に「誰に・何を・どう届けるか」を定めて
       市場参入や市場シェア拡大の戦略を設計する<strong>「Go to Market（GTM）戦略」</strong>です。
       本ガイドでは、3つの独自調査データをもとに、BtoBコンテンツマーケティングにおける
       GTM視点の重要性と、業界特化型コンテンツ設計の具体的な考え方を解説します。
     </p>
-  </section>
-
-  <!-- ============================
+</section>
+<!-- ============================
        CHAPTER 1
        ============================ -->
-  <div class="ch-header">
-    <div class="ch-header-deco"></div>
-    <div class="ch-header-bg-num">01</div>
-    <div>
-      <div class="ch-eyebrow">CHAPTER 01</div>
-      <div class="ch-num-badge">第1章</div>
-      <h2 class="ch-title" id="t-ch1-title">なぜ今、BtoBマーケティングに<br>Go to Market の視点が必要なのか</h2>
-      <div class="ch-line"></div>
-    </div>
-  </div>
-
-  <section class="section">
-    <!-- 1-1 -->
-    <div class="section-inner">
-      <div class="sec-label">
-        <span class="sec-badge">1-1</span>
-        <span class="sec-title" id="t-sec1-1">BtoBマーケティングにおけるリード獲得難易度の上昇</span>
-      </div>
-      <p class="body-text">
+<div class="ch-header">
+<div class="ch-header-deco"></div>
+<div class="ch-header-bg-num">01</div>
+<div>
+<div class="ch-eyebrow">CHAPTER 01</div>
+<div class="ch-num-badge" id="t-cnb-1">第1章</div>
+<h2 class="ch-title" id="t-ch1-title">なぜ今、BtoBマーケティングに<br/>Go to Market の視点が必要なのか</h2>
+<div class="ch-line"></div>
+</div>
+</div>
+<section class="section">
+<!-- 1-1 -->
+<div class="section-inner">
+<div class="sec-label">
+<span class="sec-badge">1-1</span>
+<span class="sec-title" id="t-sec1-1">BtoBマーケティングにおけるリード獲得難易度の上昇</span>
+</div>
+<p class="body-text" id="t-bt-1-1">
         BtoBの購買行動は大きく変化しています。今や購買担当者は、営業担当者と接触する前から
         自社で情報収集を行い、購入候補を絞り込んでいます。
         <strong>初回ミーティングの時点で購買条件がほぼ決まっている</strong>ことは、
         以下のデータが示す通りです。
       </p>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q</div>
-        <div class="q-text">ベンダーに初めて問い合わせた時点での社内検討の状況と、初回ミーティング時点での購買条件の決定度合いについて教えてください。</div>
-        <div class="q-meta">調査対象：BtoB購買担当者111名 ／ 調査期間：2025年6月</div>
-      </div>
-
-      <div class="chart-row-2" style="align-items:start;">
-        <div class="donut-box">
-          <div class="donut-box-title">初回ミーティング時点で<br>購買条件が「決まっている」</div>
-          <div class="donut-wrap">
-            <canvas id="donut1"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">72</span><span class="donut-unit">%</span>
-              <div class="donut-sub">「ほとんど」＋「やや」</div>
-            </div>
-          </div>
-          <div class="donut-desc">初回ミーティング時点で購買条件が<br>「ほとんど決まっている」(18%)＋「やや決まっている」(55%)の合計</div>
-          <div class="donut-source">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
-        </div>
-
-        <div>
-          <p class="body-text">
+<div class="q-box">
+<div class="q-tag">SURVEY Q</div>
+<div class="q-text" id="t-qt-1">ベンダーに初めて問い合わせた時点での社内検討の状況と、初回ミーティング時点での購買条件の決定度合いについて教えてください。</div>
+<div class="q-meta" id="t-qm-1">調査対象：BtoB購買担当者111名 ／ 調査期間：2025年6月</div>
+</div>
+<div class="chart-row-2" style="align-items:start;">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-1">初回ミーティング時点で<br/>購買条件が「決まっている」</div>
+<div class="donut-wrap">
+<canvas id="donut1"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">72</span><span class="donut-unit">%</span>
+<div class="donut-sub">「ほとんど」＋「やや」</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-1">初回ミーティング時点で購買条件が<br/>「ほとんど決まっている」(18%)＋「やや決まっている」(55%)の合計</div>
+<div class="donut-source" id="t-ds-1">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
+</div>
+<div>
+<p class="body-text" id="t-bt-1-2">
             購買担当者の約7割が、初回ミーティングの時点で購買条件を
             ある程度決めた状態で問い合わせてきます。
             つまり、<strong>マーケティング起点で購買候補に入らなければ、
             商談の土俵にすら上がれない</strong>時代が到来しています。
           </p>
-          <div class="highlight-box">
-            <h4>営業担当者を介さない購買体験が増加</h4>
-            <ul class="highlight-list">
-              <li>購買担当者の多くがWeb上のコンテンツで候補を絞り込む</li>
-              <li>初回問い合わせ前に平均7〜10点のコンテンツを閲覧</li>
-              <li>マーケティング起点での商談創出の重要性が急速に高まっている</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 1-2 -->
-    <div class="section-inner" style="padding-top:48px;">
-      <div class="sec-label">
-        <span class="sec-badge">1-2</span>
-        <span class="sec-title" id="t-sec1-2">マーケティングのオートメーション化による情報到達構造の変化</span>
-      </div>
-      <p class="body-text">
+<div class="highlight-box">
+<h4 id="t-hb1-h4">営業担当者を介さない購買体験が増加</h4>
+<ul class="highlight-list" id="t-hb1-ul">
+<li>購買担当者の多くがWeb上のコンテンツで候補を絞り込む</li>
+<li>初回問い合わせ前に平均7〜10点のコンテンツを閲覧</li>
+<li>マーケティング起点での商談創出の重要性が急速に高まっている</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- 1-2 -->
+<div class="section-inner" style="padding-top:48px;">
+<div class="sec-label">
+<span class="sec-badge">1-2</span>
+<span class="sec-title" id="t-sec1-2">マーケティングのオートメーション化による情報到達構造の変化</span>
+</div>
+<p class="body-text" id="t-bt-1-3">
         MAツール・広告・CRMの進化により大量情報配信が低コストで可能になった結果、
         BtoB購買担当者が受け取る情報量は爆発的に増加しています。
         コンテンツの量が増えるほど、受け手は「自分に関係ない情報」を
         <strong>初期段階で素早く排除する</strong>ようになっています。
       </p>
-
-      <div class="chart-row-3">
-        <div class="stat-box">
-          <div class="stat-num">77<span class="stat-unit">%</span></div>
-          <div class="stat-label">BtoB購買担当者が<br>「コンテンツの量に<br>圧倒された経験がある」</div>
-          <div class="stat-source">※業界調査参照値</div>
-        </div>
-        <div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
-          <div class="stat-num" style="color:var(--orange);">84<span class="stat-unit" style="color:var(--orange);">%</span></div>
-          <div class="stat-label">受け手が「自分たち向けでない」<br>コンテンツに出会った<br>経験がある</div>
-          <div class="stat-source">出典：IDEATECH受け手調査(n=111)</div>
-        </div>
-        <div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
-          <div class="stat-num" style="color:var(--navy);">7〜<span class="stat-unit">10</span></div>
-          <div class="stat-label" style="margin-top:8px;">初回問い合わせ前に<br>閲覧するコンテンツ数<br>（平均）</div>
-          <div class="stat-source">出典：IDEATECH購買プロセス調査(n=92)</div>
-        </div>
-      </div>
-
-      <div class="column-box">
-        <div class="column-badge">監修者コラム 1</div>
-        <div class="column-title">GTM戦略は「勝てる市場」に集中するための設計図</div>
-        <div class="column-body">
-          エンタープライズ企業でも、使える人や時間、お金は無限ではありません。だからこそ、利益が出る市場にリソースを「戦力」として集中させる必要があります。これを決めるのが、GTM戦略です。<br><br>
-          GTM戦略の土台は、<strong>セグメンテーションとフラグメンテーション</strong>です。まずセグメンテーションで「利益が出る市場（＝狙うセグメント）」を決めます。次に、そのセグメントの中をフラグメンテーションして、企業ごとの単位に分けていきます。同時に、「絶対にやらないセグメント」も明確にします。やることとやらないことをはっきりさせて、利益が出る市場にだけ集中するためです。<br><br>
+<div class="chart-row-3">
+<div class="stat-box">
+<div class="stat-num">77<span class="stat-unit">%</span></div>
+<div class="stat-label" id="t-sl-1">BtoB購買担当者が<br/>「コンテンツの量に<br/>圧倒された経験がある」</div>
+<div class="stat-source" id="t-ss-1">※業界調査参照値</div>
+</div>
+<div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
+<div class="stat-num" style="color:var(--orange);">84<span class="stat-unit" style="color:var(--orange);">%</span></div>
+<div class="stat-label" id="t-sl-2">受け手が「自分たち向けでない」<br/>コンテンツに出会った<br/>経験がある</div>
+<div class="stat-source" id="t-ss-2">出典：IDEATECH受け手調査(n=111)</div>
+</div>
+<div class="stat-box" style="background:var(--gray-light); border-color:var(--gray-border);">
+<div class="stat-num" style="color:var(--navy);">7〜<span class="stat-unit">10</span></div>
+<div class="stat-label" id="t-sl-3" style="margin-top:8px;">初回問い合わせ前に<br/>閲覧するコンテンツ数<br/>（平均）</div>
+<div class="stat-source" id="t-ss-3">出典：IDEATECH購買プロセス調査(n=92)</div>
+</div>
+</div>
+<div class="column-box">
+<div class="column-badge" id="t-cb-1">監修者コラム 1</div>
+<div class="column-title" id="t-ct-1">GTM戦略は「勝てる市場」に集中するための設計図</div>
+<div class="column-body" id="t-cbody-1">
+          エンタープライズ企業でも、使える人や時間、お金は無限ではありません。だからこそ、利益が出る市場にリソースを「戦力」として集中させる必要があります。これを決めるのが、GTM戦略です。<br/><br/>
+          GTM戦略の土台は、<strong>セグメンテーションとフラグメンテーション</strong>です。まずセグメンテーションで「利益が出る市場（＝狙うセグメント）」を決めます。次に、そのセグメントの中をフラグメンテーションして、企業ごとの単位に分けていきます。同時に、「絶対にやらないセグメント」も明確にします。やることとやらないことをはっきりさせて、利益が出る市場にだけ集中するためです。<br/><br/>
           そのうえで、マーケティング、インサイドセールス、営業、カスタマーサクセスが連携した計画を作ります。<strong>GTM戦略は、全ロールに共通する北極星になります。</strong>各チームが何をすべきかを、同じ方向に向けて導いてくれます。
         </div>
-      </div>
-    </div>
-
-    <!-- 1-3 -->
-    <div class="section-inner" style="padding-top:48px;">
-      <div class="sec-label">
-        <span class="sec-badge">1-3</span>
-        <span class="sec-title" id="t-sec1-3">市場の入り方を定義する Go to Market 視点の必要性</span>
-      </div>
-      <p class="body-text">
-        <strong>GTM（Go to Market）戦略</strong>とは、自社の製品・サービスを
+</div>
+</div>
+<!-- 1-3 -->
+<div class="section-inner" style="padding-top:48px;">
+<div class="sec-label">
+<span class="sec-badge">1-3</span>
+<span class="sec-title" id="t-sec1-3">市場の入り方を定義する Go to Market 視点の必要性</span>
+</div>
+<p class="body-text" id="t-bt-1-4">
+<strong>GTM（Go to Market）戦略</strong>とは、自社の製品・サービスを
         「誰に」「何を」「どう届けるか」の観点から事前に計画を策定する枠組みです。
         マス向けの汎用コンテンツから脱却し、市場セグメントごとに前提条件を定義した
         メッセージ設計が求められています。
       </p>
-      <div class="step-flow">
-        <div class="step-item">
-          <div class="step-num">STEP 01</div>
-          <div class="step-title">ターゲット定義</div>
-          <div class="step-desc">「誰の」課題か<br>業界・規模・役職</div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">STEP 02</div>
-          <div class="step-title">インサイト設定</div>
-          <div class="step-desc">「何が」本質課題か<br>業界固有の文脈</div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">STEP 03</div>
-          <div class="step-title">メッセージ設計</div>
-          <div class="step-desc">「どう届けるか」<br>チャネル×フォーマット</div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">STEP 04</div>
-          <div class="step-title">エビデンス強化</div>
-          <div class="step-desc">独自調査データで<br>説得力を付加</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
+<div class="step-flow">
+<div class="step-item">
+<div class="step-num" id="t-sn-1">STEP 01</div>
+<div class="step-title" id="t-st-1">ターゲット定義</div>
+<div class="step-desc" id="t-sd-1">「誰の」課題か<br/>業界・規模・役職</div>
+</div>
+<div class="step-item">
+<div class="step-num" id="t-sn-2">STEP 02</div>
+<div class="step-title" id="t-st-2">インサイト設定</div>
+<div class="step-desc" id="t-sd-2">「何が」本質課題か<br/>業界固有の文脈</div>
+</div>
+<div class="step-item">
+<div class="step-num" id="t-sn-3">STEP 03</div>
+<div class="step-title" id="t-st-3">メッセージ設計</div>
+<div class="step-desc" id="t-sd-3">「どう届けるか」<br/>チャネル×フォーマット</div>
+</div>
+<div class="step-item">
+<div class="step-num" id="t-sn-4">STEP 04</div>
+<div class="step-title" id="t-st-4">エビデンス強化</div>
+<div class="step-desc" id="t-sd-4">独自調査データで<br/>説得力を付加</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================
        CHAPTER 2
        ============================ -->
-  <div class="ch-header">
-    <div class="ch-header-deco"></div>
-    <div class="ch-header-bg-num">02</div>
-    <div>
-      <div class="ch-eyebrow">CHAPTER 02</div>
-      <div class="ch-num-badge">第2章</div>
-      <h2 class="ch-title" id="t-ch2-title">BtoBにおける Go to Market 戦略と市場単位</h2>
-      <div class="ch-line"></div>
-    </div>
-  </div>
-
-  <section class="section">
-    <!-- 2-1 -->
-    <div class="section-inner">
-      <div class="sec-label">
-        <span class="sec-badge">2-1</span>
-        <span class="sec-title" id="t-sec2-1">Go to Market における市場単位 — 送り手と受け手のギャップ</span>
-      </div>
-      <p class="body-text">
+<div class="ch-header">
+<div class="ch-header-deco"></div>
+<div class="ch-header-bg-num">02</div>
+<div>
+<div class="ch-eyebrow">CHAPTER 02</div>
+<div class="ch-num-badge" id="t-cnb-2">第2章</div>
+<h2 class="ch-title" id="t-ch2-title">BtoBにおける Go to Market 戦略と市場単位</h2>
+<div class="ch-line"></div>
+</div>
+</div>
+<section class="section">
+<!-- 2-1 -->
+<div class="section-inner">
+<div class="sec-label">
+<span class="sec-badge">2-1</span>
+<span class="sec-title" id="t-sec2-1">Go to Market における市場単位 — 送り手と受け手のギャップ</span>
+</div>
+<p class="body-text" id="t-bt-2-1">
         コンテンツの送り手（マーケティング担当者）と受け手（購買担当者）の間には、
         大きな認識ギャップが存在します。自社コンテンツが届いていると感じている
         マーケターは多い一方、受け手の大多数は「自分たち向けではない」と感じています。
       </p>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q（制作担当者）</div>
-        <div class="q-text">自社のBtoBマーケティングコンテンツは、ターゲットに「自分たち向けだ」と受け取られていると思いますか？</div>
-        <div class="q-meta">調査対象：BtoBマーケティングコンテンツ制作担当者111名 ／ 2026年1月</div>
-      </div>
-
-      <div class="chart-row-2">
-        <div class="donut-box">
-          <div class="donut-box-title">制作担当者の<br>「コンテンツが届いている」認識</div>
-          <div class="donut-wrap">
-            <canvas id="donut2"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">87</span><span class="donut-unit">%</span>
-              <div class="donut-sub">「そう思う」合計</div>
-            </div>
-          </div>
-          <div class="donut-desc">「非常にそう思う」(19%)＋「ある程度そう思う」(59%)＋「どちらとも言えない」(9%)</div>
-          <div class="donut-source">出典：IDEATECH制作担当者調査(n=111)</div>
-        </div>
-
-        <div class="donut-box">
-          <div class="donut-box-title">受け手が「自分たち向けでない」<br>コンテンツに出会った経験</div>
-          <div class="donut-wrap">
-            <canvas id="donut2b"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct" style="color:var(--orange);">87</span><span class="donut-unit" style="color:var(--orange);">%</span>
-              <div class="donut-sub">「ある」と回答</div>
-            </div>
-          </div>
-          <div class="donut-desc">「頻繁にあった」(37%)＋「数回あった」(41%)＋「1〜2回あった」(9%)の合計</div>
-          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
-        </div>
-      </div>
-
-      <div class="highlight-box">
-        <h4>なぜ「自分たち向けではない」と感じるのか — 受け手の本音</h4>
-        <p>受け手が「自分たち向けではない」と感じる理由の上位は、業界・規模・役割のミスマッチ。<br>
+<div class="q-box">
+<div class="q-tag">SURVEY Q（制作担当者）</div>
+<div class="q-text" id="t-qt-2">自社のBtoBマーケティングコンテンツは、ターゲットに「自分たち向けだ」と受け取られていると思いますか？</div>
+<div class="q-meta" id="t-qm-2">調査対象：BtoBマーケティングコンテンツ制作担当者111名 ／ 2026年1月</div>
+</div>
+<div class="chart-row-2">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-2">制作担当者の<br/>「コンテンツが届いている」認識</div>
+<div class="donut-wrap">
+<canvas id="donut2"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">87</span><span class="donut-unit">%</span>
+<div class="donut-sub">「そう思う」合計</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-2">「非常にそう思う」(19%)＋「ある程度そう思う」(59%)＋「どちらとも言えない」(9%)</div>
+<div class="donut-source" id="t-ds-2">出典：IDEATECH制作担当者調査(n=111)</div>
+</div>
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-3">受け手が「自分たち向けでない」<br/>コンテンツに出会った経験</div>
+<div class="donut-wrap">
+<canvas id="donut2b"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct" style="color:var(--orange);">87</span><span class="donut-unit" style="color:var(--orange);">%</span>
+<div class="donut-sub">「ある」と回答</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-3">「頻繁にあった」(37%)＋「数回あった」(41%)＋「1〜2回あった」(9%)の合計</div>
+<div class="donut-source" id="t-ds-3">出典：IDEATECH受け手調査(n=111)</div>
+</div>
+</div>
+<div class="highlight-box">
+<h4 id="t-hb2-h4">なぜ「自分たち向けではない」と感じるのか — 受け手の本音</h4>
+<p id="t-hb2-p">受け手が「自分たち向けではない」と感じる理由の上位は、業界・規模・役割のミスマッチ。<br/>
         汎用的なコンテンツが初期段階で検討対象外になっていることが明らかです。</p>
-      </div>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q（受け手）</div>
-        <div class="q-text">「自分たち向けではない」と判断した理由を教えてください。（複数回答）</div>
-        <div class="q-meta">調査対象：BtoBコンテンツ受け手97名（経験者のみ）</div>
-      </div>
-
-      <div class="hbar-box">
-        <div class="hbar-box-title">「自分たちむけではない」と感じた理由（複数回答、n=97）</div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">会社規模に合わない（大企業向け・中小向けなど）</span><span class="hbar-val">51.5%</span></div>
-          <div class="hbar-track"><div class="hbar-fill warm" style="width:51.5%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">自分の役割・職種向けではない</span><span class="hbar-val">48.5%</span></div>
-          <div class="hbar-track"><div class="hbar-fill warm" style="width:48.5%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">自社の業界に合わない</span><span class="hbar-val">38.1%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:38.1%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">一般論すぎる・抽象的すぎる</span><span class="hbar-val">33.0%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:33%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">事例が自社の状況と無関係</span><span class="hbar-val">27.8%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:27.8%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界特有の用語・前提が違う</span><span class="hbar-val">15.5%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:15.5%"></div></div>
-        </div>
-        <div class="hbar-source">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
-      </div>
-    </div>
-
-    <!-- 2-2 -->
-    <div class="section-inner" style="padding-top:48px;">
-      <div class="sec-label">
-        <span class="sec-badge">2-2</span>
-        <span class="sec-title">BtoB市場における業界別課題構造と深度</span>
-      </div>
-      <p class="body-text">
+</div>
+<div class="q-box">
+<div class="q-tag">SURVEY Q（受け手）</div>
+<div class="q-text" id="t-qt-3">「自分たち向けではない」と判断した理由を教えてください。（複数回答）</div>
+<div class="q-meta" id="t-qm-3">調査対象：BtoBコンテンツ受け手97名（経験者のみ）</div>
+</div>
+<div class="hbar-box">
+<div class="hbar-box-title" id="t-hbt-1">「自分たちむけではない」と感じた理由（複数回答、n=97）</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-1">会社規模に合わない（大企業向け・中小向けなど）</span><span class="hbar-val">51.5%</span></div>
+<div class="hbar-track"><div class="hbar-fill warm" style="width:51.5%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-2">自分の役割・職種向けではない</span><span class="hbar-val">48.5%</span></div>
+<div class="hbar-track"><div class="hbar-fill warm" style="width:48.5%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-3">自社の業界に合わない</span><span class="hbar-val">38.1%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:38.1%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-4">一般論すぎる・抽象的すぎる</span><span class="hbar-val">33.0%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:33%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-5">事例が自社の状況と無関係</span><span class="hbar-val">27.8%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:27.8%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-6">業界特有の用語・前提が違う</span><span class="hbar-val">15.5%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:15.5%"></div></div>
+</div>
+<div class="hbar-source" id="t-hs-1">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
+</div>
+</div>
+<!-- 2-2 -->
+<div class="section-inner" style="padding-top:48px;">
+<div class="sec-label">
+<span class="sec-badge">2-2</span>
+<span class="sec-title">BtoB市場における業界別課題構造と深度</span>
+</div>
+<p class="body-text" id="t-bt-2-2">
         業界ごとに制度・業務プロセス・技術が大きく異なります。
         製造業と金融業では、同じ「DX推進」という課題であっても、前提となる制約・
         ステークホルダー・意思決定フローがまったく異なります。
         こうした認識は、制作担当者・受け手の双方に広がっています。
       </p>
-
-      <div class="chart-row-2">
-        <div class="donut-box">
-          <div class="donut-box-title">「BtoBコンテンツは<br>業界別に作成すべき」と回答</div>
-          <div class="donut-wrap">
-            <canvas id="donut3"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">86</span><span class="donut-unit">%</span>
-              <div class="donut-sub">制作担当者</div>
-            </div>
-          </div>
-          <div class="donut-desc">「非常にそう思う」(27%)＋「ややそう思う」(60%)の合計 = 86.5%</div>
-          <div class="donut-source">出典：IDEATECH制作担当者調査(n=111)</div>
-        </div>
-
-        <div class="donut-box">
-          <div class="donut-box-title">「業界特化型コンテンツを<br>読みたい」と回答</div>
-          <div class="donut-wrap">
-            <canvas id="donut4"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">80</span><span class="donut-unit">%</span>
-              <div class="donut-sub">受け手</div>
-            </div>
-          </div>
-          <div class="donut-desc">「非常にそう思う」(23%)＋「ややそう思う」(57%)の合計 = 80.2%</div>
-          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
-        </div>
-      </div>
-
-      <p class="body-text">
+<div class="chart-row-2">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-4">「BtoBコンテンツは<br/>業界別に作成すべき」と回答</div>
+<div class="donut-wrap">
+<canvas id="donut3"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">86</span><span class="donut-unit">%</span>
+<div class="donut-sub">制作担当者</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-4">「非常にそう思う」(27%)＋「ややそう思う」(60%)の合計 = 86.5%</div>
+<div class="donut-source" id="t-ds-4">出典：IDEATECH制作担当者調査(n=111)</div>
+</div>
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-5">「業界特化型コンテンツを<br/>読みたい」と回答</div>
+<div class="donut-wrap">
+<canvas id="donut4"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">80</span><span class="donut-unit">%</span>
+<div class="donut-sub">受け手</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-5">「非常にそう思う」(23%)＋「ややそう思う」(57%)の合計 = 80.2%</div>
+<div class="donut-source" id="t-ds-5">出典：IDEATECH受け手調査(n=111)</div>
+</div>
+</div>
+<p class="body-text" id="t-bt-2-3">
         制作担当者の約9割が業界別作成の必要性を認識しながら、実際には多くの企業が
         汎用コンテンツで対応しているのが現状です。この実行ギャップを埋めることが、
         競合との差別化において大きな機会になっています。
       </p>
-    </div>
-  </section>
-
-  <!-- ============================
+</div>
+</section>
+<!-- ============================
        CHAPTER 3
        ============================ -->
-  <div class="ch-header">
-    <div class="ch-header-deco"></div>
-    <div class="ch-header-bg-num">03</div>
-    <div>
-      <div class="ch-eyebrow">CHAPTER 03</div>
-      <div class="ch-num-badge">第3章</div>
-      <h2 class="ch-title" id="t-ch3-title">業界特化型コンテンツマーケティングにおける<br>調査データの有効性</h2>
-      <div class="ch-line"></div>
-    </div>
-  </div>
-
-  <section class="section">
-    <!-- 3-1 -->
-    <div class="section-inner">
-      <div class="sec-label">
-        <span class="sec-badge">3-1</span>
-        <span class="sec-title" id="t-sec3-1">数字によって受け手は「自分たち向け」だと感じやすくなる</span>
-      </div>
-      <p class="body-text">
+<div class="ch-header">
+<div class="ch-header-deco"></div>
+<div class="ch-header-bg-num">03</div>
+<div>
+<div class="ch-eyebrow">CHAPTER 03</div>
+<div class="ch-num-badge" id="t-cnb-3">第3章</div>
+<h2 class="ch-title" id="t-ch3-title">業界特化型コンテンツマーケティングにおける<br/>調査データの有効性</h2>
+<div class="ch-line"></div>
+</div>
+</div>
+<section class="section">
+<!-- 3-1 -->
+<div class="section-inner">
+<div class="sec-label">
+<span class="sec-badge">3-1</span>
+<span class="sec-title" id="t-sec3-1">数字によって受け手は「自分たち向け」だと感じやすくなる</span>
+</div>
+<p class="body-text" id="t-bt-3-1">
         受け手に「自分たち向けだ」と認識させるためには、何が有効なのでしょうか。
         最も効果的なのは<strong>「業界内の実際の企業・事例」</strong>ですが、
         それがない場合でも<strong>「業界の現状や課題を示す調査データ」</strong>が
         次いで有効であることが分かっています。
       </p>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q（受け手）</div>
-        <div class="q-text">BtoBコンテンツを読んで「自分たちの業界向けだ」と感じる要素は何ですか？（複数回答）</div>
-        <div class="q-meta">調査対象：BtoBコンテンツ受け手111名 ／ 2026年1月</div>
-      </div>
-
-      <div class="hbar-box">
-        <div class="hbar-box-title">「自分たちの業界向けだ」と感じる要素（複数回答、n=111）</div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界内の実際の企業・事例が紹介されている</span><span class="hbar-val">58.6%</span></div>
-          <div class="hbar-track"><div class="hbar-fill warm" style="width:58.6%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界の現状や課題を示す調査データが含まれている</span><span class="hbar-val">43.2%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:43.2%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">競合他社との比較情報がある</span><span class="hbar-val">39.6%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:39.6%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界名が明記されている</span><span class="hbar-val">23.4%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:23.4%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界関係者の声・インタビューがある</span><span class="hbar-val">21.6%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:21.6%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">業界特有の実務用語が使われている</span><span class="hbar-val">15.3%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:15.3%"></div></div>
-        </div>
-        <div class="hbar-item">
-          <div class="hbar-row"><span class="hbar-name">規制・制度・法令への言及がある</span><span class="hbar-val">13.5%</span></div>
-          <div class="hbar-track"><div class="hbar-fill" style="width:13.5%"></div></div>
-        </div>
-        <div class="hbar-source">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
-      </div>
-
-      <p class="body-text">
+<div class="q-box">
+<div class="q-tag">SURVEY Q（受け手）</div>
+<div class="q-text" id="t-qt-4">BtoBコンテンツを読んで「自分たちの業界向けだ」と感じる要素は何ですか？（複数回答）</div>
+<div class="q-meta" id="t-qm-4">調査対象：BtoBコンテンツ受け手111名 ／ 2026年1月</div>
+</div>
+<div class="hbar-box">
+<div class="hbar-box-title" id="t-hbt-2">「自分たちの業界向けだ」と感じる要素（複数回答、n=111）</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-7">業界内の実際の企業・事例が紹介されている</span><span class="hbar-val">58.6%</span></div>
+<div class="hbar-track"><div class="hbar-fill warm" style="width:58.6%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-8">業界の現状や課題を示す調査データが含まれている</span><span class="hbar-val">43.2%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:43.2%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-9">競合他社との比較情報がある</span><span class="hbar-val">39.6%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:39.6%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-10">業界名が明記されている</span><span class="hbar-val">23.4%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:23.4%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-11">業界関係者の声・インタビューがある</span><span class="hbar-val">21.6%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:21.6%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-12">業界特有の実務用語が使われている</span><span class="hbar-val">15.3%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:15.3%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-13">規制・制度・法令への言及がある</span><span class="hbar-val">13.5%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:13.5%"></div></div>
+</div>
+<div class="hbar-source" id="t-hs-2">出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」</div>
+</div>
+<p class="body-text" id="t-bt-3-2">
         事例は最も効果的ですが、特定業界の事例を持っていない場合も多いでしょう。
         そのような場合でも、<em>業界全体の課題数値を提示する独自調査データ</em>は
         「自分ごと化」を強力に促進します。データは「代替事例」として機能するのです。
       </p>
-    </div>
-
-    <!-- 3-2 -->
-    <div class="section-inner" style="padding-top:48px;">
-      <div class="sec-label">
-        <span class="sec-badge">3-2</span>
-        <span class="sec-title" id="t-sec3-2">社内の合意形成に必要な説得材料として機能する</span>
-      </div>
-      <p class="body-text">
+</div>
+<!-- 3-2 -->
+<div class="section-inner" style="padding-top:48px;">
+<div class="sec-label">
+<span class="sec-badge">3-2</span>
+<span class="sec-title" id="t-sec3-2">社内の合意形成に必要な説得材料として機能する</span>
+</div>
+<p class="body-text" id="t-bt-3-3">
         BtoBの購買プロセスは複数人が関与する合議型の意思決定です。
         コンテンツは、担当者個人を動かすだけでなく、
         その担当者が<strong>社内で上位者や関係部門を説得するための材料</strong>としても
         機能しなければなりません。
       </p>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q（購買担当者）</div>
-        <div class="q-text">直近の案件で、購入の意思決定に関与した人数を教えてください。また、業界特化コンテンツを読みたい理由は何ですか？</div>
-        <div class="q-meta">調査対象：BtoB購買担当者 ／ 2025年6月・2026年1月</div>
-      </div>
-
-      <div class="chart-row-2">
-        <div class="donut-box">
-          <div class="donut-box-title">購入意思決定に<br>「4人以上が関与している」</div>
-          <div class="donut-wrap">
-            <canvas id="donut5"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">83</span><span class="donut-unit">%</span>
-              <div class="donut-sub">4名以上が関与</div>
-            </div>
-          </div>
-          <div class="donut-desc">4〜5名(24%)＋6〜8名(23%)＋9〜11名(18%)＋12名以上(19%)の合計 = 83.6%</div>
-          <div class="donut-source">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
-        </div>
-
-        <div>
-          <p class="body-text">
+<div class="q-box">
+<div class="q-tag">SURVEY Q（購買担当者）</div>
+<div class="q-text" id="t-qt-5">直近の案件で、購入の意思決定に関与した人数を教えてください。また、業界特化コンテンツを読みたい理由は何ですか？</div>
+<div class="q-meta" id="t-qm-5">調査対象：BtoB購買担当者 ／ 2025年6月・2026年1月</div>
+</div>
+<div class="chart-row-2">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-6">購入意思決定に<br/>「4人以上が関与している」</div>
+<div class="donut-wrap">
+<canvas id="donut5"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">83</span><span class="donut-unit">%</span>
+<div class="donut-sub">4名以上が関与</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-6">4〜5名(24%)＋6〜8名(23%)＋9〜11名(18%)＋12名以上(19%)の合計 = 83.6%</div>
+<div class="donut-source" id="t-ds-6">出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)</div>
+</div>
+<div>
+<p class="body-text" id="t-bt-3-4">
             8割以上の案件で4名以上が意思決定に関与しています。
             コンテンツは担当者1人を動かすだけでなく、
             組織全体を動かす説得資料としての機能が求められます。
           </p>
-          <div class="hbar-box" style="margin:0;">
-            <div class="hbar-box-title">業界特化型コンテンツを読みたい理由（n=89）</div>
-            <div class="hbar-item">
-              <div class="hbar-row"><span class="hbar-name">同業他社の取り組みや状況を把握できる</span><span class="hbar-val">69.7%</span></div>
-              <div class="hbar-track"><div class="hbar-fill warm" style="width:69.7%"></div></div>
-            </div>
-            <div class="hbar-item">
-              <div class="hbar-row"><span class="hbar-name">課題解決に直接役立てられる</span><span class="hbar-val">43.8%</span></div>
-              <div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
-            </div>
-            <div class="hbar-item">
-              <div class="hbar-row"><span class="hbar-name">社内での説明・提案資料として活用できる</span><span class="hbar-val">43.8%</span></div>
-              <div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
-            </div>
-            <div class="hbar-item">
-              <div class="hbar-row"><span class="hbar-name">具体的なアクションプランに繋げられる</span><span class="hbar-val">40.4%</span></div>
-              <div class="hbar-track"><div class="hbar-fill" style="width:40.4%"></div></div>
-            </div>
-            <div class="hbar-item">
-              <div class="hbar-row"><span class="hbar-name">業界特有のリスクや規制を把握できる</span><span class="hbar-val">27.0%</span></div>
-              <div class="hbar-track"><div class="hbar-fill" style="width:27%"></div></div>
-            </div>
-            <div class="hbar-source">出典：IDEATECH受け手調査</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="body-text">
+<div class="hbar-box" style="margin:0;">
+<div class="hbar-box-title" id="t-hbt-3">業界特化型コンテンツを読みたい理由（n=89）</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-14">同業他社の取り組みや状況を把握できる</span><span class="hbar-val">69.7%</span></div>
+<div class="hbar-track"><div class="hbar-fill warm" style="width:69.7%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-15">課題解決に直接役立てられる</span><span class="hbar-val">43.8%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-16">社内での説明・提案資料として活用できる</span><span class="hbar-val">43.8%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:43.8%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-17">具体的なアクションプランに繋げられる</span><span class="hbar-val">40.4%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:40.4%"></div></div>
+</div>
+<div class="hbar-item">
+<div class="hbar-row"><span class="hbar-name" id="t-hn-18">業界特有のリスクや規制を把握できる</span><span class="hbar-val">27.0%</span></div>
+<div class="hbar-track"><div class="hbar-fill" style="width:27%"></div></div>
+</div>
+<div class="hbar-source" id="t-hs-3">出典：IDEATECH受け手調査</div>
+</div>
+</div>
+</div>
+<p class="body-text" id="t-bt-3-5">
         「社内での説明・提案資料として活用できる」(43.8%)という回答は、
         コンテンツが担当者の<strong>社内稟議を通すためのツール</strong>として機能していることを示しています。
         客観的な業界数値データは、担当者が上位者を説得するための強力な武器になります。
       </p>
-    </div>
-
-    <!-- 3-3 -->
-    <div class="section-inner" style="padding-top:48px;">
-      <div class="sec-label">
-        <span class="sec-badge">3-3</span>
-        <span class="sec-title" id="t-sec3-3">公的データでは拾いきれない実情を可視化できる</span>
-      </div>
-      <p class="body-text">
+</div>
+<!-- 3-3 -->
+<div class="section-inner" style="padding-top:48px;">
+<div class="sec-label">
+<span class="sec-badge">3-3</span>
+<span class="sec-title" id="t-sec3-3">公的データでは拾いきれない実情を可視化できる</span>
+</div>
+<p class="body-text" id="t-bt-3-6">
         政府統計や業界団体のデータは一定の信頼性がある一方、
         ニッチな業界課題や最新の現場感を反映しきれないことが多いです。
         <strong>ベンダー独自の業界調査データ</strong>は、公的データでは見えない
         「現場のリアル」を数値で示すことができます。
       </p>
-
-      <div class="chart-row-2">
-        <div class="donut-box">
-          <div class="donut-box-title">ベンダー独自の業界調査データがあると<br>「信頼度が高まる」</div>
-          <div class="donut-wrap">
-            <canvas id="donut6"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">84</span><span class="donut-unit">%</span>
-              <div class="donut-sub">「高まる」と回答</div>
-            </div>
-          </div>
-          <div class="donut-desc">「非常に高まる」(19%)＋「やや高まる」(65%)の合計 = 83.8%</div>
-          <div class="donut-source">出典：IDEATECH受け手調査(n=111)</div>
-        </div>
-
-        <div class="donut-box">
-          <div class="donut-box-title">独自業界調査データを必要とする理由<br>「ターゲットの自分ごと化を促進できる」</div>
-          <div class="donut-wrap">
-            <canvas id="donut7"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">70</span><span class="donut-unit">%</span>
-              <div class="donut-sub">制作担当者</div>
-            </div>
-          </div>
-          <div class="donut-desc">「自分ごと化を促進できるから」と回答した制作担当者 70.4%</div>
-          <div class="donut-source">出典：IDEATECH制作担当者調査(n=98、調査必要と回答者)</div>
-        </div>
-      </div>
-
-      <div class="column-box">
-        <div class="column-badge">監修者コラム 2</div>
-        <div class="column-title">業界調査データで、マーケ・PR・営業を一本につなぐ</div>
-        <div class="column-body">
-          業界調査データの活用は、その業界特有の<strong>顕在課題と、顧客自身も気づいていない潜在課題の両面</strong>を浮き彫りにします。これは、GTM戦略におけるマーケティングの精度向上や、見込み客開拓におけるアプローチの質を劇的に高める有効な武器となります。<br><br>
-          さらに、このデータを軸にすることで、<strong>PRとマーケティングの共通言語化と共同メディアターゲット化</strong>が可能になります。メディア露出による認知向上と、メディアでの調査レポートのダウンロードやウェビナーによるリード獲得を、同時に実現できるのです。<br><br>
+<div class="chart-row-2">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-7">ベンダー独自の業界調査データがあると<br/>「信頼度が高まる」</div>
+<div class="donut-wrap">
+<canvas id="donut6"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">84</span><span class="donut-unit">%</span>
+<div class="donut-sub">「高まる」と回答</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-7">「非常に高まる」(19%)＋「やや高まる」(65%)の合計 = 83.8%</div>
+<div class="donut-source" id="t-ds-7">出典：IDEATECH受け手調査(n=111)</div>
+</div>
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-8">独自業界調査データを必要とする理由<br/>「ターゲットの自分ごと化を促進できる」</div>
+<div class="donut-wrap">
+<canvas id="donut7"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">70</span><span class="donut-unit">%</span>
+<div class="donut-sub">制作担当者</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-8">「自分ごと化を促進できるから」と回答した制作担当者 70.4%</div>
+<div class="donut-source" id="t-ds-8">出典：IDEATECH制作担当者調査(n=98、調査必要と回答者)</div>
+</div>
+</div>
+<div class="column-box">
+<div class="column-badge" id="t-cb-2">監修者コラム 2</div>
+<div class="column-title" id="t-ct-2">業界調査データで、マーケ・PR・営業を一本につなぐ</div>
+<div class="column-body" id="t-cbody-2">
+          業界調査データの活用は、その業界特有の<strong>顕在課題と、顧客自身も気づいていない潜在課題の両面</strong>を浮き彫りにします。これは、GTM戦略におけるマーケティングの精度向上や、見込み客開拓におけるアプローチの質を劇的に高める有効な武器となります。<br/><br/>
+          さらに、このデータを軸にすることで、<strong>PRとマーケティングの共通言語化と共同メディアターゲット化</strong>が可能になります。メディア露出による認知向上と、メディアでの調査レポートのダウンロードやウェビナーによるリード獲得を、同時に実現できるのです。<br/><br/>
           加えてこのデータは、<strong>営業資料としてもとても重宝されます。</strong>営業組織は業種別で動いていることが多く、業界ごとの根拠があると説明が通りやすいからです。1つの調査データが、マーケ・PR・営業の三部門を共通言語でつなぐ役割を果たします。
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================
+</div>
+</div>
+</section>
+<!-- ============================
        CHAPTER 4
        ============================ -->
-  <div class="ch-header">
-    <div class="ch-header-deco"></div>
-    <div class="ch-header-bg-num">04</div>
-    <div>
-      <div class="ch-eyebrow">CHAPTER 04</div>
-      <div class="ch-num-badge">第4章</div>
-      <h2 class="ch-title" id="t-ch4-title">業界特化型コンテンツの横展開の可能性</h2>
-      <div class="ch-line"></div>
-    </div>
-  </div>
-
-  <section class="section">
-    <div class="section-inner">
-      <p class="body-text">
+<div class="ch-header">
+<div class="ch-header-deco"></div>
+<div class="ch-header-bg-num">04</div>
+<div>
+<div class="ch-eyebrow">CHAPTER 04</div>
+<div class="ch-num-badge" id="t-cnb-4">第4章</div>
+<h2 class="ch-title" id="t-ch4-title">業界特化型コンテンツの横展開の可能性</h2>
+<div class="ch-line"></div>
+</div>
+</div>
+<section class="section">
+<div class="section-inner">
+<p class="body-text" id="t-bt-4-1">
         業界特化型コンテンツの必要性は理解していても、
         「複数業界向けにコンテンツを作るのはコストと手間がかかりすぎる」という声は多いです。
         しかし、正しい設計方針を持てば、<strong>横展開コストは大幅に削減できます。</strong>
-      </p>
-
-      <div class="q-box">
-        <div class="q-tag">SURVEY Q（制作担当者）</div>
-        <div class="q-text">業界別コンテンツを十分に作成できていない最大の理由は何ですか？</div>
-        <div class="q-meta">調査対象：業界別作成できていない担当者16名</div>
-      </div>
-
-      <div class="chart-row-2">
-        <div class="donut-box">
-          <div class="donut-box-title">業界別コンテンツ作成の<br>最大のハードル</div>
-          <div class="donut-wrap">
-            <canvas id="donut8"></canvas>
-            <div class="donut-center-text">
-              <span class="donut-pct">69</span><span class="donut-unit">%</span>
-              <div class="donut-sub">手間・コストが最大の壁</div>
-            </div>
-          </div>
-          <div class="donut-desc">「コスト・手間がかかりすぎる」が作成できない理由の第1位 (11/16=68.8%)</div>
-          <div class="donut-source">出典：IDEATECH制作担当者調査(n=16、未作成者のみ)</div>
-        </div>
-
-        <div>
-          <p class="body-text">
+</p>
+<div class="q-box">
+<div class="q-tag">SURVEY Q（制作担当者）</div>
+<div class="q-text" id="t-qt-6">業界別コンテンツを十分に作成できていない最大の理由は何ですか？</div>
+<div class="q-meta" id="t-qm-6">調査対象：業界別作成できていない担当者16名</div>
+</div>
+<div class="chart-row-2">
+<div class="donut-box">
+<div class="donut-box-title" id="t-dbt-9">業界別コンテンツ作成の<br/>最大のハードル</div>
+<div class="donut-wrap">
+<canvas id="donut8"></canvas>
+<div class="donut-center-text">
+<span class="donut-pct">69</span><span class="donut-unit">%</span>
+<div class="donut-sub">手間・コストが最大の壁</div>
+</div>
+</div>
+<div class="donut-desc" id="t-dd-9">「コスト・手間がかかりすぎる」が作成できない理由の第1位 (11/16=68.8%)</div>
+<div class="donut-source" id="t-ds-9">出典：IDEATECH制作担当者調査(n=16、未作成者のみ)</div>
+</div>
+<div>
+<p class="body-text" id="t-bt-4-2">
             コストと手間の問題は、<strong>「共通構造＋課題差し替え」方式</strong>で
             解決できます。ゼロから作り直すのではなく、骨格を共通化し、
             業界固有の要素のみを入れ替える設計思想が鍵です。
           </p>
-          <div class="info-card" style="margin-top:16px;">
-            <div class="info-card-num">横展開の鍵</div>
-            <div class="info-card-title">共通構造＋課題差し替え方式</div>
-            <div class="info-card-body">
+<div class="info-card" style="margin-top:16px;">
+<div class="info-card-num" id="t-icn-1">横展開の鍵</div>
+<div class="info-card-title" id="t-ict-1">共通構造＋課題差し替え方式</div>
+<div class="info-card-body" id="t-icb-1">
               基本的な価値提案・ソリューション構造は共通化し、
               各業界固有の課題設定・事例・データだけを差し替えます。
               業界特化型の調査データは、この「課題差し替え要素」として最も有効です。
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="sec-heading">横展開を実現する4ステップ</div>
-
-      <div class="info-grid">
-        <div class="info-card">
-          <div class="info-card-num">STEP 01</div>
-          <div class="info-card-title">共通構造の設計</div>
-          <div class="info-card-body">
+</div>
+</div>
+</div>
+<div class="sec-heading" id="t-sh-4step">横展開を実現する4ステップ</div>
+<div class="info-grid">
+<div class="info-card">
+<div class="info-card-num" id="t-icn-2">STEP 01</div>
+<div class="info-card-title" id="t-ict-2">共通構造の設計</div>
+<div class="info-card-body" id="t-icb-2">
             価値提案・製品説明・導入効果など、業界を問わず共通する骨格を先に設計する。
           </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-num">STEP 02</div>
-          <div class="info-card-title">業界別調査の実施</div>
-          <div class="info-card-body">
+</div>
+<div class="info-card">
+<div class="info-card-num" id="t-icn-3">STEP 02</div>
+<div class="info-card-title" id="t-ict-3">業界別調査の実施</div>
+<div class="info-card-body" id="t-icb-3">
             ターゲット業界ごとに現状・課題・ニーズを問う独自調査を実施。
             これが横展開の中心的な「差し替え素材」になる。
           </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-num">STEP 03</div>
-          <div class="info-card-title">コンテンツ差し替え</div>
-          <div class="info-card-body">
+</div>
+<div class="info-card">
+<div class="info-card-num" id="t-icn-4">STEP 03</div>
+<div class="info-card-title" id="t-ict-4">コンテンツ差し替え</div>
+<div class="info-card-body" id="t-icb-4">
             共通骨格の「課題設定・データ・事例」部分を業界調査結果で差し替えてコンテンツを量産する。
           </div>
-        </div>
-      </div>
-
-      <div class="highlight-box">
-        <h4>1回の調査投資で3つのマーケティング目的をカバー</h4>
-        <p>業界特化型の調査データは、単一コンテンツの素材にとどまりません。<br>
+</div>
+</div>
+<div class="highlight-box">
+<h4 id="t-hb3-h4">1回の調査投資で3つのマーケティング目的をカバー</h4>
+<p id="t-hb3-p">業界特化型の調査データは、単一コンテンツの素材にとどまりません。<br/>
         「調査レポート→ガイドブック→メルマガ→プレスリリース」へと展開することで、
         1回の調査投資で複数のマーケティング目的を同時にカバーできます。</p>
-        <ul class="highlight-list">
-          <li><strong>リード獲得：</strong>調査レポートのダウンロードで新規リードを獲得</li>
-          <li><strong>ナーチャリング：</strong>ガイドブック・メルマガで継続的な接点を維持</li>
-          <li><strong>認知拡大：</strong>プレスリリース・SNS拡散でブランド認知を向上</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== おわりに ===== -->
-  <section style="padding: 56px 64px; background: var(--gray-bg); border-top: 1px solid var(--gray-border);">
-    <div class="intro-eyebrow" id="t-closing-eyebrow">CLOSING — おわりに</div>
-    <h2 class="intro-title" id="t-closing-title" style="margin-bottom:24px;">伝わるための構造を設計する</h2>
-    <p class="body-text">
+<ul class="highlight-list" id="t-hb3-ul">
+<li><strong>リード獲得：</strong>調査レポートのダウンロードで新規リードを獲得</li>
+<li><strong>ナーチャリング：</strong>ガイドブック・メルマガで継続的な接点を維持</li>
+<li><strong>認知拡大：</strong>プレスリリース・SNS拡散でブランド認知を向上</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- ===== おわりに ===== -->
+<section style="padding: 56px 64px; background: var(--gray-bg); border-top: 1px solid var(--gray-border);">
+<div class="intro-eyebrow" id="t-closing-eyebrow">CLOSING — おわりに</div>
+<h2 class="intro-title" id="t-closing-title" style="margin-bottom:24px;">伝わるための構造を設計する</h2>
+<p class="body-text" id="t-bt-closing-1">
       本ガイドで紹介したデータが示すように、BtoBコンテンツの課題の本質は
       「量」ではなく「構造」にあります。誰に向けた、どのような前提でのメッセージかを
       GTM視点で定義することが、コンテンツが届く・読まれる・活用される
       ための大前提です。
     </p>
-    <p class="body-text">
+<p class="body-text" id="t-bt-closing-2">
       業界固有の課題・文脈に寄り添ったコンテンツが「自分たち向けの情報」と認識される鍵であり、
       そのためのエビデンスとして独自業界調査は最も効果的な手段です。
       独自業界調査は「自分ごと化」の促進と社内合意形成の支援を同時に実現し、
       <strong>1回の調査投資でコンテンツマーケティング全体を底上げする</strong>可能性を持っています。
     </p>
-
-    <div class="chart-row-3" style="margin-top:32px;">
-      <div class="stat-box">
-        <div class="stat-num">86<span class="stat-unit">%</span></div>
-        <div class="stat-label">業界別コンテンツを<br>作成すべきと認識</div>
-        <div class="stat-source">制作担当者調査</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">84<span class="stat-unit">%</span></div>
-        <div class="stat-label">独自調査で<br>コンテンツ信頼度向上</div>
-        <div class="stat-source">受け手調査</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">70<span class="stat-unit">%</span></div>
-        <div class="stat-label">自分ごと化促進に<br>独自データが必要</div>
-        <div class="stat-source">制作担当者調査</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICE SECTION ===== -->
-  <section class="service-section">
-    <div class="service-eyebrow" id="t-svc-eyebrow">IDEATECH SERVICE</div>
-    <h2 class="service-title" id="t-svc-title">IDEATECHの業界特化型<br>コンテンツパッケージ</h2>
-    <p class="service-subtitle" id="t-svc-subtitle">
-      調査設計からコンテンツ制作・配信までを一式提供。<br>
+<div class="chart-row-3" style="margin-top:32px;">
+<div class="stat-box">
+<div class="stat-num">86<span class="stat-unit">%</span></div>
+<div class="stat-label" id="t-sl-4">業界別コンテンツを<br/>作成すべきと認識</div>
+<div class="stat-source" id="t-ss-4">制作担当者調査</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">84<span class="stat-unit">%</span></div>
+<div class="stat-label" id="t-sl-5">独自調査で<br/>コンテンツ信頼度向上</div>
+<div class="stat-source" id="t-ss-5">受け手調査</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">70<span class="stat-unit">%</span></div>
+<div class="stat-label" id="t-sl-6">自分ごと化促進に<br/>独自データが必要</div>
+<div class="stat-source" id="t-ss-6">制作担当者調査</div>
+</div>
+</div>
+</section>
+<!-- ===== SERVICE SECTION ===== -->
+<section class="service-section">
+<div class="service-eyebrow" id="t-svc-eyebrow">IDEATECH SERVICE</div>
+<h2 class="service-title" id="t-svc-title">IDEATECHの業界特化型<br/>コンテンツパッケージ</h2>
+<p class="service-subtitle" id="t-svc-subtitle">
+      調査設計からコンテンツ制作・配信までを一式提供。<br/>
       業界特化型コンテンツの立ち上げを最短・最低コストで実現します。
     </p>
-
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="service-card-icon">📊</div>
-        <div class="service-card-title">スタンダードパッケージ<br>（1業界あたり）</div>
-        <div class="service-card-desc">
-          <strong>含まれるもの：</strong><br>
+<div class="service-grid">
+<div class="service-card">
+<div class="service-card-icon">📊</div>
+<div class="service-card-title" id="t-sct-1">スタンダードパッケージ<br/>（1業界あたり）</div>
+<div class="service-card-desc" id="t-scd-1">
+<strong>含まれるもの：</strong><br/>
           調査設計・実施・分析、調査レポート、
-          ガイドブック、メルマガ、プレスリリース<br><br>
+          ガイドブック、メルマガ、プレスリリース<br/><br/>
           3つのマーケティング目的（リード獲得・ナーチャリング・認知拡大）を
           1回の調査投資でカバー。
         </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-icon">🔄</div>
-        <div class="service-card-title">複数業界プラン<br>（2業界目以降）</div>
-        <div class="service-card-desc">
-          <strong>共通構造化によるコスト削減：</strong><br>
+</div>
+<div class="service-card">
+<div class="service-card-icon">🔄</div>
+<div class="service-card-title" id="t-sct-2">複数業界プラン<br/>（2業界目以降）</div>
+<div class="service-card-desc" id="t-scd-2">
+<strong>共通構造化によるコスト削減：</strong><br/>
           1業界目で設計した共通骨格を活用し、
           2業界目以降は課題差し替えのみで対応。
           複数業界展開のコストを大幅に抑制します。
         </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-icon">⚙️</div>
-        <div class="service-card-title">オプションメニュー</div>
-        <div class="service-card-desc">
+</div>
+<div class="service-card">
+<div class="service-card-icon">⚙️</div>
+<div class="service-card-title" id="t-sct-3">オプションメニュー</div>
+<div class="service-card-desc" id="t-scd-3">
           展開チャネルや活用シーンに応じた追加メニューを用意。
           ウェビナー資料、LP、広告クリエイティブ、
           営業資料への転用など柔軟に対応します。
         </div>
-      </div>
-      <div class="service-card">
-        <div class="service-card-icon">🎯</div>
-        <div class="service-card-title">コンテンツ設計サポート</div>
-        <div class="service-card-desc">
+</div>
+<div class="service-card">
+<div class="service-card-icon">🎯</div>
+<div class="service-card-title" id="t-sct-4">コンテンツ設計サポート</div>
+<div class="service-card-desc" id="t-scd-4">
           GTM視点でのターゲット定義から始まり、
           調査設計・コンテンツ構成・配信戦略まで
           一貫してサポート。社内リソース不足を解消します。
         </div>
-      </div>
-    </div>
-
-    <!-- 成果物一覧 -->
-    <div class="service-package">
-      <div class="service-package-title">標準パッケージに含まれる成果物</div>
-      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
-        <thead>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:32%;">成果物</th>
-            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化型調査の設計・実査</td>
-            <td style="padding:10px 12px; line-height:1.7;">ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:10px 12px; font-weight:700; color:white;">調査レポート（ホワイトペーパー）</td>
-            <td style="padding:10px 12px; line-height:1.7;">調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:10px 12px; font-weight:700; color:white;">調査リリース</td>
-            <td style="padding:10px 12px; line-height:1.7;">PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化型ガイドブック</td>
-            <td style="padding:10px 12px; line-height:1.7;">調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。</td>
-          </tr>
-          <tr>
-            <td style="padding:10px 12px; font-weight:700; color:white;">業界特化メルマガ配信文章</td>
-            <td style="padding:10px 12px; line-height:1.7;">調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 価格表 -->
-    <div class="service-package" style="margin-bottom:20px;">
-      <div class="service-package-title">価格（税別）</div>
-      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:13px; text-align:center;">
-        <thead>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-            <th style="padding:10px; text-align:left; color:#93C5FD;"></th>
-            <th style="padding:10px; color:#93C5FD; font-weight:700;">1業界</th>
-            <th style="padding:10px; color:#93C5FD; font-weight:700;">3業界</th>
-            <th style="padding:10px; color:#93C5FD; font-weight:700;">5業界</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="padding:12px 10px; text-align:left; font-weight:700; color:white;">標準パッケージ一式</td>
-            <td style="padding:12px 10px; font-weight:700; color:white; font-size:16px;">100万円</td>
-            <td style="padding:12px 10px;">250万円<br><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@約83万円）</span></td>
-            <td style="padding:12px 10px;">380万円<br><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@76万円）</span></td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="margin-top:14px; font-size:11.5px; color:rgba(255,255,255,0.5); line-height:1.7;">
+</div>
+</div>
+<!-- 成果物一覧 -->
+<div class="service-package">
+<div class="service-package-title">標準パッケージに含まれる成果物</div>
+<table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
+<thead>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:32%;">成果物</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:10px 12px; font-weight:700; color:white;">業界特化型調査の設計・実査</td>
+<td style="padding:10px 12px; line-height:1.7;">ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:10px 12px; font-weight:700; color:white;">調査レポート（ホワイトペーパー）</td>
+<td style="padding:10px 12px; line-height:1.7;">調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:10px 12px; font-weight:700; color:white;">調査リリース</td>
+<td style="padding:10px 12px; line-height:1.7;">PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:10px 12px; font-weight:700; color:white;">業界特化型ガイドブック</td>
+<td style="padding:10px 12px; line-height:1.7;">調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。</td>
+</tr>
+<tr>
+<td style="padding:10px 12px; font-weight:700; color:white;">業界特化メルマガ配信文章</td>
+<td style="padding:10px 12px; line-height:1.7;">調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- 価格表 -->
+<div class="service-package" style="margin-bottom:20px;">
+<div class="service-package-title">価格（税別）</div>
+<table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:13px; text-align:center;">
+<thead>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+<th style="padding:10px; text-align:left; color:#93C5FD;"></th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;">1業界</th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;">3業界</th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;">5業界</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:12px 10px; text-align:left; font-weight:700; color:white;">標準パッケージ一式</td>
+<td style="padding:12px 10px; font-weight:700; color:white; font-size:16px;">100万円</td>
+<td style="padding:12px 10px;">250万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@約83万円）</span></td>
+<td style="padding:12px 10px;">380万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@76万円）</span></td>
+</tr>
+</tbody>
+</table>
+<p style="margin-top:14px; font-size:11.5px; color:rgba(255,255,255,0.5); line-height:1.7;">
         複数業界プランでは、調査設計の共通構造化により2業界目以降のコストを抑え、業界ごとの深さと展開の効率性を両立します。
       </p>
-    </div>
-
-    <!-- オプション -->
-    <div class="service-package" style="margin-bottom:28px;">
-      <div class="service-package-title">オプション</div>
-      <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
-        <thead>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:30%;">オプション</th>
-            <th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
-            <th style="padding:8px 12px; text-align:right; color:#93C5FD; font-weight:700; white-space:nowrap;">価格（税別）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:9px 12px; font-weight:700; color:white;">コラム記事化</td>
-            <td style="padding:9px 12px; line-height:1.6;">調査データを活用したSEO／LLMO対応のコラム記事制作（1本）</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">10万円〜</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:9px 12px; font-weight:700; color:white;">セミナー企画・スライド作成</td>
-            <td style="padding:9px 12px; line-height:1.6;">調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">30万円〜</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:9px 12px; font-weight:700; color:white;">業界メディアタイアップ</td>
-            <td style="padding:9px 12px; line-height:1.6;">業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">60万円〜</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:9px 12px; font-weight:700; color:white;">LP設計</td>
-            <td style="padding:9px 12px; line-height:1.6;">調査レポートを起点としたランディングページ作成</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">35万円〜</td>
-          </tr>
-          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-            <td style="padding:9px 12px; font-weight:700; color:white;">営業資料組み込み＋トーク設計</td>
-            <td style="padding:9px 12px; line-height:1.6;">調査データの営業資料への反映と、活用トーク・展開パターンの整備</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
-          </tr>
-          <tr>
-            <td style="padding:9px 12px; font-weight:700; color:white;">展示会配布用印刷資料</td>
-            <td style="padding:9px 12px; line-height:1.6;">A4リーフレット等、展示会・対面配布用に最適化した資料制作</td>
-            <td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="service-cta">
-      <p>
-        「どの業界から始めるべきか」「自社のサービスにはどのような調査テーマが適しているか」<br>
-        といったご相談も承っております。GTM戦略に基づく業界特化型コンテンツの設計について、<br>
+</div>
+<!-- オプション -->
+<div class="service-package" style="margin-bottom:28px;">
+<div class="service-package-title">オプション</div>
+<table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
+<thead>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:30%;">オプション</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
+<th style="padding:8px 12px; text-align:right; color:#93C5FD; font-weight:700; white-space:nowrap;">価格（税別）</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:9px 12px; font-weight:700; color:white;">コラム記事化</td>
+<td style="padding:9px 12px; line-height:1.6;">調査データを活用したSEO／LLMO対応のコラム記事制作（1本）</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">10万円〜</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:9px 12px; font-weight:700; color:white;">セミナー企画・スライド作成</td>
+<td style="padding:9px 12px; line-height:1.6;">調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">30万円〜</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:9px 12px; font-weight:700; color:white;">業界メディアタイアップ</td>
+<td style="padding:9px 12px; line-height:1.6;">業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">60万円〜</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:9px 12px; font-weight:700; color:white;">LP設計</td>
+<td style="padding:9px 12px; line-height:1.6;">調査レポートを起点としたランディングページ作成</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">35万円〜</td>
+</tr>
+<tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+<td style="padding:9px 12px; font-weight:700; color:white;">営業資料組み込み＋トーク設計</td>
+<td style="padding:9px 12px; line-height:1.6;">調査データの営業資料への反映と、活用トーク・展開パターンの整備</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+</tr>
+<tr>
+<td style="padding:9px 12px; font-weight:700; color:white;">展示会配布用印刷資料</td>
+<td style="padding:9px 12px; line-height:1.6;">A4リーフレット等、展示会・対面配布用に最適化した資料制作</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="service-cta">
+<p id="t-svc-cta-p">
+        「どの業界から始めるべきか」「自社のサービスにはどのような調査テーマが適しているか」<br/>
+        といったご相談も承っております。GTM戦略に基づく業界特化型コンテンツの設計について、<br/>
         お気軽にお問い合わせください。
       </p>
-      <a href="https://ideatech.jp/" class="service-cta-link" target="_blank" id="t-cta-link">
+<a class="service-cta-link" href="https://ideatech.jp/" id="t-cta-link" target="_blank">
         お問い合わせ・資料請求はこちら
       </a>
-      <div class="service-cta-note">ideatech.jp ｜ 無料相談受付中</div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="doc-footer">
-    <img src="ideatech_logodata.png" alt="IDEATECH" style="height:22px; background:white; border-radius:3px; padding:2px 7px;">
-    <div class="footer-copy">© 2026 IDEATECH Inc. All rights reserved.</div>
-  </footer>
-
+<div class="service-cta-note" id="t-svc-cta-note">ideatech.jp ｜ 無料相談受付中</div>
+</div>
+</section>
+<!-- ===== FOOTER ===== -->
+<footer class="doc-footer">
+<img alt="IDEATECH" src="ideatech_logodata.png" style="height:22px; background:white; border-radius:3px; padding:2px 7px;"/>
+<div class="footer-copy">© 2026 IDEATECH Inc. All rights reserved.</div>
+</footer>
 </div><!-- /doc -->
-
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -2040,7 +1979,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
-
 <script>
 const TRANSLATIONS = {
   ja: {
@@ -2086,7 +2024,224 @@ const TRANSLATIONS = {
     "t-svc-eyebrow": "IDEATECH SERVICE",
     "t-svc-title": "IDEATECHの業界特化型<br>コンテンツパッケージ",
     "t-svc-subtitle": "調査設計からコンテンツ制作・配信までを一式提供。<br>業界特化型コンテンツの立ち上げを最短・最低コストで実現します。",
-    "t-cta-link": "お問い合わせ・資料請求はこちら",
+    "t-cta-link": "お問い合わせ・資料請求はこちら",,
+    "t-bt-1-1": `BtoBの購買行動は大きく変化しています。今や購買担当者は、営業担当者と接触する前から
+        自社で情報収集を行い、購入候補を絞り込んでいます。
+        <strong>初回ミーティングの時点で購買条件がほぼ決まっている</strong>ことは、
+        以下のデータが示す通りです。`,
+    "t-bt-1-2": `購買担当者の約7割が、初回ミーティングの時点で購買条件を
+            ある程度決めた状態で問い合わせてきます。
+            つまり、<strong>マーケティング起点で購買候補に入らなければ、
+            商談の土俵にすら上がれない</strong>時代が到来しています。`,
+    "t-bt-1-3": `MAツール・広告・CRMの進化により大量情報配信が低コストで可能になった結果、
+        BtoB購買担当者が受け取る情報量は爆発的に増加しています。
+        コンテンツの量が増えるほど、受け手は「自分に関係ない情報」を
+        <strong>初期段階で素早く排除する</strong>ようになっています。`,
+    "t-bt-1-4": `<strong>GTM（Go to Market）戦略</strong>とは、自社の製品・サービスを
+        「誰に」「何を」「どう届けるか」の観点から事前に計画を策定する枠組みです。
+        マス向けの汎用コンテンツから脱却し、市場セグメントごとに前提条件を定義した
+        メッセージ設計が求められています。`,
+    "t-bt-2-1": `コンテンツの送り手（マーケティング担当者）と受け手（購買担当者）の間には、
+        大きな認識ギャップが存在します。自社コンテンツが届いていると感じている
+        マーケターは多い一方、受け手の大多数は「自分たち向けではない」と感じています。`,
+    "t-bt-2-2": `業界ごとに制度・業務プロセス・技術が大きく異なります。
+        製造業と金融業では、同じ「DX推進」という課題であっても、前提となる制約・
+        ステークホルダー・意思決定フローがまったく異なります。
+        こうした認識は、制作担当者・受け手の双方に広がっています。`,
+    "t-bt-2-3": `制作担当者の約9割が業界別作成の必要性を認識しながら、実際には多くの企業が
+        汎用コンテンツで対応しているのが現状です。この実行ギャップを埋めることが、
+        競合との差別化において大きな機会になっています。`,
+    "t-bt-3-1": `受け手に「自分たち向けだ」と認識させるためには、何が有効なのでしょうか。
+        最も効果的なのは<strong>「業界内の実際の企業・事例」</strong>ですが、
+        それがない場合でも<strong>「業界の現状や課題を示す調査データ」</strong>が
+        次いで有効であることが分かっています。`,
+    "t-bt-3-2": `事例は最も効果的ですが、特定業界の事例を持っていない場合も多いでしょう。
+        そのような場合でも、<em>業界全体の課題数値を提示する独自調査データ</em>は
+        「自分ごと化」を強力に促進します。データは「代替事例」として機能するのです。`,
+    "t-bt-3-3": `BtoBの購買プロセスは複数人が関与する合議型の意思決定です。
+        コンテンツは、担当者個人を動かすだけでなく、
+        その担当者が<strong>社内で上位者や関係部門を説得するための材料</strong>としても
+        機能しなければなりません。`,
+    "t-bt-3-4": `8割以上の案件で4名以上が意思決定に関与しています。
+            コンテンツは担当者1人を動かすだけでなく、
+            組織全体を動かす説得資料としての機能が求められます。`,
+    "t-bt-3-5": `「社内での説明・提案資料として活用できる」(43.8%)という回答は、
+        コンテンツが担当者の<strong>社内稟議を通すためのツール</strong>として機能していることを示しています。
+        客観的な業界数値データは、担当者が上位者を説得するための強力な武器になります。`,
+    "t-bt-3-6": `政府統計や業界団体のデータは一定の信頼性がある一方、
+        ニッチな業界課題や最新の現場感を反映しきれないことが多いです。
+        <strong>ベンダー独自の業界調査データ</strong>は、公的データでは見えない
+        「現場のリアル」を数値で示すことができます。`,
+    "t-bt-4-1": `業界特化型コンテンツの必要性は理解していても、
+        「複数業界向けにコンテンツを作るのはコストと手間がかかりすぎる」という声は多いです。
+        しかし、正しい設計方針を持てば、<strong>横展開コストは大幅に削減できます。</strong>`,
+    "t-bt-4-2": `コストと手間の問題は、<strong>「共通構造＋課題差し替え」方式</strong>で
+            解決できます。ゼロから作り直すのではなく、骨格を共通化し、
+            業界固有の要素のみを入れ替える設計思想が鍵です。`,
+    "t-bt-closing-1": `本ガイドで紹介したデータが示すように、BtoBコンテンツの課題の本質は
+      「量」ではなく「構造」にあります。誰に向けた、どのような前提でのメッセージかを
+      GTM視点で定義することが、コンテンツが届く・読まれる・活用される
+      ための大前提です。`,
+    "t-bt-closing-2": `業界固有の課題・文脈に寄り添ったコンテンツが「自分たち向けの情報」と認識される鍵であり、
+      そのためのエビデンスとして独自業界調査は最も効果的な手段です。
+      独自業界調査は「自分ごと化」の促進と社内合意形成の支援を同時に実現し、
+      <strong>1回の調査投資でコンテンツマーケティング全体を底上げする</strong>可能性を持っています。`,
+    "t-qt-1": `ベンダーに初めて問い合わせた時点での社内検討の状況と、初回ミーティング時点での購買条件の決定度合いについて教えてください。`,
+    "t-qt-2": `自社のBtoBマーケティングコンテンツは、ターゲットに「自分たち向けだ」と受け取られていると思いますか？`,
+    "t-qt-3": `「自分たち向けではない」と判断した理由を教えてください。（複数回答）`,
+    "t-qt-4": `BtoBコンテンツを読んで「自分たちの業界向けだ」と感じる要素は何ですか？（複数回答）`,
+    "t-qt-5": `直近の案件で、購入の意思決定に関与した人数を教えてください。また、業界特化コンテンツを読みたい理由は何ですか？`,
+    "t-qt-6": `業界別コンテンツを十分に作成できていない最大の理由は何ですか？`,
+    "t-qm-1": `調査対象：BtoB購買担当者111名 ／ 調査期間：2025年6月`,
+    "t-qm-2": `調査対象：BtoBマーケティングコンテンツ制作担当者111名 ／ 2026年1月`,
+    "t-qm-3": `調査対象：BtoBコンテンツ受け手97名（経験者のみ）`,
+    "t-qm-4": `調査対象：BtoBコンテンツ受け手111名 ／ 2026年1月`,
+    "t-qm-5": `調査対象：BtoB購買担当者 ／ 2025年6月・2026年1月`,
+    "t-qm-6": `調査対象：業界別作成できていない担当者16名`,
+    "t-dbt-1": `初回ミーティング時点で<br/>購買条件が「決まっている」`,
+    "t-dbt-2": `制作担当者の<br/>「コンテンツが届いている」認識`,
+    "t-dbt-3": `受け手が「自分たち向けでない」<br/>コンテンツに出会った経験`,
+    "t-dbt-4": `「BtoBコンテンツは<br/>業界別に作成すべき」と回答`,
+    "t-dbt-5": `「業界特化型コンテンツを<br/>読みたい」と回答`,
+    "t-dbt-6": `購入意思決定に<br/>「4人以上が関与している」`,
+    "t-dbt-7": `ベンダー独自の業界調査データがあると<br/>「信頼度が高まる」`,
+    "t-dbt-8": `独自業界調査データを必要とする理由<br/>「ターゲットの自分ごと化を促進できる」`,
+    "t-dbt-9": `業界別コンテンツ作成の<br/>最大のハードル`,
+    "t-dd-1": `初回ミーティング時点で購買条件が<br/>「ほとんど決まっている」(18%)＋「やや決まっている」(55%)の合計`,
+    "t-dd-2": `「非常にそう思う」(19%)＋「ある程度そう思う」(59%)＋「どちらとも言えない」(9%)`,
+    "t-dd-3": `「頻繁にあった」(37%)＋「数回あった」(41%)＋「1〜2回あった」(9%)の合計`,
+    "t-dd-4": `「非常にそう思う」(27%)＋「ややそう思う」(60%)の合計 = 86.5%`,
+    "t-dd-5": `「非常にそう思う」(23%)＋「ややそう思う」(57%)の合計 = 80.2%`,
+    "t-dd-6": `4〜5名(24%)＋6〜8名(23%)＋9〜11名(18%)＋12名以上(19%)の合計 = 83.6%`,
+    "t-dd-7": `「非常に高まる」(19%)＋「やや高まる」(65%)の合計 = 83.8%`,
+    "t-dd-8": `「自分ごと化を促進できるから」と回答した制作担当者 70.4%`,
+    "t-dd-9": `「コスト・手間がかかりすぎる」が作成できない理由の第1位 (11/16=68.8%)`,
+    "t-ds-1": `出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)`,
+    "t-ds-2": `出典：IDEATECH制作担当者調査(n=111)`,
+    "t-ds-3": `出典：IDEATECH受け手調査(n=111)`,
+    "t-ds-4": `出典：IDEATECH制作担当者調査(n=111)`,
+    "t-ds-5": `出典：IDEATECH受け手調査(n=111)`,
+    "t-ds-6": `出典：IDEATECH「中小企業と意思決定プロセスの違い調査」(n=110)`,
+    "t-ds-7": `出典：IDEATECH受け手調査(n=111)`,
+    "t-ds-8": `出典：IDEATECH制作担当者調査(n=98、調査必要と回答者)`,
+    "t-ds-9": `出典：IDEATECH制作担当者調査(n=16、未作成者のみ)`,
+    "t-sl-1": `BtoB購買担当者が<br/>「コンテンツの量に<br/>圧倒された経験がある」`,
+    "t-sl-2": `受け手が「自分たち向けでない」<br/>コンテンツに出会った<br/>経験がある`,
+    "t-sl-3": `初回問い合わせ前に<br/>閲覧するコンテンツ数<br/>（平均）`,
+    "t-sl-4": `業界別コンテンツを<br/>作成すべきと認識`,
+    "t-sl-5": `独自調査で<br/>コンテンツ信頼度向上`,
+    "t-sl-6": `自分ごと化促進に<br/>独自データが必要`,
+    "t-ss-1": `※業界調査参照値`,
+    "t-ss-2": `出典：IDEATECH受け手調査(n=111)`,
+    "t-ss-3": `出典：IDEATECH購買プロセス調査(n=92)`,
+    "t-ss-4": `制作担当者調査`,
+    "t-ss-5": `受け手調査`,
+    "t-ss-6": `制作担当者調査`,
+    "t-hbt-1": `「自分たちむけではない」と感じた理由（複数回答、n=97）`,
+    "t-hbt-2": `「自分たちの業界向けだ」と感じる要素（複数回答、n=111）`,
+    "t-hbt-3": `業界特化型コンテンツを読みたい理由（n=89）`,
+    "t-hs-1": `出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」`,
+    "t-hs-2": `出典：IDEATECH「BtoBマーケティングコンテンツに対する受け手の実態調査」`,
+    "t-hs-3": `出典：IDEATECH受け手調査`,
+    "t-hn-1": `会社規模に合わない（大企業向け・中小向けなど）`,
+    "t-hn-2": `自分の役割・職種向けではない`,
+    "t-hn-3": `自社の業界に合わない`,
+    "t-hn-4": `一般論すぎる・抽象的すぎる`,
+    "t-hn-5": `事例が自社の状況と無関係`,
+    "t-hn-6": `業界特有の用語・前提が違う`,
+    "t-hn-7": `業界内の実際の企業・事例が紹介されている`,
+    "t-hn-8": `業界の現状や課題を示す調査データが含まれている`,
+    "t-hn-9": `競合他社との比較情報がある`,
+    "t-hn-10": `業界名が明記されている`,
+    "t-hn-11": `業界関係者の声・インタビューがある`,
+    "t-hn-12": `業界特有の実務用語が使われている`,
+    "t-hn-13": `規制・制度・法令への言及がある`,
+    "t-hn-14": `同業他社の取り組みや状況を把握できる`,
+    "t-hn-15": `課題解決に直接役立てられる`,
+    "t-hn-16": `社内での説明・提案資料として活用できる`,
+    "t-hn-17": `具体的なアクションプランに繋げられる`,
+    "t-hn-18": `業界特有のリスクや規制を把握できる`,
+    "t-sh-4step": `横展開を実現する4ステップ`,
+    "t-cnb-1": `第1章`,
+    "t-cnb-2": `第2章`,
+    "t-cnb-3": `第3章`,
+    "t-cnb-4": `第4章`,
+    "t-cb-1": `監修者コラム 1`,
+    "t-cb-2": `監修者コラム 2`,
+    "t-ct-1": `GTM戦略は「勝てる市場」に集中するための設計図`,
+    "t-ct-2": `業界調査データで、マーケ・PR・営業を一本につなぐ`,
+    "t-cbody-1": `エンタープライズ企業でも、使える人や時間、お金は無限ではありません。だからこそ、利益が出る市場にリソースを「戦力」として集中させる必要があります。これを決めるのが、GTM戦略です。<br/><br/>
+          GTM戦略の土台は、<strong>セグメンテーションとフラグメンテーション</strong>です。まずセグメンテーションで「利益が出る市場（＝狙うセグメント）」を決めます。次に、そのセグメントの中をフラグメンテーションして、企業ごとの単位に分けていきます。同時に、「絶対にやらないセグメント」も明確にします。やることとやらないことをはっきりさせて、利益が出る市場にだけ集中するためです。<br/><br/>
+          そのうえで、マーケティング、インサイドセールス、営業、カスタマーサクセスが連携した計画を作ります。<strong>GTM戦略は、全ロールに共通する北極星になります。</strong>各チームが何をすべきかを、同じ方向に向けて導いてくれます。`,
+    "t-cbody-2": `業界調査データの活用は、その業界特有の<strong>顕在課題と、顧客自身も気づいていない潜在課題の両面</strong>を浮き彫りにします。これは、GTM戦略におけるマーケティングの精度向上や、見込み客開拓におけるアプローチの質を劇的に高める有効な武器となります。<br/><br/>
+          さらに、このデータを軸にすることで、<strong>PRとマーケティングの共通言語化と共同メディアターゲット化</strong>が可能になります。メディア露出による認知向上と、メディアでの調査レポートのダウンロードやウェビナーによるリード獲得を、同時に実現できるのです。<br/><br/>
+          加えてこのデータは、<strong>営業資料としてもとても重宝されます。</strong>営業組織は業種別で動いていることが多く、業界ごとの根拠があると説明が通りやすいからです。1つの調査データが、マーケ・PR・営業の三部門を共通言語でつなぐ役割を果たします。`,
+    "t-hb1-h4": `営業担当者を介さない購買体験が増加`,
+    "t-hb1-ul": `<li>購買担当者の多くがWeb上のコンテンツで候補を絞り込む</li>
+<li>初回問い合わせ前に平均7〜10点のコンテンツを閲覧</li>
+<li>マーケティング起点での商談創出の重要性が急速に高まっている</li>`,
+    "t-hb2-h4": `なぜ「自分たち向けではない」と感じるのか — 受け手の本音`,
+    "t-hb2-p": `受け手が「自分たち向けではない」と感じる理由の上位は、業界・規模・役割のミスマッチ。<br/>
+        汎用的なコンテンツが初期段階で検討対象外になっていることが明らかです。`,
+    "t-hb3-h4": `1回の調査投資で3つのマーケティング目的をカバー`,
+    "t-hb3-p": `業界特化型の調査データは、単一コンテンツの素材にとどまりません。<br/>
+        「調査レポート→ガイドブック→メルマガ→プレスリリース」へと展開することで、
+        1回の調査投資で複数のマーケティング目的を同時にカバーできます。`,
+    "t-hb3-ul": `<li><strong>リード獲得：</strong>調査レポートのダウンロードで新規リードを獲得</li>
+<li><strong>ナーチャリング：</strong>ガイドブック・メルマガで継続的な接点を維持</li>
+<li><strong>認知拡大：</strong>プレスリリース・SNS拡散でブランド認知を向上</li>`,
+    "t-sn-1": `STEP 01`,
+    "t-sn-2": `STEP 02`,
+    "t-sn-3": `STEP 03`,
+    "t-sn-4": `STEP 04`,
+    "t-st-1": `ターゲット定義`,
+    "t-st-2": `インサイト設定`,
+    "t-st-3": `メッセージ設計`,
+    "t-st-4": `エビデンス強化`,
+    "t-sd-1": `「誰の」課題か<br/>業界・規模・役職`,
+    "t-sd-2": `「何が」本質課題か<br/>業界固有の文脈`,
+    "t-sd-3": `「どう届けるか」<br/>チャネル×フォーマット`,
+    "t-sd-4": `独自調査データで<br/>説得力を付加`,
+    "t-icn-1": `横展開の鍵`,
+    "t-icn-2": `STEP 01`,
+    "t-icn-3": `STEP 02`,
+    "t-icn-4": `STEP 03`,
+    "t-ict-1": `共通構造＋課題差し替え方式`,
+    "t-ict-2": `共通構造の設計`,
+    "t-ict-3": `業界別調査の実施`,
+    "t-ict-4": `コンテンツ差し替え`,
+    "t-icb-1": `基本的な価値提案・ソリューション構造は共通化し、
+              各業界固有の課題設定・事例・データだけを差し替えます。
+              業界特化型の調査データは、この「課題差し替え要素」として最も有効です。`,
+    "t-icb-2": `価値提案・製品説明・導入効果など、業界を問わず共通する骨格を先に設計する。`,
+    "t-icb-3": `ターゲット業界ごとに現状・課題・ニーズを問う独自調査を実施。
+            これが横展開の中心的な「差し替え素材」になる。`,
+    "t-sct-1": `スタンダードパッケージ<br/>（1業界あたり）`,
+    "t-sct-2": `複数業界プラン<br/>（2業界目以降）`,
+    "t-sct-3": `オプションメニュー`,
+    "t-sct-4": `コンテンツ設計サポート`,
+    "t-scd-1": `<strong>含まれるもの：</strong><br/>
+          調査設計・実施・分析、調査レポート、
+          ガイドブック、メルマガ、プレスリリース<br/><br/>
+          3つのマーケティング目的（リード獲得・ナーチャリング・認知拡大）を
+          1回の調査投資でカバー。`,
+    "t-scd-2": `<strong>共通構造化によるコスト削減：</strong><br/>
+          1業界目で設計した共通骨格を活用し、
+          2業界目以降は課題差し替えのみで対応。
+          複数業界展開のコストを大幅に抑制します。`,
+    "t-scd-3": `展開チャネルや活用シーンに応じた追加メニューを用意。
+          ウェビナー資料、LP、広告クリエイティブ、
+          営業資料への転用など柔軟に対応します。`,
+    "t-scd-4": `GTM視点でのターゲット定義から始まり、
+          調査設計・コンテンツ構成・配信戦略まで
+          一貫してサポート。社内リソース不足を解消します。`,
+    "t-svc-cta-p": `「どの業界から始めるべきか」「自社のサービスにはどのような調査テーマが適しているか」<br/>
+        といったご相談も承っております。GTM戦略に基づく業界特化型コンテンツの設計について、<br/>
+        お気軽にお問い合わせください。`,
+    "t-svc-cta-note": `ideatech.jp ｜ 無料相談受付中`,
+    "t-cover-date": `調査期間：2026年1月<br/>
+        有効サンプル：各111名`,
+    "t-sup-name": `北川 裕康`
   },
   en: {
     "t-header-label": "BtoB Content Marketing Guide",
@@ -2131,7 +2286,153 @@ const TRANSLATIONS = {
     "t-svc-eyebrow": "IDEATECH SERVICE",
     "t-svc-title": "IDEATECH's Industry-Specific<br>Content Package",
     "t-svc-subtitle": "We provide everything from research design to content creation and distribution.<br>Launch industry-specific content at minimum time and cost.",
-    "t-cta-link": "Contact Us / Request Materials",
+    "t-cta-link": "Contact Us / Request Materials",,
+    "t-bt-1-1": `BtoB buying behavior has changed dramatically. Today's purchasing managers conduct their own research and narrow down candidates before ever contacting a sales representative. As the data below shows, <strong>purchasing conditions are largely decided by the time of the first meeting.</strong>`,
+    "t-bt-1-2": `About 70% of purchasing managers have already formed their purchasing conditions before reaching out. This means that <strong>if you're not included as a candidate through marketing, you can't even get to the negotiation table</strong> in today's market.`,
+    "t-bt-1-3": `The advancement of MA tools, advertising, and CRM systems has enabled companies to deliver large volumes of information to prospects at low cost. As a result, BtoB purchasing managers receive an overwhelming amount of information, and <strong>have become accustomed to quickly filtering out content they see as irrelevant.</strong>`,
+    "t-bt-1-4": `<strong>GTM (Go to Market) strategy</strong> is a framework for planning in advance how to deliver your products and services — defining 'who (target market)', 'what (value)', and 'how (channel)'. Practicing GTM means defining the market by industry, designing content aligned with industry-specific challenges, and delivering it through the right channels.`,
+    "t-bt-2-1": `A significant perception gap exists between content senders (marketers) and receivers (purchasing managers). While many marketers feel their content reaches their intended targets, the vast majority of receivers feel that most content is <em>'not for us.'</em>`,
+    "t-bt-2-2": `Regulations, business processes, and technology differ greatly between industries. Even for the same challenge like 'digital transformation,' the constraints, stakeholders, and decision-making processes are completely different between manufacturing and financial services.`,
+    "t-bt-2-3": `While about 90% of content creators recognize the need for industry-specific content, many companies still rely on generic content in practice. <strong>Closing this execution gap represents a major competitive differentiation opportunity.</strong>`,
+    "t-bt-3-1": `What is most effective for making recipients feel content is 'for them'? The most effective element is <strong>'actual company cases within the industry,'</strong> but even without that, <em>proprietary survey data showing industry conditions and challenges</em> is highly effective in second place.`,
+    "t-bt-3-2": `Case studies are the most effective, but companies often don't have relevant examples for their target industry. Even so, <em>proprietary survey data</em> that presents industry-wide challenge metrics can strongly drive self-relevance — <strong>data effectively serves as a substitute for case studies.</strong>`,
+    "t-bt-3-3": `BtoB purchasing processes involve multiple stakeholders in a collective decision-making structure. Content must not only motivate the individual recipient, but also serve as <strong>persuasive material for that person to convince colleagues and management</strong> within their organization.`,
+    "t-bt-3-4": `In over 80% of deals, 4 or more people are involved in the decision. Content needs to <strong>move not just one person, but the entire organization</strong> — and industry-specific data backed by numbers is the most effective tool for this.`,
+    "t-bt-3-5": `The 43.8% who cited 'can be used as internal explanation or proposal materials' demonstrates that content functions as a tool for <strong>recipients to obtain internal approval.</strong> Objective industry data backed by numbers supports consensus-building across multiple stakeholders.`,
+    "t-bt-3-6": `While government statistics and industry association data have credibility, they often cannot reflect niche industry challenges or the latest on-the-ground realities. <strong>Vendor-proprietary industry survey data</strong> can reveal the 'real picture on the ground' that public data misses.`,
+    "t-bt-4-1": `Even when companies understand the need for industry-specific content, many feel that 'creating content for multiple industries requires too much cost and effort.' However, with the right design approach, <strong>horizontal expansion costs can be dramatically reduced.</strong>`,
+    "t-bt-4-2": `The cost and effort challenge can be solved with a <strong>'common structure + issue replacement' approach.</strong> Rather than starting from scratch each time, the key is to standardize the framework and only replace the industry-specific elements.`,
+    "t-bt-closing-1": `As the data presented in this guide demonstrates, the core issue with BtoB content is not 'quantity' but <strong>'structure.'</strong> Clearly defining who the message is for and what assumptions it's based on — from a GTM perspective — is the fundamental prerequisite for content that gets delivered, read, and put to use.`,
+    "t-bt-closing-2": `Content that aligns with industry-specific challenges and context is the key to being recognized as 'relevant information for us.' Proprietary industry research simultaneously supports 'self-relevance' and internal consensus-building, with the potential to <strong>elevate your entire content marketing strategy with a single research investment.</strong>`,
+    "t-qt-1": `Please tell us the status of your internal review at the time of your first inquiry to a vendor, and the degree to which purchasing conditions were determined at the first meeting.`,
+    "t-qt-2": `Do you believe your company's BtoB marketing content is perceived by your target audience as 'intended for us'?`,
+    "t-qt-3": `Please tell us why you determined the content was 'not intended for us.' (Multiple answers allowed)`,
+    "t-qt-4": `What elements of BtoB content make you feel it is 'designed for our industry'? (Multiple answers allowed)`,
+    "t-qt-5": `In your most recent deal, how many people were involved in the purchase decision? Also, why do you want to read industry-specific content?`,
+    "t-qt-6": `What is the biggest reason you are unable to create sufficient industry-specific content?`,
+    "t-qm-1": `Respondents: 111 BtoB purchasing managers ／ Survey period: June 2025`,
+    "t-qm-2": `Respondents: 111 BtoB marketing content creators ／ January 2026`,
+    "t-qm-3": `Respondents: 97 BtoB content recipients (those with relevant experience)`,
+    "t-qm-4": `Respondents: 111 BtoB content recipients ／ January 2026`,
+    "t-qm-5": `Respondents: BtoB purchasing managers ／ June 2025 & January 2026`,
+    "t-qm-6": `Respondents: 16 managers who have not created sufficient industry-specific content`,
+    "t-dbt-1": `Purchasing conditions 'already decided'<br>by first meeting`,
+    "t-dbt-2": `Content creators who believe their<br>'content is reaching targets'`,
+    "t-dbt-3": `Recipients who have encountered<br>content 'not intended for them'`,
+    "t-dbt-4": `Agreed that 'BtoB content should be<br>created by industry'`,
+    "t-dbt-5": `Want to read<br>industry-specific content`,
+    "t-dbt-6": `'4 or more people involved'<br>in purchase decisions`,
+    "t-dbt-7": `Vendor-proprietary industry data<br>'increases content credibility'`,
+    "t-dbt-8": `Reason for needing proprietary data:<br>'Can drive target self-relevance'`,
+    "t-dbt-9": `Top barrier to creating<br>industry-specific content`,
+    "t-dd-1": `'Mostly decided' (18%) + 'Somewhat decided' (55%) combined`,
+    "t-dd-2": `'Strongly agree' (19%) + 'Somewhat agree' (59%) + 'Neutral' (9%)`,
+    "t-dd-3": `'Frequently' (37%) + 'Several times' (41%) + '1-2 times' (9%) combined`,
+    "t-dd-4": `'Strongly agree' (27%) + 'Somewhat agree' (60%) = 86.5%`,
+    "t-dd-5": `'Strongly agree' (23%) + 'Somewhat agree' (57%) = 80.2%`,
+    "t-dd-6": `4-5 people (24%) + 6-8 (23%) + 9-11 (18%) + 12+ (19%) = 83.6%`,
+    "t-dd-7": `'Significantly increases' (19%) + 'Somewhat increases' (65%) = 83.8%`,
+    "t-dd-8": `Content creators who cited 'can drive self-relevance' = 70.4%`,
+    "t-dd-9": `'Too costly and time-consuming' ranks #1 as reason (11/16 = 68.8%)`,
+    "t-ds-1": `Source: IDEATECH "SMB Decision-Making Process Survey" (n=110)`,
+    "t-ds-2": `Source: IDEATECH Content Creator Survey (n=111)`,
+    "t-ds-3": `Source: IDEATECH Content Recipient Survey (n=111)`,
+    "t-ds-4": `Source: IDEATECH Content Creator Survey (n=111)`,
+    "t-ds-5": `Source: IDEATECH Content Recipient Survey (n=111)`,
+    "t-ds-6": `Source: IDEATECH "SMB Decision-Making Process Survey" (n=110)`,
+    "t-ds-7": `Source: IDEATECH Content Recipient Survey (n=111)`,
+    "t-ds-8": `Source: IDEATECH Content Creator Survey (n=98, those who said research is necessary)`,
+    "t-ds-9": `Source: IDEATECH Content Creator Survey (n=16, those not creating industry content)`,
+    "t-sl-1": `BtoB purchasing managers who have been<br>'overwhelmed by the volume of content'`,
+    "t-sl-2": `Recipients who have encountered content<br>'not intended for them'`,
+    "t-sl-3": `Average content pieces<br>viewed before first inquiry`,
+    "t-sl-4": `Recognize need to create<br>industry-specific content`,
+    "t-sl-5": `Proprietary research improves<br>content credibility`,
+    "t-sl-6": `Proprietary data needed to<br>drive self-relevance`,
+    "t-ss-1": `※Industry survey reference`,
+    "t-ss-2": `Source: IDEATECH Recipient Survey (n=111)`,
+    "t-ss-3": `Source: IDEATECH Purchasing Process Survey (n=92)`,
+    "t-ss-4": `Content Creator Survey`,
+    "t-ss-5": `Content Recipient Survey`,
+    "t-ss-6": `Content Creator Survey`,
+    "t-hbt-1": `Reasons content felt 'not intended for us' (Multiple responses, n=97)`,
+    "t-hbt-2": `Elements that make content feel 'designed for our industry' (Multiple responses, n=111)`,
+    "t-hbt-3": `Reasons for wanting to read industry-specific content (n=89)`,
+    "t-hs-1": `Source: IDEATECH "BtoB Marketing Content Recipient Survey"`,
+    "t-hs-2": `Source: IDEATECH "BtoB Marketing Content Recipient Survey"`,
+    "t-hs-3": `Source: IDEATECH Content Recipient Survey`,
+    "t-hn-1": `Doesn't match company size (enterprise vs. SMB)`,
+    "t-hn-2": `Not relevant to my role or job function`,
+    "t-hn-3": `Doesn't apply to our industry`,
+    "t-hn-4": `Too generic or abstract`,
+    "t-hn-5": `Case studies are unrelated to our situation`,
+    "t-hn-6": `Different industry-specific terminology or assumptions`,
+    "t-hn-7": `Actual company cases within the industry are featured`,
+    "t-hn-8": `Survey data showing industry conditions and challenges is included`,
+    "t-hn-9": `Competitor comparison information is provided`,
+    "t-hn-10": `Industry name is explicitly stated`,
+    "t-hn-11": `Voices or interviews from industry practitioners are included`,
+    "t-hn-12": `Industry-specific terminology is used`,
+    "t-hn-13": `References to regulations, policies, or laws are included`,
+    "t-hn-14": `Can understand what peers in the industry are doing`,
+    "t-hn-15": `Directly applicable to solving our challenges`,
+    "t-hn-16": `Can be used as internal explanation or proposal materials`,
+    "t-hn-17": `Can be linked to concrete action plans`,
+    "t-hn-18": `Can understand industry-specific risks and regulations`,
+    "t-sh-4step": `4 Steps to Achieve Horizontal Expansion`,
+    "t-cnb-1": `Chapter 1`,
+    "t-cnb-2": `Chapter 2`,
+    "t-cnb-3": `Chapter 3`,
+    "t-cnb-4": `Chapter 4`,
+    "t-cb-1": `Expert Column 1`,
+    "t-cb-2": `Expert Column 2`,
+    "t-ct-1": `GTM Strategy: A Blueprint for Focusing on Winnable Markets`,
+    "t-ct-2": `Connecting Marketing, PR, and Sales Through Industry Research Data`,
+    "t-cbody-1": `Even enterprise companies have finite people, time, and budget. That's why you must concentrate resources like military force on markets where you can generate profit. That's the role of GTM strategy.<br><br>The foundation of GTM strategy is <strong>segmentation and fragmentation.</strong> First, use segmentation to identify the 'profitable market (= the segment you'll target).' Then use fragmentation to break that segment down into individual company units. At the same time, clearly define 'segments you will never pursue' — this focus is what enables concentration on profitable markets.<br><br>From there, build a coordinated plan spanning marketing, inside sales, field sales, and customer success. <strong>GTM strategy becomes the North Star for every role on the team,</strong> pointing each team member in the same direction.`,
+    "t-cbody-2": `Industry research data surfaces both the <strong>obvious challenges unique to the industry and latent challenges customers haven't yet recognized.</strong> This becomes a powerful weapon that dramatically improves the precision of GTM marketing and the quality of prospecting.<br><br>Furthermore, this data enables <strong>a shared language between PR and marketing, along with coordinated media targeting.</strong> You can simultaneously achieve brand awareness through media exposure and lead generation through report downloads or webinar registrations promoted via media newsletters.<br><br>This data is also <strong>extremely valuable as a sales tool.</strong> Sales organizations often operate by industry vertical, and having industry-specific evidence makes it much easier to get internal approval — one set of research data connects marketing, PR, and sales through a common language.`,
+    "t-hb1-h4": `Self-service buying journeys are on the rise`,
+    "t-hb1-p": `Most purchasing managers now use web content to narrow down vendors before engaging sales. This means getting into the consideration set through marketing content is more critical than ever.`,
+    "t-hb1-ul": `<li>Most buyers narrow down candidates using online content before contacting sales</li><li>An average of 7–10 pieces of content are viewed before the first inquiry</li><li>The importance of marketing-driven pipeline creation is growing rapidly</li>`,
+    "t-hb2-h4": `Why do recipients feel content is 'not for us'? — The honest truth`,
+    "t-hb2-p": `The top reasons recipients reject content as 'not for us' are mismatches in industry, company size, and role. This data confirms that generic content is being filtered out at the very first stage of consideration.`,
+    "t-hb3-h4": `Cover 3 marketing goals with a single research investment`,
+    "t-hb3-p": `Industry-specific research data is not just material for a single piece of content. By expanding from 'research report → guide book → email newsletter → press release,' a single research investment simultaneously covers multiple marketing goals.`,
+    "t-hb3-ul": `<li><strong>Lead generation:</strong> Acquire new leads through research report downloads</li><li><strong>Nurturing:</strong> Maintain ongoing touchpoints with guide books and newsletters</li><li><strong>Brand awareness:</strong> Expand reach with press releases and social media</li>`,
+    "t-sn-1": `STEP 01`,
+    "t-sn-2": `STEP 02`,
+    "t-sn-3": `STEP 03`,
+    "t-sn-4": `STEP 04`,
+    "t-st-1": `Target Definition`,
+    "t-st-2": `Insight Setting`,
+    "t-st-3": `Message Design`,
+    "t-st-4": `Evidence Building`,
+    "t-sd-1": `Whose challenges?<br>Industry / size / role`,
+    "t-sd-2": `What is the core issue?<br>Industry-specific context`,
+    "t-sd-3": `How to deliver?<br>Channel × format`,
+    "t-sd-4": `Add credibility with<br>proprietary research data`,
+    "t-icn-1": `Key to Expansion`,
+    "t-icn-2": `STEP 01`,
+    "t-icn-3": `STEP 02`,
+    "t-icn-4": `STEP 03`,
+    "t-ict-1": `Common Structure + Issue Replacement`,
+    "t-ict-2": `Design the Common Structure`,
+    "t-ict-3": `Conduct Industry-Specific Research`,
+    "t-ict-4": `Replace Content by Industry`,
+    "t-icb-1": `Standardize the shared framework — value proposition, product explanation, implementation outcomes — that applies across all industries first.`,
+    "t-icb-2": `Conduct proprietary research asking about current conditions, challenges, and needs specific to each target industry. This becomes the core 'replacement material' for horizontal expansion.`,
+    "t-icb-3": `Replace the 'issue framing, data, and case studies' sections of the common framework with industry research results to efficiently produce content for each vertical.`,
+    "t-sct-1": `Standard Package<br>(per industry)`,
+    "t-sct-2": `Multi-Industry Plan<br>(2nd industry onward)`,
+    "t-sct-3": `Optional Add-ons`,
+    "t-sct-4": `Content Strategy Support`,
+    "t-scd-1": `<strong>Includes:</strong><br>Research design, fieldwork & analysis, research report, industry-specific guide book, email newsletter, press release<br><br>One research investment covers 3 marketing goals: lead generation, nurturing, and brand awareness.`,
+    "t-scd-2": `<strong>Cost reduction through shared structure:</strong><br>Leverage the common framework built for the first industry, and apply it to subsequent industries by replacing only the issue-specific elements. Significantly reduces multi-industry expansion costs.`,
+    "t-scd-3": `Additional menu items available based on your distribution channels and use cases — webinar decks, landing pages, sales enablement materials, and more.`,
+    "t-scd-4": `End-to-end support from target definition based on GTM strategy, through research design, content planning, and distribution strategy. Resolves internal resource constraints.`,
+    "t-svc-cta-p": `We also welcome consultations on 'which industry to start with' or 'what research themes are best suited to our services.'<br>Feel free to reach out about designing industry-specific content based on GTM strategy.`,
+    "t-svc-cta-note": `ideatech.jp ｜ Free consultation available`,
+    "t-cover-date": `Survey period: January 2026<br>Sample size: 111 per survey`,
+    "t-sup-name": `Hiroyasu Kitagawa`
   }
 };
 
@@ -2157,6 +2458,5 @@ function setLang(lang) {
 // Check URL hash on load
 if (location.hash === '#en') setLang('en');
 </script>
-
 </body>
 </html>
