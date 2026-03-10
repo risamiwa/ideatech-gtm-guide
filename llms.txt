@@ -1,0 +1,33 @@
+# IDEATECH BtoB Content Marketing Research Guide
+
+> A research guide on designing industry-specific BtoB content from a Go to Market (GTM) perspective. Based on 3 proprietary surveys (n=111 each). Available in Japanese and English.
+
+## Pages
+
+- [Full Interactive Guide](https://risamiwa.github.io/ideatech-gtm-guide/): HTML guide with charts and JA/EN toggle
+- [AI Data Index](https://risamiwa.github.io/ideatech-gtm-guide/ai.html): Structured JSON data for AI citation and reference
+
+## Key Statistics
+
+- 72.7%: BtoB buyers have purchasing conditions decided by first meeting (Survey 3, Q10, n=110)
+- 87.3%: Content creators believe content reaches intended targets (Survey 1, Q2, n=111)
+- 86.5%: Content creators agree BtoB content should be industry-specific (Survey 1, Q5, n=111)
+- 80.2%: Content recipients want to read industry-specific content (Survey 2, Q6, n=111)
+- 83.6%: Purchase decisions involve 4 or more stakeholders (Survey 3, Q4, n=110)
+- 58.6%: Recipients say "industry case studies" make content feel relevant (Survey 2, Q8, n=111)
+- 43.2%: Recipients say "industry survey data" makes content feel relevant (Survey 2, Q8, n=111)
+- 83.8%: Recipients say vendor-proprietary data increases content credibility (Survey 2, Q9, n=111)
+- 70.4%: Content creators say proprietary research drives target self-relevance (Survey 1, Q10, n=98)
+- 69.7%: Recipients want industry content to understand peer activity (Survey 2, Q7, n=89)
+- 43.8%: Recipients want industry content to use as internal proposal materials (Survey 2, Q7, n=89)
+- 68.8%: Content creators cite cost/effort as top barrier to industry-specific content (Survey 1, Q7, n=16)
+
+## About
+
+- Publisher: IDEATECH Inc.
+- Contact: https://ideatech.jp/
+- Supervisor: Hiroyasu Kitagawa — GTM Strategy & BtoB Marketing Advisor
+- Supervisor career: Microsoft Managing Executive Officer, Cisco Systems Head of Marketing, AI inside Executive VP & CPO, RevComm Head of Marketing, SAS Institute Managing Executive Officer
+- Survey method: Internet research
+- Survey period: January 2026 (Surveys 1 & 2), June 2025 (Survey 3)
+- Sample size: n=111 per survey
