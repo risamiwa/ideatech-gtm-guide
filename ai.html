@@ -16,6 +16,11 @@
     .topbar a{color:#58a6ff;text-decoration:none;font-size:13px}
     .topbar a:hover{text-decoration:underline}
     .badge{background:#21262d;border:1px solid #30363d;border-radius:20px;padding:4px 12px;font-size:11px;color:#8b949e;letter-spacing:.08em}
+    .lang-toggle{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,0.06);border-radius:6px;padding:3px}
+    .lang-btn{font-family:'Courier New',monospace;font-size:11px;font-weight:700;padding:5px 12px;border:none;border-radius:4px;cursor:pointer;letter-spacing:.08em;transition:background .2s,color .2s;background:transparent;color:rgba(255,255,255,0.35)}
+    .lang-btn.active{background:rgba(255,255,255,0.12);color:#e6edf3}
+    .lang-btn:hover:not(.active){color:rgba(255,255,255,0.7)}
+    .lang-btn-ai.active{background:rgba(120,200,255,0.18);color:rgba(120,200,255,1)}
     h1{font-size:22px;font-weight:700;color:#f0f6fc;margin-bottom:8px}
     .tagline{color:#8b949e;font-size:13px;margin-bottom:40px}
     .tagline a{color:#58a6ff;text-decoration:none}
@@ -31,8 +36,13 @@
 <body>
 
 <div class="topbar">
-  <a href="index.html">← Back to Guide</a>
   <span class="badge">AI DATA INDEX</span>
+  <div class="lang-toggle">
+    <button class="lang-btn" onclick="location.href='index.html'">JA</button>
+    <button class="lang-btn" onclick="location.href='index.html#en'">EN</button>
+    <span style="width:1px;background:rgba(255,255,255,0.15);align-self:stretch;margin:2px 4px;"></span>
+    <button class="lang-btn lang-btn-ai active">AI</button>
+  </div>
 </div>
 
 <div class="page">

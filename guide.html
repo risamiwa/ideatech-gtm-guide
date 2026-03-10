@@ -1019,6 +1019,12 @@
     .lang-btn:hover:not(.active) {
       color: rgba(255,255,255,0.8);
     }
+    .lang-btn-ai {
+      color: rgba(120,200,255,0.6);
+    }
+    .lang-btn-ai:hover {
+      color: rgba(120,200,255,1) !important;
+    }
     .doc { transition: opacity 0.15s; }
     .doc.switching { opacity: 0; }
 
@@ -1042,6 +1048,8 @@
 <div class="lang-toggle">
 <button class="lang-btn active" id="btn-ja" onclick="setLang('ja')">JA</button>
 <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+<span style="width:1px;background:rgba(255,255,255,0.2);align-self:stretch;margin:2px 4px;"></span>
+<button class="lang-btn lang-btn-ai" onclick="location.href='ai.html'">AI</button>
 </div>
 </div>
 </header>
