@@ -61,9 +61,6 @@
     }
     .doc-header .logo-img {
       height: 28px;
-      background: white;
-      border-radius: 4px;
-      padding: 3px 8px;
       display: block;
     }
     .doc-header .header-title {
@@ -980,15 +977,142 @@
 
     /* ===== PRINT ===== */
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    @media print {
-      body { background: white; }
-      .doc { box-shadow: none; width: 100%; }
-      .doc-header { display: none; }
-      .dl-btn { display: none; }
-      canvas { max-width: 100% !important; }
-      .ch-header { page-break-before: always; }
+
+    /* --- @page: A4 size + running header/footer --- */
+    @page {
+      size: A4;
+      margin: 20mm 15mm;
     }
-    @page { size: A4; margin: 12mm 15mm; }
+    @page :first {
+      margin: 0;
+    }
+
+    @media print {
+      /* --- Layout reset --- */
+      body { background: white; margin: 0; }
+      .doc { box-shadow: none; width: 100%; max-width: 100%; }
+
+      /* --- Hide screen-only elements --- */
+      .doc-header { display: none !important; }
+      .dl-btn     { display: none !important; }
+
+      /* --- Canvas responsive --- */
+      canvas { max-width: 100% !important; height: auto !important; }
+
+      /* --- Chapter headers: always start a new page,
+             then stay glued to the first section below --- */
+      .ch-header {
+        break-before: page;
+        page-break-before: always;
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      /* --- Cover: force page break after, no break inside --- */
+      .cover {
+        break-after: page;
+        page-break-after: always;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        min-height: 0;
+      }
+
+      /* --- Supervisor / TOC: keep together --- */
+      .supervisor-wrap,
+      .supervisor-box,
+      .toc { break-inside: avoid; page-break-inside: avoid; }
+
+      /* NOTE: .section-inner は break-inside: avoid を外す。
+         大きすぎると丸ごと次ページに押し出されて章タイトル孤立が起きるため。
+         ページ区切りはブラウザに自然に任せ、小要素単位でのみ制御する。 */
+
+      /* --- 小要素：ここだけ分割禁止 --- */
+      .q-box,
+      .donut-box,
+      .donut-wrap,
+      .hbar-box,
+      .highlight-box,
+      .column-box,
+      .stat-box,
+      .chart-row-2,
+      .chart-row-3,
+      .info-grid,
+      .step-flow,
+      .service-card,
+      .service-package,
+      .service-cta,
+      .supervisor-box,
+      .cover-stat-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* --- Headings: ページ末尾に孤立させない --- */
+      .sec-label,
+      .sec-heading,
+      .ch-eyebrow,
+      .sec-badge,
+      .body-text + .q-box {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      /* テキストの孤立行を防ぐ */
+      .body-text, .column-body, .intro-body {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* --- Print-only running header (each page except cover) --- */
+      .print-header {
+        display: block;
+        position: running(pageHeader);
+      }
+    }
+
+    /* --- Print header/footer via named strings (Chrome/Edge) --- */
+    @page {
+      @top-left {
+        content: "Go to Market 視点で設計する、業界特化型BtoBコンテンツ";
+        font-size: 7.5pt;
+        color: #94A3B8;
+        font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+        padding-bottom: 4pt;
+        border-bottom: 0.5pt solid #E2E8F0;
+      }
+      @top-right {
+        content: "IDEATECH";
+        font-size: 8pt;
+        font-weight: bold;
+        color: #1B3F7E;
+        font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+        padding-bottom: 4pt;
+        border-bottom: 0.5pt solid #1B3F7E;
+      }
+      @bottom-left {
+        content: "© 2026 IDEATECH Inc.  All rights reserved.";
+        font-size: 7pt;
+        color: #CBD5E0;
+        font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+        padding-top: 4pt;
+        border-top: 0.5pt solid #E2E8F0;
+      }
+      @bottom-right {
+        content: counter(page);
+        font-size: 8pt;
+        color: #94A3B8;
+        font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+        padding-top: 4pt;
+        border-top: 0.5pt solid #E2E8F0;
+      }
+    }
+    /* Cover page: no header/footer */
+    @page :first {
+      @top-left   { content: none; border: none; }
+      @top-right  { content: none; border: none; }
+      @bottom-left  { content: none; border: none; }
+      @bottom-right { content: none; border: none; }
+    }
 
     /* ===== LANG TOGGLE ===== */
     .lang-toggle {
@@ -1041,7 +1165,7 @@
 <!-- ===== STICKY HEADER ===== -->
 <header class="doc-header">
 <div>
-<img alt="IDEATECH" class="logo-img" src="ideatech_logodata.png"/>
+<img alt="IDEATECH" class="logo-img" src="logo_white.png"/>
 </div>
 <div class="header-right" style="display:flex;align-items:center;gap:20px;">
 <div class="header-label" id="t-header-label">BtoBコンテンツマーケティングガイド</div>
@@ -1087,8 +1211,8 @@
 </div>
 </div>
 <div class="cover-bottom">
-<div class="cover-logo-badge" style="background:white; border:none; padding:8px 20px;">
-<img alt="IDEATECH" src="ideatech_logodata.png" style="height:26px; display:block;"/>
+<div class="cover-logo-badge" style="background:none; border:none; padding:0;">
+<img alt="IDEATECH" src="logo_white.png" style="height:32px; display:block;"/>
 </div>
 <div class="cover-date" id="t-cover-date">
         調査期間：2026年1月<br/>
@@ -1210,7 +1334,7 @@
 <canvas id="donut1"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">72</span><span class="donut-unit">%</span>
-<div class="donut-sub">「ほとんど」＋「やや」</div>
+<div class="donut-sub" id="t-dsub-1">「ほとんど」＋「やや」</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-1">初回ミーティング時点で購買条件が<br/>「ほとんど決まっている」(18%)＋「やや決まっている」(55%)の合計</div>
@@ -1335,7 +1459,7 @@
         マーケターは多い一方、受け手の大多数は「自分たち向けではない」と感じています。
       </p>
 <div class="q-box">
-<div class="q-tag">SURVEY Q（制作担当者）</div>
+<div class="q-tag" id="t-qtag-1">SURVEY Q（制作担当者）</div>
 <div class="q-text" id="t-qt-2">自社のBtoBマーケティングコンテンツは、ターゲットに「自分たち向けだ」と受け取られていると思いますか？</div>
 <div class="q-meta" id="t-qm-2">調査対象：BtoBマーケティングコンテンツ制作担当者111名 ／ 2026年1月</div>
 </div>
@@ -1346,7 +1470,7 @@
 <canvas id="donut2"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">87</span><span class="donut-unit">%</span>
-<div class="donut-sub">「そう思う」合計</div>
+<div class="donut-sub" id="t-dsub-2">「そう思う」合計</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-2">「非常にそう思う」(19%)＋「ある程度そう思う」(59%)＋「どちらとも言えない」(9%)</div>
@@ -1358,7 +1482,7 @@
 <canvas id="donut2b"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct" style="color:var(--orange);">87</span><span class="donut-unit" style="color:var(--orange);">%</span>
-<div class="donut-sub">「ある」と回答</div>
+<div class="donut-sub" id="t-dsub-2b">「ある」と回答</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-3">「頻繁にあった」(37%)＋「数回あった」(41%)＋「1〜2回あった」(9%)の合計</div>
@@ -1371,7 +1495,7 @@
         汎用的なコンテンツが初期段階で検討対象外になっていることが明らかです。</p>
 </div>
 <div class="q-box">
-<div class="q-tag">SURVEY Q（受け手）</div>
+<div class="q-tag" id="t-qtag-2">SURVEY Q（受け手）</div>
 <div class="q-text" id="t-qt-3">「自分たち向けではない」と判断した理由を教えてください。（複数回答）</div>
 <div class="q-meta" id="t-qm-3">調査対象：BtoBコンテンツ受け手97名（経験者のみ）</div>
 </div>
@@ -1408,7 +1532,7 @@
 <div class="section-inner" style="padding-top:48px;">
 <div class="sec-label">
 <span class="sec-badge">2-2</span>
-<span class="sec-title">BtoB市場における業界別課題構造と深度</span>
+<span class="sec-title" id="t-sec2-2">BtoB市場における業界別課題構造と深度</span>
 </div>
 <p class="body-text" id="t-bt-2-2">
         業界ごとに制度・業務プロセス・技術が大きく異なります。
@@ -1423,7 +1547,7 @@
 <canvas id="donut3"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">86</span><span class="donut-unit">%</span>
-<div class="donut-sub">制作担当者</div>
+<div class="donut-sub" id="t-dsub-3">制作担当者</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-4">「非常にそう思う」(27%)＋「ややそう思う」(60%)の合計 = 86.5%</div>
@@ -1435,7 +1559,7 @@
 <canvas id="donut4"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">80</span><span class="donut-unit">%</span>
-<div class="donut-sub">受け手</div>
+<div class="donut-sub" id="t-dsub-4">受け手</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-5">「非常にそう思う」(23%)＋「ややそう思う」(57%)の合計 = 80.2%</div>
@@ -1476,7 +1600,7 @@
         次いで有効であることが分かっています。
       </p>
 <div class="q-box">
-<div class="q-tag">SURVEY Q（受け手）</div>
+<div class="q-tag" id="t-qtag-3">SURVEY Q（受け手）</div>
 <div class="q-text" id="t-qt-4">BtoBコンテンツを読んで「自分たちの業界向けだ」と感じる要素は何ですか？（複数回答）</div>
 <div class="q-meta" id="t-qm-4">調査対象：BtoBコンテンツ受け手111名 ／ 2026年1月</div>
 </div>
@@ -1531,7 +1655,7 @@
         機能しなければなりません。
       </p>
 <div class="q-box">
-<div class="q-tag">SURVEY Q（購買担当者）</div>
+<div class="q-tag" id="t-qtag-4">SURVEY Q（購買担当者）</div>
 <div class="q-text" id="t-qt-5">直近の案件で、購入の意思決定に関与した人数を教えてください。また、業界特化コンテンツを読みたい理由は何ですか？</div>
 <div class="q-meta" id="t-qm-5">調査対象：BtoB購買担当者 ／ 2025年6月・2026年1月</div>
 </div>
@@ -1542,7 +1666,7 @@
 <canvas id="donut5"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">83</span><span class="donut-unit">%</span>
-<div class="donut-sub">4名以上が関与</div>
+<div class="donut-sub" id="t-dsub-5">4名以上が関与</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-6">4〜5名(24%)＋6〜8名(23%)＋9〜11名(18%)＋12名以上(19%)の合計 = 83.6%</div>
@@ -1605,7 +1729,7 @@
 <canvas id="donut6"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">84</span><span class="donut-unit">%</span>
-<div class="donut-sub">「高まる」と回答</div>
+<div class="donut-sub" id="t-dsub-6">「高まる」と回答</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-7">「非常に高まる」(19%)＋「やや高まる」(65%)の合計 = 83.8%</div>
@@ -1617,7 +1741,7 @@
 <canvas id="donut7"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">70</span><span class="donut-unit">%</span>
-<div class="donut-sub">制作担当者</div>
+<div class="donut-sub" id="t-dsub-7">制作担当者</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-8">「自分ごと化を促進できるから」と回答した制作担当者 70.4%</div>
@@ -1656,7 +1780,7 @@
         しかし、正しい設計方針を持てば、<strong>横展開コストは大幅に削減できます。</strong>
 </p>
 <div class="q-box">
-<div class="q-tag">SURVEY Q（制作担当者）</div>
+<div class="q-tag" id="t-qtag-5">SURVEY Q（制作担当者）</div>
 <div class="q-text" id="t-qt-6">業界別コンテンツを十分に作成できていない最大の理由は何ですか？</div>
 <div class="q-meta" id="t-qm-6">調査対象：業界別作成できていない担当者16名</div>
 </div>
@@ -1667,7 +1791,7 @@
 <canvas id="donut8"></canvas>
 <div class="donut-center-text">
 <span class="donut-pct">69</span><span class="donut-unit">%</span>
-<div class="donut-sub">手間・コストが最大の壁</div>
+<div class="donut-sub" id="t-dsub-8">手間・コストが最大の壁</div>
 </div>
 </div>
 <div class="donut-desc" id="t-dd-9">「コスト・手間がかかりすぎる」が作成できない理由の第1位 (11/16=68.8%)</div>
@@ -1813,104 +1937,104 @@
 </div>
 <!-- 成果物一覧 -->
 <div class="service-package">
-<div class="service-package-title">標準パッケージに含まれる成果物</div>
+<div class="service-package-title" id="t-spkg-title">標準パッケージに含まれる成果物</div>
 <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:32%;">成果物</th>
-<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:32%;" id="t-sth-deliverable">成果物</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;" id="t-sth-desc">内容</th>
 </tr>
 </thead>
 <tbody>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:10px 12px; font-weight:700; color:white;">業界特化型調査の設計・実査</td>
-<td style="padding:10px 12px; line-height:1.7;">ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。</td>
+<td style="padding:10px 12px; font-weight:700; color:white;" id="t-std-r1a">業界特化型調査の設計・実査</td>
+<td style="padding:10px 12px; line-height:1.7;" id="t-std-r1b">ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:10px 12px; font-weight:700; color:white;">調査レポート（ホワイトペーパー）</td>
-<td style="padding:10px 12px; line-height:1.7;">調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。</td>
+<td style="padding:10px 12px; font-weight:700; color:white;" id="t-std-r2a">調査レポート（ホワイトペーパー）</td>
+<td style="padding:10px 12px; line-height:1.7;" id="t-std-r2b">調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:10px 12px; font-weight:700; color:white;">調査リリース</td>
-<td style="padding:10px 12px; line-height:1.7;">PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。</td>
+<td style="padding:10px 12px; font-weight:700; color:white;" id="t-std-r3a">調査リリース</td>
+<td style="padding:10px 12px; line-height:1.7;" id="t-std-r3b">PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:10px 12px; font-weight:700; color:white;">業界特化型ガイドブック</td>
-<td style="padding:10px 12px; line-height:1.7;">調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。</td>
+<td style="padding:10px 12px; font-weight:700; color:white;" id="t-std-r4a">業界特化型ガイドブック</td>
+<td style="padding:10px 12px; line-height:1.7;" id="t-std-r4b">調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。</td>
 </tr>
 <tr>
-<td style="padding:10px 12px; font-weight:700; color:white;">業界特化メルマガ配信文章</td>
-<td style="padding:10px 12px; line-height:1.7;">調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。</td>
+<td style="padding:10px 12px; font-weight:700; color:white;" id="t-std-r5a">業界特化メルマガ配信文章</td>
+<td style="padding:10px 12px; line-height:1.7;" id="t-std-r5b">調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。</td>
 </tr>
 </tbody>
 </table>
 </div>
 <!-- 価格表 -->
 <div class="service-package" style="margin-bottom:20px;">
-<div class="service-package-title">価格（税別）</div>
+<div class="service-package-title" id="t-sprice-title">価格（税別）</div>
 <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:13px; text-align:center;">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
 <th style="padding:10px; text-align:left; color:#93C5FD;"></th>
-<th style="padding:10px; color:#93C5FD; font-weight:700;">1業界</th>
-<th style="padding:10px; color:#93C5FD; font-weight:700;">3業界</th>
-<th style="padding:10px; color:#93C5FD; font-weight:700;">5業界</th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;" id="t-spr-1h">1業界</th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;" id="t-spr-3h">3業界</th>
+<th style="padding:10px; color:#93C5FD; font-weight:700;" id="t-spr-5h">5業界</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="padding:12px 10px; text-align:left; font-weight:700; color:white;">標準パッケージ一式</td>
-<td style="padding:12px 10px; font-weight:700; color:white; font-size:16px;">100万円</td>
-<td style="padding:12px 10px;">250万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@約83万円）</span></td>
-<td style="padding:12px 10px;">380万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">（@76万円）</span></td>
+<td style="padding:12px 10px; text-align:left; font-weight:700; color:white;" id="t-spr-pkg">標準パッケージ一式</td>
+<td style="padding:12px 10px; font-weight:700; color:white; font-size:16px;" id="t-spr-p1">100万円</td>
+<td style="padding:12px 10px;" id="t-spr-p3">250万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);" id="t-spr-p3-unit">（@約83万円）</span></td>
+<td style="padding:12px 10px;" id="t-spr-p5">380万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);" id="t-spr-p5-unit">（@76万円）</span></td>
 </tr>
 </tbody>
 </table>
-<p style="margin-top:14px; font-size:11.5px; color:rgba(255,255,255,0.5); line-height:1.7;">
+<p style="margin-top:14px; font-size:11.5px; color:rgba(255,255,255,0.5); line-height:1.7;" id="t-sprice-note">
         複数業界プランでは、調査設計の共通構造化により2業界目以降のコストを抑え、業界ごとの深さと展開の効率性を両立します。
       </p>
 </div>
 <!-- オプション -->
 <div class="service-package" style="margin-bottom:28px;">
-<div class="service-package-title">オプション</div>
+<div class="service-package-title" id="t-sopt-title">オプション</div>
 <table style="width:100%; border-collapse:collapse; color:rgba(255,255,255,0.75); font-size:12px;">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:30%;">オプション</th>
-<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;">内容</th>
-<th style="padding:8px 12px; text-align:right; color:#93C5FD; font-weight:700; white-space:nowrap;">価格（税別）</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700; width:30%;" id="t-soth-opt">オプション</th>
+<th style="padding:8px 12px; text-align:left; color:#93C5FD; font-weight:700;" id="t-soth-desc">内容</th>
+<th style="padding:8px 12px; text-align:right; color:#93C5FD; font-weight:700; white-space:nowrap;" id="t-soth-price">価格（税別）</th>
 </tr>
 </thead>
 <tbody>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:9px 12px; font-weight:700; color:white;">コラム記事化</td>
-<td style="padding:9px 12px; line-height:1.6;">調査データを活用したSEO／LLMO対応のコラム記事制作（1本）</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">10万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r1a">コラム記事化</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r1b">調査データを活用したSEO／LLMO対応のコラム記事制作（1本）</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r1p">10万円〜</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:9px 12px; font-weight:700; color:white;">セミナー企画・スライド作成</td>
-<td style="padding:9px 12px; line-height:1.6;">調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">30万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r2a">セミナー企画・スライド作成</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r2b">調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r2p">30万円〜</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:9px 12px; font-weight:700; color:white;">業界メディアタイアップ</td>
-<td style="padding:9px 12px; line-height:1.6;">業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">60万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r3a">業界メディアタイアップ</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r3b">業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r3p">60万円〜</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:9px 12px; font-weight:700; color:white;">LP設計</td>
-<td style="padding:9px 12px; line-height:1.6;">調査レポートを起点としたランディングページ作成</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">35万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r4a">LP設計</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r4b">調査レポートを起点としたランディングページ作成</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r4p">35万円〜</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
-<td style="padding:9px 12px; font-weight:700; color:white;">営業資料組み込み＋トーク設計</td>
-<td style="padding:9px 12px; line-height:1.6;">調査データの営業資料への反映と、活用トーク・展開パターンの整備</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r5a">営業資料組み込み＋トーク設計</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r5b">調査データの営業資料への反映と、活用トーク・展開パターンの整備</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r5p">20万円〜</td>
 </tr>
 <tr>
-<td style="padding:9px 12px; font-weight:700; color:white;">展示会配布用印刷資料</td>
-<td style="padding:9px 12px; line-height:1.6;">A4リーフレット等、展示会・対面配布用に最適化した資料制作</td>
-<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;">20万円〜</td>
+<td style="padding:9px 12px; font-weight:700; color:white;" id="t-sopt-r6a">展示会配布用印刷資料</td>
+<td style="padding:9px 12px; line-height:1.6;" id="t-sopt-r6b">A4リーフレット等、展示会・対面配布用に最適化した資料制作</td>
+<td style="padding:9px 12px; text-align:right; white-space:nowrap; color:white; font-weight:700;" id="t-sopt-r6p">20万円〜</td>
 </tr>
 </tbody>
 </table>
@@ -1929,7 +2053,7 @@
 </section>
 <!-- ===== FOOTER ===== -->
 <footer class="doc-footer">
-<img alt="IDEATECH" src="ideatech_logodata.png" style="height:22px; background:white; border-radius:3px; padding:2px 7px;"/>
+<img alt="IDEATECH" src="logo_white.png" style="height:22px; display:block;"/>
 <div class="footer-copy">© 2026 IDEATECH Inc. All rights reserved.</div>
 </footer>
 </div><!-- /doc -->
@@ -2249,7 +2373,68 @@ const TRANSLATIONS = {
     "t-svc-cta-note": `ideatech.jp ｜ 無料相談受付中`,
     "t-cover-date": `調査期間：2026年1月<br/>
         有効サンプル：各111名`,
-    "t-sup-name": `北川 裕康`
+    "t-sup-name": `北川 裕康`,
+    "t-sec2-2": `BtoB市場における業界別課題構造と深度`,
+    "t-dsub-1": `「ほとんど」＋「やや」`,
+    "t-dsub-2": `「そう思う」合計`,
+    "t-dsub-2b": `「ある」と回答`,
+    "t-dsub-3": `制作担当者`,
+    "t-dsub-4": `受け手`,
+    "t-dsub-5": `4名以上が関与`,
+    "t-dsub-6": `「高まる」と回答`,
+    "t-dsub-7": `制作担当者`,
+    "t-dsub-8": `手間・コストが最大の壁`,
+    "t-qtag-1": `SURVEY Q（制作担当者）`,
+    "t-qtag-2": `SURVEY Q（受け手）`,
+    "t-qtag-3": `SURVEY Q（受け手）`,
+    "t-qtag-4": `SURVEY Q（購買担当者）`,
+    "t-qtag-5": `SURVEY Q（制作担当者）`,
+    "t-spkg-title": `標準パッケージに含まれる成果物`,
+    "t-sth-deliverable": `成果物`,
+    "t-sth-desc": `内容`,
+    "t-std-r1a": `業界特化型調査の設計・実査`,
+    "t-std-r1b": `ターゲット業界の構造・課題を踏まえた調査テーマと設問の設計。サンプル数は業界の出現率に応じて100〜300名を目安に設計。調査対象は業界従事者またはエンドユーザーから選定。`,
+    "t-std-r2a": `調査レポート（ホワイトペーパー）`,
+    "t-std-r2b": `調査データに解釈を加えたPDF資料。ダウンロードコンテンツとしてリード獲得のCTAに活用可能。`,
+    "t-std-r3a": `調査リリース`,
+    "t-std-r3b": `PR TIMES配信用のプレスリリース原稿（IDEATECH雛形）。メディア掲載や被リンク獲得を通じた認知拡大に活用。`,
+    "t-std-r4a": `業界特化型ガイドブック`,
+    "t-std-r4b": `調査データを軸にストーリーを構成し、読者を課題認識から解決策へと導くガイドブック型コンテンツ（PDF）。`,
+    "t-std-r5a": `業界特化メルマガ配信文章`,
+    "t-std-r5b": `調査結果を活用したメルマガ配信用の原稿。ダウンロードCTAへの誘導を想定した構成。`,
+    "t-sprice-title": `価格（税別）`,
+    "t-spr-1h": `1業界`,
+    "t-spr-3h": `3業界`,
+    "t-spr-5h": `5業界`,
+    "t-spr-pkg": `標準パッケージ一式`,
+    "t-spr-p1": `100万円`,
+    "t-spr-p3": `250万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);" id="t-spr-p3-unit">（@約83万円）</span>`,
+    "t-spr-p5": `380万円<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);" id="t-spr-p5-unit">（@76万円）</span>`,
+    "t-spr-p3-unit": `（@約83万円）`,
+    "t-spr-p5-unit": `（@76万円）`,
+    "t-sprice-note": `複数業界プランでは、調査設計の共通構造化により2業界目以降のコストを抑え、業界ごとの深さと展開の効率性を両立します。`,
+    "t-sopt-title": `オプション`,
+    "t-soth-opt": `オプション`,
+    "t-soth-desc": `内容`,
+    "t-soth-price": `価格（税別）`,
+    "t-sopt-r1a": `コラム記事化`,
+    "t-sopt-r1b": `調査データを活用したSEO／LLMO対応のコラム記事制作（1本）`,
+    "t-sopt-r1p": `10万円〜`,
+    "t-sopt-r2a": `セミナー企画・スライド作成`,
+    "t-sopt-r2b": `調査テーマをもとにしたウェビナーの企画構成・スライド作成・告知文案`,
+    "t-sopt-r2p": `30万円〜`,
+    "t-sopt-r3a": `業界メディアタイアップ`,
+    "t-sopt-r3b": `業界誌・業界メディアへの記事構成案作成・出稿交渉・編集対応`,
+    "t-sopt-r3p": `60万円〜`,
+    "t-sopt-r4a": `LP設計`,
+    "t-sopt-r4b": `調査レポートを起点としたランディングページ作成`,
+    "t-sopt-r4p": `35万円〜`,
+    "t-sopt-r5a": `営業資料組み込み＋トーク設計`,
+    "t-sopt-r5b": `調査データの営業資料への反映と、活用トーク・展開パターンの整備`,
+    "t-sopt-r5p": `20万円〜`,
+    "t-sopt-r6a": `展示会配布用印刷資料`,
+    "t-sopt-r6b": `A4リーフレット等、展示会・対面配布用に最適化した資料制作`,
+    "t-sopt-r6p": `20万円〜`
   },
   en: {
     "t-header-label": "BtoB Content Marketing Guide",
@@ -2440,7 +2625,68 @@ const TRANSLATIONS = {
     "t-svc-cta-p": `We also welcome consultations on 'which industry to start with' or 'what research themes are best suited to our services.'<br>Feel free to reach out about designing industry-specific content based on GTM strategy.`,
     "t-svc-cta-note": `ideatech.jp ｜ Free consultation available`,
     "t-cover-date": `Survey period: January 2026<br>Sample size: 111 per survey`,
-    "t-sup-name": `Hiroyasu Kitagawa`
+    "t-sup-name": `Hiroyasu Kitagawa`,
+    "t-sec2-2": `Industry-Specific Challenge Structures and Depth in the BtoB Market`,
+    "t-dsub-1": `"Mostly" + "Somewhat"`,
+    "t-dsub-2": `Agree (total)`,
+    "t-dsub-2b": `Have experienced`,
+    "t-dsub-3": `Content Creators`,
+    "t-dsub-4": `Recipients`,
+    "t-dsub-5": `4+ people involved`,
+    "t-dsub-6": `Increases trust`,
+    "t-dsub-7": `Content Creators`,
+    "t-dsub-8": `Cost & effort = #1 barrier`,
+    "t-qtag-1": `SURVEY Q (Content Creators)`,
+    "t-qtag-2": `SURVEY Q (Content Recipients)`,
+    "t-qtag-3": `SURVEY Q (Content Recipients)`,
+    "t-qtag-4": `SURVEY Q (Decision Makers)`,
+    "t-qtag-5": `SURVEY Q (Content Creators)`,
+    "t-spkg-title": `Deliverables Included in Standard Package`,
+    "t-sth-deliverable": `Deliverable`,
+    "t-sth-desc": `Description`,
+    "t-std-r1a": `Industry-Specific Survey Design & Fieldwork`,
+    "t-std-r1b": `Survey theme and questionnaire design tailored to the target industry's structure and challenges. Sample size designed for 100–300 respondents based on industry incidence rate. Respondents selected from industry practitioners or end users.`,
+    "t-std-r2a": `Survey Report (White Paper)`,
+    "t-std-r2b": `PDF report combining survey data with expert analysis. Can be used as a downloadable content asset to drive lead generation CTAs.`,
+    "t-std-r3a": `Survey Press Release`,
+    "t-std-r3b": `Press release copy for distribution via PR TIMES (using IDEATECH template). Used for brand awareness through media coverage and backlink acquisition.`,
+    "t-std-r4a": `Industry-Specific Guide Book`,
+    "t-std-r4b": `Guide book-style content (PDF) that weaves a narrative around survey data, guiding readers from problem recognition to solution.`,
+    "t-std-r5a": `Industry-Specific Newsletter Copy`,
+    "t-std-r5b": `Newsletter copy leveraging survey results, structured to drive readers toward a download CTA.`,
+    "t-sprice-title": `Pricing (excl. tax)`,
+    "t-spr-1h": `1 Industry`,
+    "t-spr-3h": `3 Industries`,
+    "t-spr-5h": `5 Industries`,
+    "t-spr-pkg": `Full Standard Package`,
+    "t-spr-p1": `JPY 1,000,000`,
+    "t-spr-p3": `JPY 2,500,000<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">(approx. JPY 833,000 each)</span>`,
+    "t-spr-p5": `JPY 3,800,000<br/><span style="font-size:10px; color:rgba(255,255,255,0.5);">(JPY 760,000 each)</span>`,
+    "t-spr-p3-unit": `(approx. JPY 833,000 each)`,
+    "t-spr-p5-unit": `(JPY 760,000 each)`,
+    "t-sprice-note": `Multi-industry plans leverage a shared content structure, significantly reducing per-industry costs from the second industry onward while maintaining depth and expansion efficiency.`,
+    "t-sopt-title": `Optional Add-ons`,
+    "t-soth-opt": `Option`,
+    "t-soth-desc": `Description`,
+    "t-soth-price": `Price (excl. tax)`,
+    "t-sopt-r1a": `Column Article Creation`,
+    "t-sopt-r1b": `SEO/LLMO-optimized column article utilizing survey data (1 article)`,
+    "t-sopt-r1p": `JPY 100,000+`,
+    "t-sopt-r2a": `Webinar Planning & Slide Creation`,
+    "t-sopt-r2b": `Webinar concept, slide deck, and promotional copy based on the survey theme`,
+    "t-sopt-r2p": `JPY 300,000+`,
+    "t-sopt-r3a": `Industry Media Tie-up`,
+    "t-sopt-r3b": `Article outline creation, placement negotiation, and editorial coordination with industry publications`,
+    "t-sopt-r3p": `JPY 600,000+`,
+    "t-sopt-r4a": `Landing Page Design`,
+    "t-sopt-r4b": `Landing page creation anchored around the survey report`,
+    "t-sopt-r4p": `JPY 350,000+`,
+    "t-sopt-r5a": `Sales Enablement Materials + Talk Design`,
+    "t-sopt-r5b": `Incorporating survey data into sales materials and developing usage talk tracks and deployment patterns`,
+    "t-sopt-r5p": `JPY 200,000+`,
+    "t-sopt-r6a": `Exhibition / Print Materials`,
+    "t-sopt-r6b": `A4 leaflets and other materials optimized for trade shows and in-person distribution`,
+    "t-sopt-r6p": `JPY 200,000+`
   }
 };
 
